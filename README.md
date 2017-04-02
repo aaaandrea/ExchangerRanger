@@ -16,7 +16,7 @@ The site will provide an RSS feed for each stock symbol and/or market sector.
   - The site will be hosted on a custom subdomain
 
 ## Wireframes
-[Wireframes]()
+[Wireframes](https://github.com/adelrio1/stockSectorVisualizer/tree/master/docs/wireframes)
 
 ## Technologies & Technical Challenges
 

@@ -48,7 +48,7 @@ Ryan's primary responsibilities will be:
 
 ## Implementation Timeline
 
-### Phase1: Setting up webpack and entry file
+### Phase 1: Setting up webpack and entry file
 - A completed `package.json`/ webpack (Andrea)
 - Backend
     Models

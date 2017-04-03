@@ -48,8 +48,7 @@ Ryan's primary responsibilities will be:
 
 ## Implementation Timeline
 
-### Phase1: Get started on the infrastructure of the extension, following [this guide](https://developer.chrome.com/extensions/getstarted) from Chrome.  By the end of the day, we will have:
-
+### Phase1: Setting up webpack and entry file
 - A completed `package.json`/ webpack (Andrea)
 - Backend
     Models

@@ -41,10 +41,12 @@ Our group consists of three members, Aaron Farber, Andrea del Rio, and Ryan Oden
 
 Aaron's primary responsibilities will be:
   - Generate feeds of market data and live stock quotes
+
 Andrea's primary responsibilities will be:
-  - Generate news articles related to sector
+  - Generate news articles related to sector using Xignite API
+
 Ryan's primary responsibilities will be:
-  - Use Chartjs library to generate chart visualizations
+  - Use Chart.js library to generate chart visualizations
 
 ## Implementation Timeline
 

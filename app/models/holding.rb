@@ -1,19 +1,18 @@
 # == Schema Information
 #
-# Table name: stock_shares
+# Table name: holdings
 #
 #  id         :integer          not null, primary key
-#  stock_id   :integer          not null
+#  company_id :integer          not null
 #  user_id    :integer          not null
 #  amount     :integer          default("0"), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-require 'test_helper'
+class Holding < ApplicationRecord
+  validates :company_id, :user_id, :amount, presence: true
 
-class StockShareTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  belongs_to :user
+  belongs_to :company
 end

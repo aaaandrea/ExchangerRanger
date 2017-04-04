@@ -12,23 +12,23 @@
 
 ActiveRecord::Schema.define(version: 20170404160813) do
 
-  create_table "stock_shares", force: :cascade do |t|
-    t.integer  "stock_id",               null: false
+  create_table "companies", force: :cascade do |t|
+    t.string   "name",        null: false
+    t.string   "symbol",      null: false
+    t.integer  "share_price", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["name"], name: "index_companies_on_name", unique: true
+    t.index ["symbol"], name: "index_companies_on_symbol", unique: true
+  end
+
+  create_table "holdings", force: :cascade do |t|
+    t.integer  "company_id",             null: false
     t.integer  "user_id",                null: false
     t.integer  "amount",     default: 0, null: false
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
-    t.index ["user_id"], name: "index_stock_shares_on_user_id"
-  end
-
-  create_table "stocks", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.string   "symbol",     null: false
-    t.integer  "price",      null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_stocks_on_name", unique: true
-    t.index ["symbol"], name: "index_stocks_on_symbol", unique: true
+    t.index ["user_id"], name: "index_holdings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

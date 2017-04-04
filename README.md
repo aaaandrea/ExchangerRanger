@@ -47,7 +47,6 @@ This mobile application will run month-long simulations with actual stock market
      + Session
      + User: username, cash_on_hand (default $10,000), net_worth (cash on hand + stock purchases)
      + Trade: user_id, stock_id, buy_price, order_type, quantity, date, value
-     + Challenge: user_id, participant_id, date_start, start_amount, limit
      + Game: winner
   -  Controller
         * User
@@ -62,7 +61,7 @@ This mobile application will run month-long simulations with actual stock market
   - Begin ReactNative implementation (all)
 
 ### Phase 3: Develop visualizations and work on trade logic
-  - Groundwork on ReactNative components and generating powerful visualizations
+  - Groundwork on ReactNative components
   - Leaderboard logic
   - Game logic
 
@@ -70,8 +69,6 @@ This mobile application will run month-long simulations with actual stock market
     - `game_container.js`: contains the logic for the stock market game’s public tournament including its month-long duration. It compares players’ net worth and displays the leaderboard.(All)
 
     - `user_container.js`: displays user’s profile after login, Children include index(Aaron)
-
-    - `challenge_container.js`: users can join or create (private) challenges with other users and set certain rules such as starting pot, group size, and whether shorting is allowed. (Andrea)
 
     - `trade_container.js`: includes logic and form for verifying trades. Components include `TradeIndexItem` will display the individual trades, showing purchase price, order type, date, and quantity. (Aaron)
 
@@ -81,10 +78,9 @@ This mobile application will run month-long simulations with actual stock market
     - Session (Ryan)
     - Trade (Andrea)
     - User (Aaron)
-    - Challenge (Aaron)
-     +  Store (Andrea)
+    - Store (Andrea)
 
-### Phase 4: Tighten visualizations (Ryan - Andrea - Aaron)
+### Phase 4: Styling and bugs (Ryan - Andrea - Aaron)
   - Session styling
   - Home Styling
   - Stock Show page styling
@@ -93,7 +89,7 @@ This mobile application will run month-long simulations with actual stock market
 ### Phase 5: Styling the React components, building (web) demo page, and applying for App Store
   - Build demo page for web users
   - Create demo video
-  - Ensure smooth bug-free rendering of stock chart visualizations. (All)
+  - Ensure smooth bug-free game
   - Upload application to Android store.
 
 ### TBD Features
@@ -101,4 +97,7 @@ This mobile application will run month-long simulations with actual stock market
   - Visualizations for stock activity and user investments
   - Provide an RSS feed for each stock symbol and/or market sector.
   - Player ability to create custom challenges
+       + Challenge Model: user_id, participant_id, date_start, start_amount, limit
+
+       + `challenge_container.js`: users can join or create (private) challenges with other users and set certain rules such as starting pot, group size, and whether shorting is allowed. (Andrea)
   - Develop user portfolio graph displaying on log-in

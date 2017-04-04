@@ -1,101 +1,88 @@
-# Stock Sector Visualizer Proposal
+# Mobile Stock Market Simulation Game proposal
 
 ## Background
 
-Stock traders rely on charts to gain insight on market trends and share their own perspective.
+Stock market simulations can be fun competitions and a stepping stone to the real stock market.
 
-This site will provide live, real-time stock market visualizations specifically displaying market cap by sector, P/E ratio, and other key metrics.
+This mobile application will run month-long simulations with delayed, real-time stock market quotes, determining players’ net worth. The winning user has highest net worth at end of simulation cycle. The application will contain visualizations displaying each stock’s daily movement.
 
-The site will provide an RSS feed for each stock symbol and/or market sector.
+If project completed early, the application will provide an RSS feed for each stock symbol and/or market sector.
 
 ## Functionality & MVP
 
-  - View regularly updated sector quotes
-  - Individual sector pages with info
-  - View news on a sector
-  - The site will be hosted on a custom subdomain
+  - Mobile application using React Native technology
+  - Gather delayed real-time stock quotes
+  - Stock trade logic developed, changing players’ net worth/cash on hand on purchase/sale
+  - Game and ability to create custom challenges
+  - Visualizations for stock activity and user investments
 
 ## Wireframes
-[Wireframes](https://github.com/adelrio1/stockSectorVisualizer/tree/master/docs/wireframes)
 
-## Technologies & Technical Challenges
-
-This site will be built using a Rails backend with a PostgreSQL database. The frontend will be built using React/Redux as well as HTML and CSS. The site will incorporate API's to access data feeds for stock quotes, engines for visualizations, and potentially, for RSS feed/news aggregation.
-
-In addition to the entry file and `package.json` files, there will be two scripts:
-- `feed_container.jsx`: will request the stock feed data and render the live quote.
-- `chart_container.jsx`: will connect with chart visualization API to produce stock graphics
 
 The primary technical challenges will be:
-  - Connecting to the sector market cap API
-    https://www.programmableweb.com/api/xigniteglobalnews
-    https://www.programmableweb.com/api/sixfinancial
-    https://www.programmableweb.com/api/enclout-yahoo-finance/how-to
-  - User Chartjs library for data visualizations
-  - Aggregating news
-  	https://www.programmableweb.com/api/xigniteglobalnews
 
-
-## Group Members & Work Breakdown
-Our group consists of three members, Aaron Farber, Andrea del Rio, and Ryan Odening.
-
-Aaron's primary responsibilities will be:
-  - Generate feeds of market data and live stock quotes
-
-Andrea's primary responsibilities will be:
-  - Generate news articles related to sector using Xignite API
-
-Ryan's primary responsibilities will be:
-  - Use Chart.js library to generate chart visualizations
+- Pulling finance data from HTTP requests to Google Finance. Determining the delay (speed bump) from real-time.
+- Building stock trade logic and ensuring valid orders.
+- Using a library, either Chart.js or Plotly, for stock market visualizations
 
 ## Implementation Timeline
 
 ### Phase 1: Setting up webpack and entry file
+
 - A completed `package.json`/ webpack (Andrea)
-- Backend
-    Models
-      * Sector (Ryan)
-      * Article (Ryan)
-    Controller
-      * Articles (Andrea)
-      * Sectors (Andrea)
+Backend:
+- Models
+   + Session
+   + User: username, cash_on_hand (default $10,000), net_worth (cash on hand + stock purchases)
+   + Trade: user_id, stock_id, buy_price, order_type, quantity, date, value
+   + Challenge: user_id, participant_id, date_start, start_amount, limit
+   + Game: winner
+-  Controller
+      * User
+      * Session
+      * Trade
       * Static pages (Andrea)
 - General understanding of APIs we will be using APIs (Aaron, Ryan, Andrea)
-
-### Phase 2: Work on generating powerful visualizations
-- Actions/Utils (Aaron)
-- Components
-  - Sector Index/container (Andrea)
-  - Sector show container/sector show (Andrea)
-  - Header container/session form container (Andrea)
-  - Article show/container (Ryan)
-  - Root.jsx (Ryan)
-  - App.jsx (Ryan)
-- Reducers
-  - Session (Ryan)
-  - Sector (Andrea)
-  - Sector Detail (Andrea)
-  - Articles (Ryan)
-- Store
-- St  ore (Andrea)
-- News API (all)
 - The ability to pull a stock quote or market sector by symbol (all)
+     * Google Finance HTTP requests for delayed, real-time data (Ryan, Aaron)
+     * Quandl API for historical stock price data. (Andrea, Aaron)
 
-### Phase 3: Develop DB interactions
-- Articles (Andrea)
-- Sectors (Ryan)
-- Individual stocks (bonus) (Aaron)
+### Phase 2: Groundwork on React components and generating powerful visualizations
+
+####Components
+
+-   `game_container.js`: contains the logic for the stock market game’s public tournament including its month-long duration. It compares players’ net worth and displays the leaderboard.(All)
+
+-   `user_container.js`: displays user’s profile after login, Children include index(Aaron)
+
+-   `challenge_container.js`: users can join or create (private) challenges with other users and set certain rules such as starting pot, group size, and whether shorting is allowed. (Andrea)
+
+-   `trade_container.js`: includes logic and form for verifying trades. Components include `TradeIndexItem` will display the individual trades, showing purchase price, order type, date, and quantity. (Aaron)
+
+-   `session_container.js`:  contains sign-up validation and login authentication forms. May also include demo account. (Ryan, Andrea)
+
+
+####Reducers
+  - Session (Ryan)
+  - Trade (Andrea)
+  - User (Aaron)
+  - Challenge (Aaron)
+   +  Store (Andrea)
+
+### Phase 3: Develop visualizations and work on trade logic
+-  Finish challenges form logic
+-  Visualizations API - test Chart.js + Plot.ly
+-  Edge feature: develop user portfolio graph displaying on log-in
 
 ### Phase 4: Tighten visualizations (Ryan - Andrea - Aaron)
-- Clear lingering bugs in infrastructure
-- Begin using Chartjs with the API information
+- Clear lingering bugs in infrastructure and trade logic, if any
+- Continue refining Chartjs with the API information
 - Add some page styling
-- Add news aggregation/RSS feeds to application
 
-### Phase 5: Styling the React components and overall site
-- Deploy application either on Github pages or on a custom domain, using AWS. (Andrea)
+### Phase 5: Styling the React components, building (web) demo page, and applying for App Store
+- Build demo page for web users
 - Ensure smooth bug-free rendering of stock chart visualizations. (All)
+- Finish application for App Store.
 
 ### Bonus
 - Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.
-- Add user watchlists.

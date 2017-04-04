@@ -66,23 +66,23 @@ This mobile application will run month-long simulations with actual stock market
   - Leaderboard logic
   - Game logic
 
-#### Components
-  - `game_container.js`: contains the logic for the stock market game’s public tournament including its month-long duration. It compares players’ net worth and displays the leaderboard.(All)
+  #### Components
+    - `game_container.js`: contains the logic for the stock market game’s public tournament including its month-long duration. It compares players’ net worth and displays the leaderboard.(All)
 
-  - `user_container.js`: displays user’s profile after login, Children include index(Aaron)
+    - `user_container.js`: displays user’s profile after login, Children include index(Aaron)
 
-  - `challenge_container.js`: users can join or create (private) challenges with other users and set certain rules such as starting pot, group size, and whether shorting is allowed. (Andrea)
+    - `challenge_container.js`: users can join or create (private) challenges with other users and set certain rules such as starting pot, group size, and whether shorting is allowed. (Andrea)
 
-  - `trade_container.js`: includes logic and form for verifying trades. Components include `TradeIndexItem` will display the individual trades, showing purchase price, order type, date, and quantity. (Aaron)
+    - `trade_container.js`: includes logic and form for verifying trades. Components include `TradeIndexItem` will display the individual trades, showing purchase price, order type, date, and quantity. (Aaron)
 
-  - `session_container.js`:  contains sign-up validation and login authentication forms. May also include demo account. (Ryan, Andrea)
+    - `session_container.js`:  contains sign-up validation and login authentication forms. May also include demo account. (Ryan, Andrea)
 
-#### Reducers
-  - Session (Ryan)
-  - Trade (Andrea)
-  - User (Aaron)
-  - Challenge (Aaron)
-   +  Store (Andrea)
+  #### Reducers
+    - Session (Ryan)
+    - Trade (Andrea)
+    - User (Aaron)
+    - Challenge (Aaron)
+     +  Store (Andrea)
 
 ### Phase 4: Tighten visualizations (Ryan - Andrea - Aaron)
   - Session styling
@@ -96,7 +96,7 @@ This mobile application will run month-long simulations with actual stock market
   - Ensure smooth bug-free rendering of stock chart visualizations. (All)
   - Upload application to Android store.
 
-### Bonus
+### TBD Features
   - Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.
   - Visualizations for stock activity and user investments
   - Provide an RSS feed for each stock symbol and/or market sector.

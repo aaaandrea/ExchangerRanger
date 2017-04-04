@@ -9,7 +9,6 @@
 #  money           :integer          default("1000000"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#
 
 class User < ApplicationRecord
   attr_reader :password

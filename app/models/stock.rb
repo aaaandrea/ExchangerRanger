@@ -1,15 +1,15 @@
 # == Schema Information
 #
-# Table name: sectors
+# Table name: stocks
 #
 #  id         :integer          not null, primary key
 #  name       :string           not null
+#  symbol     :string           not null
+#  price      :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Sector < ApplicationRecord
-  validates :name, presence: true, uniqueness: true
-
-  has_many :articles
+class Stock < ApplicationRecord
+  
 end

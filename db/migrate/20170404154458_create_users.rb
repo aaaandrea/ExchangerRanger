@@ -4,11 +4,11 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :username, presence: true, null: false
       t.string :password_digest, null: false
       t.string :session_token, null: false
+      t.integer :money, default: 1_000_000, null: false
       t.timestamps
     end
 
     add_index :users, :username
-    add_index :users, :password_digest
     add_index :users, :session_token
   end
 end

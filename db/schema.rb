@@ -10,30 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170404154458) do
+ActiveRecord::Schema.define(version: 20170404160813) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.string   "url",        null: false
-    t.integer  "sector_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "stock_shares", force: :cascade do |t|
+    t.integer  "stock_id",               null: false
+    t.integer  "user_id",                null: false
+    t.integer  "amount",     default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["user_id"], name: "index_stock_shares_on_user_id"
   end
 
-  create_table "sectors", force: :cascade do |t|
+  create_table "stocks", force: :cascade do |t|
     t.string   "name",       null: false
+    t.string   "symbol",     null: false
+    t.integer  "price",      null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_sectors_on_name", unique: true
+    t.index ["name"], name: "index_stocks_on_name", unique: true
+    t.index ["symbol"], name: "index_stocks_on_symbol", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",        null: false
-    t.string   "password_digest", null: false
-    t.string   "session_token",   null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.index ["password_digest"], name: "index_users_on_password_digest"
+    t.string   "username",                          null: false
+    t.string   "password_digest",                   null: false
+    t.string   "session_token",                     null: false
+    t.integer  "money",           default: 1000000, null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["session_token"], name: "index_users_on_session_token"
     t.index ["username"], name: "index_users_on_username"
   end

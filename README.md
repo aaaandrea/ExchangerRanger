@@ -26,17 +26,21 @@ This mobile application will run month-long simulations with actual stock market
     - Readme
     - HTTP requests
     - React Native modeling
+    - Video
 
   - Andrea:
+    - Webpack
     - Readme
     - Authentication
     - API use
     - ReactNative modeling
+    - Styling
 
   - Ryan:
     - Models
     - ActiveRecord implementation
     - ReactNative modeling
+    - Demo Page
 
 ## Implementation Timeline
 
@@ -44,15 +48,15 @@ This mobile application will run month-long simulations with actual stock market
   - A completed `package.json`/ webpack (Andrea)
   Backend:
   - Models
-     + Session
-     + User: username, cash_on_hand (default $10,000), net_worth (cash on hand + stock purchases)
-     + Trade: user_id, stock_id, buy_price, order_type, quantity, date, value
-     + Game: winner
+      * Session
+      * User: username, cash_on_hand (default $10,000), net_worth (cash on hand + stock purchases)
+      * Trade: user_id, stock_id, buy_price, order_type, quantity, date, value
+      * Game: winner
   -  Controller
-        * User
-        * Session
-        * Trade
-        * Static pages (Andrea)
+      * User
+      * Session
+      * Trade
+      * Static pages (Andrea)
 
 ### Phase 2: API, HTTP request, and database modeling
   - The ability to pull a stock quote or market sector by symbol (all)
@@ -81,16 +85,16 @@ This mobile application will run month-long simulations with actual stock market
     - Store (Andrea)
 
 ### Phase 4: Styling and bugs (Ryan - Andrea - Aaron)
-  - Session styling
-  - Home Styling
-  - Stock Show page styling
-  - Clear lingering bugs in infrastructure
+  - Session styling (Andrea)
+  - Home Styling (Andrea)
+  - Stock Show page styling (Andrea)
+  - Clear lingering bugs in infrastructure (Ryan, Aaron)
 
 ### Phase 5: Styling the React components, building (web) demo page, and applying for App Store
-  - Build demo page for web users
-  - Create demo video
-  - Ensure smooth bug-free game
-  - Upload application to Android store.
+  - Build demo page for web users (Ryan)
+  - Create demo video (Aaron)
+  - Ensure smooth bug-free game (Andrea)
+  - Upload application to Android store (Ryan)
 
 ### TBD Features
   - Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.

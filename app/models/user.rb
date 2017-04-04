@@ -6,6 +6,7 @@
 #  username        :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
+#  money           :integer          default("1000000"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -13,9 +14,12 @@
 class User < ApplicationRecord
   attr_reader :password
 
-  validates :username, :password_digest, :session_token, presence: true
+  validates :username, :password_digest, :session_token, :money, presence: true
   validates :username, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: :true
+
+  has_many :holdings
+  has_many :stocks, through: :holdings, source: :company
 
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness

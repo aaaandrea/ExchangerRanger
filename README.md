@@ -1,27 +1,42 @@
 # Mobile Stock Market Simulation Game proposal
 
 ## Background
-
 Stock market simulations can be fun competitions and a stepping stone to the real stock market.
 
-This mobile application will run month-long simulations with actual stock market quotes, determining players’ net worth. The winning user has highest net worth at end of simulation cycle.
+This mobile application will run month-long simulations with actual stock market quotes, determining players’ net worth. Net worth is based on a player's cash on hand + total stock value. The winning user has highest net worth at end of simulation cycle.
 
 ## Functionality & MVP
-
   - Mobile application using React Native technology
   - Gather actual stock quotes using API
   - HTTP requests for real time stock quotes
   - User can buy stock
   - User can sell stock
-  - Global leaderboard based on players’ net worth/cash on hand on purchase/sale
-
+  - Global leaderboard based on players’ net worth
 
 ## Wireframes
-  The primary technical challenges will be:
+  [Wireframes](https://github.com/adelrio1/stockSectorVisualizer/tree/master/docs/wireframes)
 
+## Technologies & Technical Challenges
+  - Using ReactNative is a new technology for all engineers.
   - Pulling finance data from HTTP requests to Google Finance. Determining the delay (speed bump) from real-time.
   - Building stock trade logic and ensuring valid orders.
-  - Using a library, either Chart.js or Plotly, for stock market visualizations
+
+## Responsibility breakdown
+  - Aaron:
+    - Readme
+    - HTTP requests
+    - React Native modeling
+
+  - Andrea:
+    - Readme
+    - Authentication
+    - API use
+    - ReactNative modeling
+
+  - Ryan:
+    - Models
+    - ActiveRecord implementation
+    - ReactNative modeling
 
 ## Implementation Timeline
 
@@ -39,15 +54,19 @@ This mobile application will run month-long simulations with actual stock market
         * Session
         * Trade
         * Static pages (Andrea)
-  - General understanding of APIs we will be using APIs (Aaron, Ryan, Andrea)
+
+### Phase 2: API, HTTP request, and database modeling
   - The ability to pull a stock quote or market sector by symbol (all)
-       * Google Finance HTTP requests for delayed, real-time data (Ryan, Aaron)
+       * Google Finance HTTP requests for actual stock data (Ryan, Aaron)
        * Quandl API for historical stock price data. (Andrea, Aaron)
+  - Begin ReactNative implementation (all)
 
-### Phase 2: Groundwork on React components and generating powerful visualizations
+### Phase 3: Develop visualizations and work on trade logic
+  - Groundwork on ReactNative components and generating powerful visualizations
+  - Leaderboard logic
+  - Game logic
 
-####Components
-
+#### Components
   - `game_container.js`: contains the logic for the stock market game’s public tournament including its month-long duration. It compares players’ net worth and displays the leaderboard.(All)
 
   - `user_container.js`: displays user’s profile after login, Children include index(Aaron)
@@ -58,7 +77,6 @@ This mobile application will run month-long simulations with actual stock market
 
   - `session_container.js`:  contains sign-up validation and login authentication forms. May also include demo account. (Ryan, Andrea)
 
-
 #### Reducers
   - Session (Ryan)
   - Trade (Andrea)
@@ -66,23 +84,21 @@ This mobile application will run month-long simulations with actual stock market
   - Challenge (Aaron)
    +  Store (Andrea)
 
-### Phase 3: Develop visualizations and work on trade logic
--  Finish challenges form logic
--  Visualizations API - test Chart.js + Plot.ly
--  Edge feature: develop user portfolio graph displaying on log-in
-
 ### Phase 4: Tighten visualizations (Ryan - Andrea - Aaron)
-- Clear lingering bugs in infrastructure and trade logic, if any
-- Continue refining Chartjs with the API information
-- Add some page styling
+  - Session styling
+  - Home Styling
+  - Stock Show page styling
+  - Clear lingering bugs in infrastructure
 
 ### Phase 5: Styling the React components, building (web) demo page, and applying for App Store
   - Build demo page for web users
+  - Create demo video
   - Ensure smooth bug-free rendering of stock chart visualizations. (All)
-  - Finish application for App Store.
+  - Upload application to Android store.
 
 ### Bonus
   - Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.
   - Visualizations for stock activity and user investments
   - Provide an RSS feed for each stock symbol and/or market sector.
   - Player ability to create custom challenges
+  - Develop user portfolio graph displaying on log-in

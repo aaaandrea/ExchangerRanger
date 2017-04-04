@@ -19,13 +19,24 @@ class User < ApplicationRecord
 
   has_many :holdings
   has_many :stocks, through: :holdings, source: :company
-
+  #through source relationships here and in company may actually be unnecessary
   after_initialize :ensure_session_token
   before_validation :ensure_session_token_uniqueness
+  #maybe should be before_action? before_validation is just new to me so maybe not
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
     @password = password
+  end
+
+  #can also be used to update net worth
+  def net_worth
+    result = self.money
+    self.holdings.each do |holding|
+      share_price = holding.company.share_price
+      result += share_price * holding.amount
+    end
+    @net_worth = result
   end
 
   def self.find_by_credentials(username, password)

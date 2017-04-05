@@ -6,7 +6,7 @@
 #  username        :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
-#  money           :integer          default("1000000"), not null
+#  cash_on_hand           :integer          default("1000000"), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

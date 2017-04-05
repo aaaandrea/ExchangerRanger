@@ -4,8 +4,12 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  Navigator,
+  TouchableOpacity,
+  TouchableHighlight
 } from 'react-native';
+const Platform = require('Platform');
 
 export default class StockIndexItem extends Component {
   render() {
@@ -21,8 +25,8 @@ export default class StockIndexItem extends Component {
             </Text>
           </View>
           <View style={styles.buySell}>
-            <Button title="Buy" color="green" style={styles.buy}></Button>
-            <Button title="Sell" color="red" style={styles.sell}></Button>
+            <Button title="Buy" color="green" onPress={()=>navigator.push(1)}></Button>
+            <Button title="Sell" color="red" ></Button>
           </View>
           <View style={styles.price}>
             <Text style={styles.text}>
@@ -59,6 +63,7 @@ const styles = StyleSheet.create({
   },
   buySell: {
 
-  }
+  },
+
 
 });

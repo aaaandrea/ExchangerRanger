@@ -5,6 +5,7 @@ import {
   View,
   TextInput,
   TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 
 export default class Register extends Component {
@@ -28,6 +29,7 @@ export default class Register extends Component {
             onChangeText={(username) => this.setState({username: username})}
             value={this.state.username}
             placeholder="Username"
+            placeholderTextColor="green"
           />
         </View>
         <View>
@@ -36,11 +38,14 @@ export default class Register extends Component {
             value={this.state.password}
             style={styles.input}
             placeholder="Password"
+            placeholderTextColor="green"
           />
         </View>
-        <Text>
-          Login or Signup!
-        </Text>
+        <View>
+          <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.buttonText}>Login</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     );
   }
@@ -48,15 +53,21 @@ export default class Register extends Component {
 
 const styles = StyleSheet.create({
   registerContainer: {
-    borderColor: 'red',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
+
   input: {
     textAlign: 'center',
-    color: '#333333',
+    color: 'red',
     height: 30,
+    width: 90,
     marginBottom: 20,
   },
+
   inputOuter: {
-    borderColor: 'red',
+    margin: 10,
   }
+
 });

@@ -1,18 +1,17 @@
-// regiestering a user
 import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   TextInput,
-  TouchableHighlight
+  TouchableHighlight,
 } from 'react-native';
 
 class Register extends Component {
   constructor() {
     super();
 
-    this.sate = {
+    this.state = {
       username: "",
       password: "",
       password_confirmation: "",
@@ -27,18 +26,29 @@ class Register extends Component {
   render() {
     return (
       <View>
-        <TextInput
-          onChangeText={(val) => this.setState({username: val})}
-          style={styles.input} placeholder="Username"
-        />
-        <TextInput
-          onChangeText={(val) => this.setState({password: val})}
-          style={styles.input} placeholder="Password"
-        />
-        <TextInput
-          onChangeText={(val) => this.setState({password_confirmation: val})}
-          style={styles.input} placeholder="Password Confirmation"
-        />
+        <View style={styles.inputOuter}>
+          <TextInput
+            onChangeText={(val) => this.setState({username: val})}
+            value={this.state.username}
+            style={styles.input}
+            placeholder="Username"
+          />
+        </View>
+        <View>
+          <TextInput
+            onChangeText={(val) => this.setState({password: val})}
+            value={this.state.password}
+            style={styles.input}
+            placeholder="Password"
+          />
+        </View>
+        <View>
+          <TextInput
+            onChangeText={(val) => this.setState({password_confirmation: val})}
+            style={styles.input}
+            placeholder="Password Confirmation"
+          />
+        </View>
         <Text>
           Login or Signup!
         </Text>
@@ -51,8 +61,11 @@ const styles = StyleSheet.create({
   input: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 5,
+    marginBottom: 30,
   },
+  inputOuter: {
+    borderColor: '#ececec',
+  }
 });
 
 export default Register;

@@ -14,13 +14,6 @@ export default class ExchangerRanger extends Component {
         <Text style={styles.welcome}>
           Welcome to ExchangerRanger!
         </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
         <Register />
       </View>
     );
@@ -45,5 +38,13 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+//
+// <Text style={styles.instructions}>
+//   To get started, edit index.ios.js
+// </Text>
+// <Text style={styles.instructions}>
+//   Press Cmd+R to reload,{'\n'}
+//   Cmd+D or shake for dev menu
+// </Text>
 
 AppRegistry.registerComponent('ExchangerRanger', () => ExchangerRanger);

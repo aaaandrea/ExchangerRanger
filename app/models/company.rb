@@ -12,6 +12,9 @@ require 'nokogiri'
 #  updated_at  :datetime         not null
 #
 
+require 'open-uri'
+require 'nokogiri'
+
 class Company < ApplicationRecord
   validates :name, :symbol, :share_price, presence: true
   validates :name, :symbol, uniqueness: true
@@ -26,4 +29,5 @@ class Company < ApplicationRecord
     current_price = doc.text.split(/\n/).last
     current_price
   end
+
 end

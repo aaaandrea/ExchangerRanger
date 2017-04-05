@@ -7,9 +7,9 @@ import {
   TouchableHighlight,
 } from 'react-native';
 
-class Register extends Component {
-  constructor() {
-    super();
+export default class Register extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       username: "",
@@ -19,18 +19,14 @@ class Register extends Component {
     };
   }
 
-  onRegisterPress() {
-    console.log(this.state.username);
-  }
-
   render() {
     return (
-      <View>
+      <View style={styles.registerContainer}>
         <View style={styles.inputOuter}>
           <TextInput
-            onChangeText={(val) => this.setState({username: val})}
-            value={this.state.username}
             style={styles.input}
+            onChangeText={(username) => this.setState({username: username})}
+            value={this.state.username}
             placeholder="Username"
           />
         </View>
@@ -42,13 +38,6 @@ class Register extends Component {
             placeholder="Password"
           />
         </View>
-        <View>
-          <TextInput
-            onChangeText={(val) => this.setState({password_confirmation: val})}
-            style={styles.input}
-            placeholder="Password Confirmation"
-          />
-        </View>
         <Text>
           Login or Signup!
         </Text>
@@ -58,14 +47,16 @@ class Register extends Component {
 }
 
 const styles = StyleSheet.create({
+  registerContainer: {
+    borderColor: 'red',
+  },
   input: {
     textAlign: 'center',
     color: '#333333',
-    marginBottom: 30,
+    height: 30,
+    marginBottom: 20,
   },
   inputOuter: {
-    borderColor: '#ececec',
+    borderColor: 'red',
   }
 });
-
-export default Register;

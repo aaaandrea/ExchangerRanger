@@ -3,7 +3,8 @@ import {
   AppRegistry,
   StyleSheet,
   Text,
-  View
+  View,
+  Button
 } from 'react-native';
 
 export default class StockIndexItem extends Component {
@@ -18,6 +19,10 @@ export default class StockIndexItem extends Component {
             <Text style={styles.text}>
               {this.props.stock.name}
             </Text>
+          </View>
+          <View style={styles.buySell}>
+            <Button title="Buy" color="green" style={styles.buy}></Button>
+            <Button title="Sell" color="red" style={styles.sell}></Button>
           </View>
           <View style={styles.price}>
             <Text style={styles.text}>
@@ -52,7 +57,7 @@ const styles = StyleSheet.create({
   info: {
 
   },
-  buy: {
+  buySell: {
 
   }
 

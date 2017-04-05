@@ -18,6 +18,16 @@ class Api::HoldingsController < ApplicationController
     end
   end
 
+  def show
+    @holding = Holding.find(params[:id])
+    if @holding
+      render "api/holdings/show"
+    else
+      render json: @holding.errors.full_messages, status: 422
+    end
+  end
+
+  #destroy would mostly be to save a little space, i think its unnecessary
 
   private
 

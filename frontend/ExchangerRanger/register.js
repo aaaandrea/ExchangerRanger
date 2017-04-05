@@ -1,7 +1,7 @@
 // regiestering a user
-
-import React, {
-  Component,
+import React, { Component } from 'react';
+import {
+  StyleSheet,
   Text,
   View,
   TextInput,
@@ -25,7 +25,6 @@ class Register extends Component {
   }
 
   render() {
-
     return (
       <View>
         <TextInput
@@ -49,7 +48,11 @@ class Register extends Component {
 }
 
 const styles = StyleSheet.create({
-
+  input: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
 });
 
 export default Register;

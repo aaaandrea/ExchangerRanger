@@ -11,11 +11,17 @@ import {
   Text,
   View
 } from 'react-native';
+import StockIndexItem from './components/stock_index_item';
+
+const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
+{symbol: "AAPL", name: "Apple", share_price: 70},
+{symbol: "GOOG", name: "Google", share_price: 64}]
 
 export default class ExchangerRanger extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <StockIndexItem stock={stocks[0]} />
         <Text style={styles.welcome}>
           Welcome to React Native!
         </Text>

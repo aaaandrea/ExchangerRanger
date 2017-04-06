@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :index, :show] #maybe index too for leaderboard
     #user update and destroy removed until utilized in controller
     resource :session, only: [:create, :destroy]
-    resources :companies, only: [:show, :index]
+    resources :companies, only: [:show, :index, :update]
     resources :holdings, only: [:create, :update, :show]
   end
 end

@@ -44,11 +44,6 @@ export const receiveCompany = company => ({
   company
 });
 
-export const receiveReview = review => ({
-  type: RECEIVE_REVIEW,
-  review
-});
-
 export const receiveHolding = holding => ({
   type: RECEIVE_HOLDING,
   booking

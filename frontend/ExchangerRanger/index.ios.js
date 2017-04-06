@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
- 'use strict';
 
 import React, { Component } from 'react';
 import {
@@ -14,12 +8,15 @@ import {
   TouchableOpacity,
   Navigator
 } from 'react-native';
+
+import Register from './register';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
 
 const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
 {symbol: "AAPL", name: "Apple", share_price: 70},
 {symbol: "GOOG", name: "Google", share_price: 64}]
+
 
 export default class ExchangerRanger extends Component {
   render() {
@@ -71,7 +68,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#F5FCFF',
   },
   welcome: {
-    fontSize: 20,
+    fontSize: 30,
+    fontWeight: '600',
     textAlign: 'center',
     margin: 10,
   },
@@ -81,5 +79,13 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
+//
+// <Text style={styles.instructions}>
+//   To get started, edit index.ios.js
+// </Text>
+// <Text style={styles.instructions}>
+//   Press Cmd+R to reload,{'\n'}
+//   Cmd+D or shake for dev menu
+// </Text>
 
 AppRegistry.registerComponent('ExchangerRanger', () => ExchangerRanger);

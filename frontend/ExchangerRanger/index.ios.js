@@ -14,7 +14,6 @@ export default class ExchangerRanger extends Component {
         <Text style={styles.welcome}>
           Welcome to ExchangerRanger!
         </Text>
-        <Register />
       </View>
     );
   }

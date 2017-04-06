@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   KeyboardAvoidingView,
   StatusBar,
+  Button,
 } from 'react-native';
 
 export default class Register extends Component {
@@ -51,11 +52,10 @@ export default class Register extends Component {
           />
         </View>
         <View>
-          <Button>
-            <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>Login</Text>
-            </TouchableOpacity>
-          </Button>
+         <Button title="fart" onPress={() => this.props.navigator.push({id: 'Stock'})} />
+          <TouchableOpacity style={styles.buttonContainer}>
+            <Text style={styles.buttonText}>Signup</Text>
+          </TouchableOpacity>
         </View>
       </KeyboardAvoidingView>
     );

@@ -1,15 +1,16 @@
-export const fetchStocks = (data) => {
+
+export const fetchCompanies = (data) => {
   return $.ajax({
     method: 'GET',
-    url: 'api/stocks',
+    url: 'api/companies',
     data
   });
 };
 
-export const fetchStock = (id) => {
+export const fetchCompany = (id) => {
   return $.ajax({
     method: 'GET',
-    url: `api/stocks/${id}`
+    url: `api/companies/${id}`
   });
 };
 //make new holding
@@ -17,6 +18,14 @@ export const createHolding = (data) => {
   return $.ajax({
     method: 'POST',
     url: 'api/holdings',
+    data
+  });
+};
+
+export const receiveHolding = (data) => {
+  return $.ajax({
+    method: 'GET',
+    url: `api/holdings/${data.id}`,
     data
   });
 };

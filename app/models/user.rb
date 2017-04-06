@@ -56,6 +56,16 @@ class User < ApplicationRecord
     self.session_token
   end
 
+  # def remember
+  #   self.remember_token = self.new_session_token
+  #   update_attribute(:remember_digest,
+  #                    self.digest(remember_token))
+  # end
+  #
+  # def forget
+  #   update_attribute(:remember_digest, nil)
+  # end
+
   private
 
   def ensure_session_token

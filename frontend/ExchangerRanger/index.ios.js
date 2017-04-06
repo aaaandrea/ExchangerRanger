@@ -46,7 +46,6 @@ export default class ExchangerRanger extends Component {
     //       navigator={navigator} stock={stocks[0]} />
     //   );
     // }
-
     if (routeId === 'Register') {
       return (
         <Register
@@ -59,7 +58,7 @@ export default class ExchangerRanger extends Component {
           navigator={navigator} />
       );
     }
-    if (routeId === 'Index') {
+    if (routeId === 'StockIndex') {
       return (
         <StockIndex
           navigator={navigator} />

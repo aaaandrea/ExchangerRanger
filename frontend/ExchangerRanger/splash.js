@@ -16,7 +16,7 @@ import {
 
 const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
 {symbol: "AAPL", name: "Apple", share_price: 70},
-{symbol: "GOOG", name: "Google", share_price: 64}]
+{symbol: "GOOG", name: "Google", share_price: 64}];
 
 export default class Splash extends Component {
   componentWillMount() {
@@ -31,18 +31,19 @@ export default class Splash extends Component {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>
-          Welcome to React Native!
+          Welcome to ExchangerRanger!
         </Text>
-        <Button title="fart" onPress={() => this.props.navigator.push({id: 'Stock'})} >
-
+        <Text style={styles.instructions}>
+          Coffee is for Closers!
+        </Text>
+        <Button
+          title="Sign Up"
+          onPress={() => this.props.navigator.push({id: 'Register'})} >
         </Button>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+        <Button
+          title="Login"
+          onPress={() => this.props.navigator.push({id: 'Login'})} >
+        </Button>
       </View>
     );
   }

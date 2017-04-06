@@ -12,8 +12,8 @@ import {
 } from 'react-native';
 
 export default class Register extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       username: "",
@@ -26,6 +26,9 @@ export default class Register extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.registerContainer}>
+        <Text style={styles.instructions}>
+          Coffee is for Closers!
+        </Text>
         <View style={styles.inputOuter}>
           <TextInput
             style={styles.input}
@@ -51,11 +54,13 @@ export default class Register extends Component {
             placeholderTextColor="#115635"
           />
         </View>
-        <View>
-         <Button title="fart" onPress={() => this.props.navigator.push({id: 'Stock'})} />
-          <TouchableOpacity style={styles.buttonContainer}>
-            <Text style={styles.buttonText}>Signup</Text>
-          </TouchableOpacity>
+        <View
+          style={styles.buttonContainer}>
+           <Button
+              style={styles.button}
+              title="Sign Up!"
+              onPress={() => this.props.navigator.push({id: 'StockIndex'})} >
+          </Button>
         </View>
       </KeyboardAvoidingView>
     );
@@ -63,6 +68,10 @@ export default class Register extends Component {
 }
 
 const styles = StyleSheet.create({
+  instructions: {
+
+  },
+  
   registerContainer: {
     padding: 10,
     flex: 1,
@@ -73,7 +82,7 @@ const styles = StyleSheet.create({
 
   input: {
     height: 30,
-    width: 90,
+    width: 200,
     textAlign: 'center',
     marginBottom: 20,
     backgroundColor: '#BBD149',
@@ -86,14 +95,18 @@ const styles = StyleSheet.create({
 
   buttonContainer: {
     backgroundColor: '#74B530',
-    paddingVertical: 15,
-    width: 90,
+    width: 200,
   },
 
-  buttonText: {
+  button: {
     textAlign: 'center',
     color: '#115635',
     fontWeight: '700',
   }
 
 });
+
+
+// <TouchableOpacity style={styles.buttonContainer}>
+//   <Text style={styles.buttonText}>Signup</Text>
+// </TouchableOpacity>

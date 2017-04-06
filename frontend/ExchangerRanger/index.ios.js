@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 
 import Register from './components/register';
+import Login from './components/login';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
 

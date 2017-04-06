@@ -57,7 +57,7 @@ export default class Login extends Component {
           style={styles.buttonContainer}>
            <Button
               style={styles.button}
-              title="Sign Up!"
+              title="Login"
               onPress={() => this.props.navigator.push({id: 'StockIndex'})} >
           </Button>
         </View>

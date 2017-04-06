@@ -5,6 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-$symbols.each_with_index do |sym, i|
-  Company.create(symbol: sym, name: $names[i], share_price: 0)
+require_relative('names')
+require_relative('symbols')
+
+$names.each_with_index do |name, i|
+  Company.create(symbol: $symbols[i], name: name, share_price: 0)
 end

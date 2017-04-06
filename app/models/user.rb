@@ -11,7 +11,7 @@
 #  updated_at      :datetime         not null
 
 class User < ApplicationRecord
-  attr_reader :password
+  attr_accessor :remember_token, :password
 
   validates :username, :password_digest, :session_token, :cash_on_hand, presence: true
   validates :username, uniqueness: true

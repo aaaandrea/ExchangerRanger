@@ -51,9 +51,11 @@ export default class Register extends Component {
           />
         </View>
         <View>
-          <TouchableOpacity style={styles.buttonContainer}>
+          <Button>
+            <TouchableOpacity style={styles.buttonContainer}>
             <Text style={styles.buttonText}>Login</Text>
-          </TouchableOpacity>
+            </TouchableOpacity>
+          </Button>
         </View>
       </KeyboardAvoidingView>
     );

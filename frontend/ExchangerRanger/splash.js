@@ -33,20 +33,25 @@ export default class Splash extends Component {
         <Text style={styles.welcome}>
           Welcome to ExchangerRanger!
         </Text>
-        <Text style={styles.instructions}>
+        <Text style={styles.quote}>
           "Money won is twice as sweet as money earned"
         </Text>
-        <Text style={styles.instructions}>
+        <Text style={styles.quoted}>
           - Eddie Felson, The Color of Money
         </Text>
-        <Button
-          title="Sign Up"
-          onPress={() => this.props.navigator.push({id: 'Register'})} >
-        </Button>
-        <Button
-          title="Login"
-          onPress={() => this.props.navigator.push({id: 'Login'})} >
-        </Button>
+        <View style={styles.buttonContainer}>
+          <Button
+            style={styles.button}
+            title="Sign Up"
+            onPress={() => this.props.navigator.push({id: 'Register'})} >
+          </Button>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button
+            title="Login"
+            onPress={() => this.props.navigator.push({id: 'Login'})} >
+          </Button>
+        </View>
       </View>
     );
   }
@@ -57,16 +62,47 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#115635',
   },
   welcome: {
-    fontSize: 20,
+    color: '#BBD149',
+    fontSize: 36,
+    fontWeight: '700',
     textAlign: 'center',
     margin: 10,
   },
+  quote: {
+    textAlign: 'center',
+    color: '#BBD149',
+    fontSize: 16,
+    fontWeight: '700',
+  },
+
+  quoted: {
+    textAlign: 'center',
+    color: '#BBD149',
+    fontSize: 10,
+    fontStyle: 'italic',
+    fontWeight: '200',
+    paddingBottom: 10,
+  },
   instructions: {
     textAlign: 'center',
-    color: '#333333',
+    color: '#BBD149',
+    fontStyle: 'italic',
+    fontWeight: '200',
     marginBottom: 5,
   },
+
+  buttonContainer: {
+    backgroundColor: '#74B530',
+    width: 200,
+    margin: 5,
+  },
+
+  button: {
+    textAlign: 'center',
+    color: '#115635',
+    fontWeight: '700',
+  }
 });

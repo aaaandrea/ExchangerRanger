@@ -6,6 +6,8 @@ import {
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
+  KeyboardAvoidingView,
+  StatusBar,
 } from 'react-native';
 
 export default class Register extends Component {
@@ -22,23 +24,30 @@ export default class Register extends Component {
 
   render() {
     return (
-      <View style={styles.registerContainer}>
+      <KeyboardAvoidingView style={styles.registerContainer}>
         <View style={styles.inputOuter}>
           <TextInput
             style={styles.input}
             onChangeText={(username) => this.setState({username: username})}
+            returnKeyType="next"
             value={this.state.username}
             placeholder="Username"
-            placeholderTextColor="green"
+            placeholderTextColor="#115635"
           />
         </View>
-        <View>
+        <View style={styles.inputOuter}>
           <TextInput
-            onChangeText={(val) => this.setState({password: val})}
-            value={this.state.password}
             style={styles.input}
+            onChangeText={(val) => this.setState({password: val})}
+            returnKeyType="go"
+            secureTextEntry
+            onSubmitEditing={() => this.passwordInput.focus()}
+            keyboardType="email-address"
+            autocapitalize="none"
+            autoCorrect={false}
+            value={this.state.password}
             placeholder="Password"
-            placeholderTextColor="green"
+            placeholderTextColor="#115635"
           />
         </View>
         <View>
@@ -46,28 +55,42 @@ export default class Register extends Component {
             <Text style={styles.buttonText}>Login</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </KeyboardAvoidingView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   registerContainer: {
+    padding: 10,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
 
   input: {
-    textAlign: 'center',
-    color: 'red',
     height: 30,
     width: 90,
+    textAlign: 'center',
     marginBottom: 20,
+    backgroundColor: '#BBD149',
+    paddingVertical: 15,
   },
 
   inputOuter: {
     margin: 10,
+  },
+
+  buttonContainer: {
+    backgroundColor: '#74B530',
+    paddingVertical: 15,
+    width: 90,
+  },
+
+  buttonText: {
+    textAlign: 'center',
+    color: '#115635',
+    fontWeight: '700',
   }
 
 });

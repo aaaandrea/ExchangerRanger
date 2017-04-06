@@ -12,7 +12,7 @@ export const fetchStock = (id) => {
     url: `api/stocks/${id}`
   });
 };
-
+//make new holding
 export const createHolding = (data) => {
   return $.ajax({
     method: 'POST',
@@ -20,19 +20,19 @@ export const createHolding = (data) => {
     data
   });
 };
-
-export const createBooking = (data) => {
+//change holding amount
+export const updateHolding = (data) => {
   return $.ajax({
-    method: 'POST',
-    url: 'api/bookings',
+    method: 'PATCH',
+    url: `api/holdings/${data.id}`,
     data
   });
 };
-
-export const createSpot = (data) => {
+//update company price
+export const updatePrice = (data) => {
   return $.ajax({
-    method: 'POST',
-    url: 'api/spots',
+    method: 'PATCH',
+    url: `api/companies/${data.id}`,
     data
   });
 };

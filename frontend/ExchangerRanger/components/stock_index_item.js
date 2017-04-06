@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import TradeForm from './trade_form';
 import {
   AppRegistry,
   StyleSheet,
@@ -24,10 +25,7 @@ export default class StockIndexItem extends Component {
               {this.props.stock.name}
             </Text>
           </View>
-          <View style={styles.buySell}>
-            <Button title="Buy" color="green" onPress={()=>navigator.push(1)}></Button>
-            <Button title="Sell" color="red" ></Button>
-          </View>
+          <TradeForm stock={this.props.stock} />
           <View style={styles.price}>
             <Text style={styles.text}>
               ${this.props.stock.share_price}
@@ -59,9 +57,6 @@ const styles = StyleSheet.create({
 
   },
   info: {
-
-  },
-  buySell: {
 
   },
 

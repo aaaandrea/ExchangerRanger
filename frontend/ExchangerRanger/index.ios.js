@@ -9,6 +9,8 @@ import {
   Navigator
 } from 'react-native';
 
+
+import StockIndex from './components/stock_index';
 import Register from './components/register';
 import Login from './components/login';
 import StockIndexItem from './components/stock_index_item';

@@ -34,10 +34,10 @@ export default class Splash extends Component {
           Welcome to ExchangerRanger!
         </Text>
         <Text style={styles.instructions}>
-          Money won is twice as sweet as money earned
+          "Money won is twice as sweet as money earned"
         </Text>
         <Text style={styles.instructions}>
-          - The Color of Money
+          - Eddie Felson, The Color of Money
         </Text>
         <Button
           title="Sign Up"

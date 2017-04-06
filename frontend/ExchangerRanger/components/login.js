@@ -25,8 +25,11 @@ export default class Login extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.registerContainer}>
-        <Text style={styles.instructions}>
-          Coffee is for Closers!
+        <Text style={styles.quote}>
+          "No dough, no show!"
+        </Text>
+        <Text style={styles.quoted}>
+          - Lucky Day, The Three Amigos
         </Text>
         <View style={styles.inputOuter}>
           <TextInput
@@ -67,12 +70,15 @@ export default class Login extends Component {
 }
 
 const styles = StyleSheet.create({
-  instructions: {
+  quote: {
+
+  },
+
+  quoted: {
 
   },
 
   registerContainer: {
-    padding: 10,
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
@@ -83,13 +89,11 @@ const styles = StyleSheet.create({
     height: 30,
     width: 200,
     textAlign: 'center',
-    marginBottom: 20,
     backgroundColor: '#BBD149',
-    paddingVertical: 15,
   },
 
   inputOuter: {
-    margin: 10,
+    marginBottom: 5,
   },
 
   buttonContainer: {

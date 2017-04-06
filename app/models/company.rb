@@ -30,4 +30,8 @@ class Company < ApplicationRecord
     current_price
   end
 
+  def update_price
+    self.update_attribute(:share_price, Company.find_value(self.symbol))
+  end
+
 end

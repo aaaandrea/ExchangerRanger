@@ -12,19 +12,10 @@ Rails.application.routes.draw do
       :destroy
     ] #maybe index too for leaderboard
     #user update and destroy removed until utilized in controller
-    resource :session, only: [
-      :new,
-      :create,
-      :destroy
-    ]
-    resources :companies, only: [
-      :show,
-      :index
-    ]
-    resources :holdings, only: [
-      :create,
-      :update,
-      :show
-    ]
+
+    resource :session, only: [:create, :destroy]
+    resources :companies, only: [:show, :index, :update]
+    resources :holdings, only: [:create, :update, :show]
+
   end
 end

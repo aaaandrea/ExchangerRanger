@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 // import {persistStore, autoRehydrate} from 'redux-persist';
 // var {AsyncStorage} = require('react-native');
 
-import RootReducer from './reducers/root_reducer';
+import RootReducer from '../reducers/root_reducer';
 
 const configureStore = (preloadedState = {}) => (
   createStore(RootReducer,
@@ -15,4 +15,4 @@ const configureStore = (preloadedState = {}) => (
               applyMiddleware(thunk))
 );
 
-module.exports = configureStore;
+export default configureStore;

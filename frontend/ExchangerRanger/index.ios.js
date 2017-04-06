@@ -32,59 +32,60 @@ export default class ExchangerRanger extends Component {
               return route.sceneConfig;
             }
             return Navigator.SceneConfigs.FloatFromRight;
-          }} />
+          }}
+      />
     );
   }
-  renderScene(route, navigator) {
-    var routeId = route.id;
-    if (routeId === 'Splash') {
+    renderScene(route, navigator) {
+      var routeId = route.id;
+      if (routeId === 'Splash') {
+        return (
+          <Splash
+            navigator={navigator} />
+        );
+      }
+      // if (routeId === 'Stock') {
+      //   return (
+      //     <StockIndexItem
+      //       navigator={navigator} stock={stocks[0]} />
+      //   );
+      // }
+      if (routeId === 'Register') {
+        return (
+          <Register
+            navigator={navigator} />
+        );
+      }
+      if (routeId === 'Login') {
+        return (
+          <Login
+            navigator={navigator} />
+        );
+      }
+      if (routeId === 'StockIndex') {
+        return (
+          <StockIndex
+            navigator={navigator} />
+        );
+      }
+      if (routeId === 'Leaderboard') {
+        return (
+          <Leaderboard
+            navigator={navigator} />
+        );
+      }
+      return this.noRoute(navigator);
+    }
+    noRoute(navigator) {
       return (
-        <Splash
-          navigator={navigator} />
+        <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
+          <TouchableOpacity style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}
+              onPress={() => navigator.pop()}>
+            <Text style={{color: 'red', fontWeight: 'bold'}}>thing</Text>
+          </TouchableOpacity>
+        </View>
       );
     }
-    // if (routeId === 'Stock') {
-    //   return (
-    //     <StockIndexItem
-    //       navigator={navigator} stock={stocks[0]} />
-    //   );
-    // }
-    if (routeId === 'Register') {
-      return (
-        <Register
-          navigator={navigator} />
-      );
-    }
-    if (routeId === 'Login') {
-      return (
-        <Login
-          navigator={navigator} />
-      );
-    }
-    if (routeId === 'StockIndex') {
-      return (
-        <StockIndex
-          navigator={navigator} />
-      );
-    }
-    if (routeId === 'Leaderboard') {
-      return (
-        <Leaderboard
-          navigator={navigator} />
-      );
-    }
-    return this.noRoute(navigator);
-  }
-  noRoute(navigator) {
-    return (
-      <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
-        <TouchableOpacity style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}
-            onPress={() => navigator.pop()}>
-          <Text style={{color: 'red', fontWeight: 'bold'}}>请在 index.js 的 renderScene 中配置这个页面的路由</Text>
-        </TouchableOpacity>
-      </View>
-    );
-  }
 }
 
 const styles = StyleSheet.create({

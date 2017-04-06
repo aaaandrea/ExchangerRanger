@@ -9,13 +9,13 @@ import {
   Navigator
 } from 'react-native';
 
-import Register from './register';
+import Register from './components/register';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
 
 const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
 {symbol: "AAPL", name: "Apple", share_price: 70},
-{symbol: "GOOG", name: "Google", share_price: 64}]
+{symbol: "GOOG", name: "Google", share_price: 64}];
 
 
 export default class ExchangerRanger extends Component {
@@ -40,10 +40,35 @@ export default class ExchangerRanger extends Component {
           navigator={navigator} />
       );
     }
-    if (routeId === 'Stock') {
+    // if (routeId === 'Stock') {
+    //   return (
+    //     <StockIndexItem
+    //       navigator={navigator} stock={stocks[0]} />
+    //   );
+    // }
+
+    if (routeId === 'Register') {
       return (
-        <StockIndexItem
-          navigator={navigator} stock={stocks[0]} />
+        <Register
+          navigator={navigator} />
+      );
+    }
+    if (routeId === 'Login') {
+      return (
+        <Login
+          navigator={navigator} />
+      );
+    }
+    if (routeId === 'Index') {
+      return (
+        <StockIndex
+          navigator={navigator} />
+      );
+    }
+    if (routeId === 'Leaderboard') {
+      return (
+        <Leaderboard
+          navigator={navigator} />
       );
     }
     return this.noRoute(navigator);

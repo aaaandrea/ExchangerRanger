@@ -11,7 +11,7 @@
 #  updated_at      :datetime         not null
 
 class User < ApplicationRecord
-  attr_reader :password
+  attr_accessor :remember_token, :password
 
   validates :username, :password_digest, :session_token, :cash_on_hand, presence: true
   validates :username, uniqueness: true
@@ -55,6 +55,16 @@ class User < ApplicationRecord
     self.save
     self.session_token
   end
+
+  # def remember
+  #   self.remember_token = self.new_session_token
+  #   update_attribute(:remember_digest,
+  #                    self.digest(remember_token))
+  # end
+  #
+  # def forget
+  #   update_attribute(:remember_digest, nil)
+  # end
 
   private
 

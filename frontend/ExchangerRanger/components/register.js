@@ -23,51 +23,60 @@ export default class Register extends Component {
       errors: [],
     };
   }
-  //
-  // async onRegisterPressed() {
-  //   this.setState({showProgress: true})
-  //   try {
-  //     let response = await fetch('https://exchangerranger.com/api/users', {
-  //                             method: 'POST',
-  //                             headers: {
-  //                               'Accept': 'application/json',
-  //                               'Content-Type': 'application/json',
-  //                             },
-  //                             body: JSON.stringify({
-  //                               user:{
-  //                                 name: this.state.name,
-  //                                 password: this.state.password,
-  //                               }
-  //                             })
-  //                           });
-  //     let res = await response.text();
-  //     if (response.status >= 200 && response.status < 300) {
-  //         //Handle success
-  //         let accessToken = res;
-  //         console.log(accessToken);
-  //         //On success, store the access_token in the AsyncStorage
-  //         this.storeToken(accessToken);
-  //         this.redirect('home');
-  //     } else {
-  //         //Handle error
-  //         let error = res;
-  //         throw error;
-  //     }
-  //   } catch(errors) {
-  //     //errors are in JSON form
-  //     let formErrors = JSON.parse(errors);
-  //     let errorsArray = [];
-  //     for(var key in formErrors) {
-  //       if(formErrors[key].length > 1) {
-  //           formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
-  //       } else {
-  //           errorsArray.push(`${key} ${formErrors[key]}`);
-  //       }
-  //     }
-  //     this.setState({errors: errorsArray})
-  //     this.setState({showProgress: false});
-  //   }
-  // }
+//
+//   async onRegisterPressed() {
+//     this.setState({showProgress: true})
+//     try {
+//       let response = await fetch('https://exchangerranger.com/api/users', {
+//                               method: 'POST',
+//                               headers: {
+//                                 'Accept': 'application/json',
+//                                 'Content-Type': 'application/json',
+//                               },
+//                               body: JSON.stringify({
+//                                 user:{
+//                                   name: this.state.name,
+//                                   password: this.state.password,
+//                                 }
+//                               })
+//                             });
+//       let res = await response.text();
+//       if (response.status >= 200 && response.status < 300) {
+//           //Handle success
+//           let accessToken = res;
+//           console.log(accessToken);
+//           //On success, store the access_token in the AsyncStorage
+//           this.storeToken(accessToken);
+//           this.redirect('home');
+//       } else {
+//           //Handle error
+//           let error = res;
+//           throw error;
+//       }
+//     } catch(errors) {
+//       //errors are in JSON form
+//       let formErrors = JSON.parse(errors);
+//       let errorsArray = [];
+//       for(var key in formErrors) {
+//         if(formErrors[key].length > 1) {
+//             formErrors[key].map(error =>
+                  // errorsArray.push(`${key} ${error}`));
+//         } else {
+//             errorsArray.push(`${key} ${formErrors[key]}`);
+//         }
+//       }
+//       this.setState({errors: errorsArray})
+//       this.setState({showProgress: false});
+//     }
+//   }
+// //
+
+  onSubmission() {
+    console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
+    const { username, password } = this.props;
+    this.props.login({ username, password });
+    this.props.navigator.push({id: 'StockIndex'});
+  }
 
   render() {
     return (
@@ -110,8 +119,13 @@ export default class Register extends Component {
            <Button
               style={styles.button}
               title="Sign Up!"
-              onPress={() => this.props.navigator.push({id: 'StockIndex'})} >
+              onPress={this.onSubmission.bind(this)} >
           </Button>
+        </View>
+        <View>
+          <Text>
+            {this.state.errors}
+          </Text>
         </View>
       </KeyboardAvoidingView>
     );

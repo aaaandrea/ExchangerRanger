@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
   quote: {
 
   },
-  
+
   quoted: {
 
   },
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#E4D664',
+    backgroundColor: '#115635',
   },
 
   input: {

@@ -12,14 +12,6 @@
 
 ActiveRecord::Schema.define(version: 20170404160813) do
 
-  create_table "articles", force: :cascade do |t|
-    t.string   "title",      null: false
-    t.string   "url",        null: false
-    t.integer  "sector_id",  null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "companies", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "symbol",      null: false
@@ -37,13 +29,6 @@ ActiveRecord::Schema.define(version: 20170404160813) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.index ["user_id"], name: "index_holdings_on_user_id"
-  end
-
-  create_table "sectors", force: :cascade do |t|
-    t.string   "name",       null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_sectors_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import Register from './register';
-import StockIndexItem from './components/stock_index_item';
+import StockIndex from './components/stock_index';
 import Splash from './splash';
 
 const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
@@ -42,8 +42,8 @@ export default class ExchangerRanger extends Component {
     }
     if (routeId === 'Stock') {
       return (
-        <StockIndexItem
-          navigator={navigator} stock={stocks[0]} />
+        <StockIndex
+          navigator={navigator} stocks={stocks} />
       );
     }
     return this.noRoute(navigator);

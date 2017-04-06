@@ -11,13 +11,13 @@ import {
   Button,
 } from 'react-native';
 
-export default class Register extends Component {
-  constructor() {
-    super();
+export default class Login extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
-      username: "",
-      password: "",
+      username: this.props.username,
+      password: this.props.password,
       errors: [],
     };
   }

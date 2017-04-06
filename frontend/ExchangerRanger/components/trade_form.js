@@ -16,7 +16,7 @@ export default class TradeForm extends Component {
   constructor(){
     super();
     this.state ={
-      status:false
+      status:true
     }
   }
 
@@ -28,18 +28,31 @@ export default class TradeForm extends Component {
 
   render() {
     return (
-          <View style={styles.buySell}>
-            {renderIf(this.state.status)(
-              <Button title="Buy" color="green" onPress={()=>this.toggleStatus()}></Button>
-            )}
-            <Text style={styles.line}>|</Text>
-            <Button title="Sell" color="red" onPress={()=>this.toggleStatus()}></Button>
-          </View>
+      <View style={styles.form}>
+      {renderIf(this.state.status)(
+        <View style={styles.buySell}>
+          <Button title="Buy" color="green" onPress={()=>this.toggleStatus()}></Button>
+          <Text style={styles.line}>|</Text>
+          <Button title="Sell" color="red" onPress={()=>this.toggleStatus()}></Button>
+        </View>
+      )}
+      {renderIf(!this.state.status)(
+        <View style={styles.input}>
+          <Button title="Cancel" onPress={()=>this.toggleStatus()}></Button>
+        </View>
+      )}
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  form: {
+
+  },
+  input: {
+
+  },
   line: {
     color: 'grey'
   },

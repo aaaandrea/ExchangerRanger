@@ -7,16 +7,24 @@ import {
   View,
   Button,
   Navigator,
-  TouchableOpacity,
-  TouchableHighlight
+  TextInput
 } from 'react-native';
 const Platform = require('Platform');
+
+//x button is to cancel
+//v btn represents check mark to approve (functionality pending)
+
+//sell and buy buttons will change state.ordertype to sell or buy
+//confirm will do a post
+//cancel will set amount back to 0
+//or maybe onChanged won't set state
 
 export default class TradeForm extends Component {
   constructor(){
     super();
     this.state ={
-      status:true
+      status:true,
+      amount: 0
     }
   }
 
@@ -24,6 +32,10 @@ export default class TradeForm extends Component {
     this.setState({
       status:!this.state.status
     });
+  }
+
+  onChanged(text) {
+    this.setState({amount: text})
   }
 
   render() {
@@ -37,8 +49,17 @@ export default class TradeForm extends Component {
         </View>
       )}
       {renderIf(!this.state.status)(
-        <View style={styles.input}>
-          <Button title="Cancel" onPress={()=>this.toggleStatus()}></Button>
+        <View style={styles.order}>
+          <Button title="x" onPress={()=>this.toggleStatus()}></Button>
+          <View style={styles.textInputContainer}>
+            <TextInput
+            style={styles.textInput}
+            keyboardType = 'numeric'
+            onChangeText = {(text)=> this.onChanged(text)}
+            value = {this.state.myNumber}
+            />
+          </View>
+          <Button title="v" onPress={()=>this.toggleStatus()}></Button>
         </View>
       )}
       </View>
@@ -50,8 +71,11 @@ const styles = StyleSheet.create({
   form: {
 
   },
-  input: {
-
+  order: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'space-around',
+    flexDirection: 'row'
   },
   line: {
     color: 'grey'
@@ -63,5 +87,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row'
     // padding: 23
   },
+  textInput: {
+    height: 25,
+    backgroundColor: 'white'
+  },
+  textInputContainer: {
+    width: 35
+  }
 
 });

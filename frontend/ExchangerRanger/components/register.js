@@ -69,6 +69,13 @@ export default class Register extends Component {
 //     }
 //   }
 // //
+
+  onSubmission() {
+    console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
+    const { username, password } = this.props;
+    this.props.login({ username, password });
+  }
+
   render() {
     return (
       <KeyboardAvoidingView style={styles.allContainer}>

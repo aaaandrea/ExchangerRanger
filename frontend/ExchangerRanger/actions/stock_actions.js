@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/company_api_util'
+import * as APIUtil from '../util/stock_api_util'
 
 export const RECEIVE_COMPANIES = "RECEIVE_COMPANIES";
 export const RECEIVE_COMPANY = "RECEIVE_COMPANY";

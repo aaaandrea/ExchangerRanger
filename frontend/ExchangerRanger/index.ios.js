@@ -8,32 +8,38 @@ import {
   TouchableOpacity,
   Navigator
 } from 'react-native';
-
+import { Provider } from 'react-redux';
+import {login, signup} from './actions/session_actions';
 
 import StockIndex from './components/stock_index';
 import Register from './components/register';
 import Login from './components/login';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
+import configureStore from './store/store';
+import Home from './components/home';
 
-const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
-{symbol: "AAPL", name: "Apple", share_price: 70},
-{symbol: "GOOG", name: "Google", share_price: 64}];
+// const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
+// {symbol: "AAPL", name: "Apple", share_price: 70},
+// {symbol: "GOOG", name: "Google", share_price: 64}];
 
+const store = configureStore();
 
 export default class ExchangerRanger extends Component {
   render() {
     return (
-      <Navigator
-          initialRoute={{id: 'Splash', name: 'Index'}}
-          renderScene={this.renderScene.bind(this)}
-          configureScene={(route) => {
-            if (route.sceneConfig) {
-              return route.sceneConfig;
-            }
-            return Navigator.SceneConfigs.FloatFromRight;
-          }}
-      />
+      <Provider store={store}>
+        <Navigator
+            initialRoute={{id: 'Register', name: 'Index'}}
+            renderScene={this.renderScene.bind(this)}
+            configureScene={(route) => {
+              if (route.sceneConfig) {
+                return route.sceneConfig;
+              }
+              return Navigator.SceneConfigs.FloatFromRight;
+            }}
+        />
+      </Provider>
     );
   }
     renderScene(route, navigator) {
@@ -52,13 +58,19 @@ export default class ExchangerRanger extends Component {
       // }
       if (routeId === 'Register') {
         return (
-          <Register
+          <Register signup={signup}
             navigator={navigator} />
         );
       }
       if (routeId === 'Login') {
         return (
           <Login
+            navigator={navigator} />
+        );
+      }
+      if (routeId === 'Home') {
+        return (
+          <Home stocks={store.getState()}
             navigator={navigator} />
         );
       }

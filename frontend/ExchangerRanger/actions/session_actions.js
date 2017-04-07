@@ -5,7 +5,6 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 //clear errors
 
 export const signup = user => dispatch => {
-  debugger;
   return(
   APIUtil.signup(user)
     .then(newUser => dispatch(receiveCurrentUser(newUser)),

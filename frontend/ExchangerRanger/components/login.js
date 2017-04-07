@@ -14,6 +14,7 @@ import {
 export default class Login extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
 
     this.state = {
       username: this.props.username,
@@ -46,8 +47,6 @@ export default class Login extends Component {
             style={styles.input}
             onChangeText={(val) => this.setState({password: val})}
             returnKeyType="go"
-            secureTextEntry
-            onSubmitEditing={() => this.passwordInput.focus()}
             keyboardType="email-address"
             autocapitalize="none"
             autoCorrect={false}

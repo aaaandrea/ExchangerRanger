@@ -8,14 +8,17 @@ import {
   TouchableOpacity,
   Navigator
 } from 'react-native';
+
 import { Provider } from 'react-redux';
 import {login, signup} from './actions/session_actions';
 
 import StockIndex from './components/stock_index';
-import Register from './components/register';
+import RegisterContainer from './components/register_container';
 import Login from './components/login';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
+
+import LeaderboardIndex from './components/leaderboard/leaderboard_index';
 import configureStore from './store/store';
 import Home from './components/home';
 
@@ -65,7 +68,7 @@ export default class ExchangerRanger extends Component {
       if (routeId === 'Login') {
         return (
           <Login
-            navigator={navigator} />
+            navigator={navigator} login={login}/>
         );
       }
       if (routeId === 'Home') {
@@ -82,7 +85,7 @@ export default class ExchangerRanger extends Component {
       }
       if (routeId === 'Leaderboard') {
         return (
-          <Leaderboard
+          <LeaderboardIndex
             navigator={navigator} />
         );
       }

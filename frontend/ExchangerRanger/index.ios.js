@@ -97,7 +97,7 @@ export default class ExchangerRanger extends Component {
         <View style={{flex: 1, alignItems: 'stretch', justifyContent: 'center'}}>
           <TouchableOpacity style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}
               onPress={() => navigator.pop()}>
-            <Text style={{color: 'red', fontWeight: 'bold'}}>thing</Text>
+            <Text style={{color: 'red', fontWeight: 'bold'}}>oops! try again</Text>
           </TouchableOpacity>
         </View>
       );

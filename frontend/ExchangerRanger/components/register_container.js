@@ -1,11 +1,14 @@
 import { connect } from 'react-redux';
 import { login, signup, logout } from './../actions/session_actions';
 import Register from './register';
+import React, {Component} from 'react-native';
 
-const mapStateToProps = (state) => ({
-  loggedIn: Boolean(state.session.currentUser),
-  errors: state.session.errors
-});
+const mapStateToProps = (state) =>   {
+  console.log("registerContainer!");
+
+  return ({loggedIn: Boolean(state.session.currentUser),
+  errors: state.session.errors});
+};
 
 const mapDispatchToProps = (dispatch, {location}) => ({
 

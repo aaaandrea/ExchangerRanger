@@ -12,11 +12,11 @@ import {
   AsyncStorage,
   AcitivityIndicatorIOS,
 } from 'react-native';
-
+import { login, signup } from '../actions/session_actions';
 export default class Register extends Component {
   constructor() {
     super();
-
+    console.log("hello");
     this.state = {
       username: "",
       password: "",
@@ -72,9 +72,9 @@ export default class Register extends Component {
 
 
   onSubmission() {
-    console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
-    const { username, password } = this.props;
-    this.props.login({ username, password });
+    console.log('Submitted: ', `${this.state.username} ${this.state.password}`);
+    console.log(signup);
+    signup(this.state);
     this.props.navigator.push({id: 'StockIndex'});
   }
 
@@ -82,7 +82,7 @@ export default class Register extends Component {
     return (
       <KeyboardAvoidingView style={styles.allContainer}>
         <Text style={styles.quote}>
-          "No dough, no show!"
+          "No dough, no signup!"
         </Text>
         <Text style={styles.quoted}>
           - Lucky Day, The Three Amigos
@@ -103,8 +103,6 @@ export default class Register extends Component {
               style={styles.input}
               onChangeText={(val) => this.setState({password: val})}
               returnKeyType="go"
-              secureTextEntry
-              onSubmitEditing={() => this.passwordInput.focus()}
               keyboardType="email-address"
               autocapitalize="none"
               autoCorrect={false}

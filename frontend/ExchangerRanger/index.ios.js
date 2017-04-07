@@ -9,12 +9,13 @@ import {
   Navigator
 } from 'react-native';
 
-
+import { login, signup } from './actions/session_actions';
 import StockIndex from './components/stock_index';
-import Register from './components/register';
+import RegisterContainer from './components/register_container';
 import Login from './components/login';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
+import LeaderboardIndex from './components/leaderboard/leaderboard_index';
 
 const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
 {symbol: "AAPL", name: "Apple", share_price: 70},
@@ -52,14 +53,14 @@ export default class ExchangerRanger extends Component {
       // }
       if (routeId === 'Register') {
         return (
-          <Register
-            navigator={navigator} />
+          <RegisterContainer
+            navigator={navigator}/>
         );
       }
       if (routeId === 'Login') {
         return (
           <Login
-            navigator={navigator} />
+            navigator={navigator} login={login}/>
         );
       }
       if (routeId === 'StockIndex') {
@@ -70,7 +71,7 @@ export default class ExchangerRanger extends Component {
       }
       if (routeId === 'Leaderboard') {
         return (
-          <Leaderboard
+          <LeaderboardIndex
             navigator={navigator} />
         );
       }

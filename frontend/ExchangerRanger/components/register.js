@@ -23,7 +23,7 @@ export default class Register extends Component {
       errors: [],
     };
   }
-  //
+
   // async onRegisterPressed() {
   //   this.setState({showProgress: true})
   //   try {
@@ -59,7 +59,8 @@ export default class Register extends Component {
   //     let errorsArray = [];
   //     for(var key in formErrors) {
   //       if(formErrors[key].length > 1) {
-  //           formErrors[key].map(error => errorsArray.push(`${key} ${error}`));
+  //           formErrors[key].map(error =>
+  //                 errorsArray.push(`${key} ${error}`));
   //       } else {
   //           errorsArray.push(`${key} ${formErrors[key]}`);
   //       }
@@ -68,6 +69,14 @@ export default class Register extends Component {
   //     this.setState({showProgress: false});
   //   }
   // }
+
+
+  onSubmission() {
+    console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
+    const { username, password } = this.props;
+    this.props.login({ username, password });
+    this.props.navigator.push({id: 'StockIndex'});
+  }
 
   render() {
     return (
@@ -110,8 +119,13 @@ export default class Register extends Component {
            <Button
               style={styles.button}
               title="Sign Up!"
-              onPress={() => this.props.navigator.push({id: 'StockIndex'})} >
+              onPress={this.onSubmission.bind(this)} >
           </Button>
+        </View>
+        <View>
+          <Text>
+            {this.state.errors}
+          </Text>
         </View>
       </KeyboardAvoidingView>
     );

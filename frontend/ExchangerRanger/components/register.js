@@ -13,6 +13,7 @@ import {
   AcitivityIndicatorIOS,
 } from 'react-native';
 import { login, signup } from '../actions/session_actions';
+
 export default class Register extends Component {
   constructor() {
     super();

@@ -7,7 +7,7 @@ class Api::UsersController < ApplicationController
       # check routes
       render "api/users/show"
     else
-      # check reactnative errors messages
+      # check reac tnative errors messages
       render json: @user.errors.full_messages, status: 422
     end
   end

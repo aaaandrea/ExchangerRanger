@@ -15,7 +15,9 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StockIndex stocks={this.props.stocks} navigator={this.props.navigator} />
+        {console.log("HEYHEYHEYHEYHEYHEY")}
+        {console.log(this.props.stocks)}
+        {console.log("HEYHEYHEYHEYHEYHEY")}
       </View>
     );
   }
@@ -28,3 +30,5 @@ const styles = StyleSheet.create({
     alignItems: 'center'
   }
 });
+
+// <StockIndex stocks={this.props.stocks} navigator={this.props.navigator} />

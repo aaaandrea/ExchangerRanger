@@ -22,6 +22,8 @@ export default class Register extends Component {
       password: "",
       errors: [],
     };
+
+    this.onSubmission = this.onSubmission.bind(this);
   }
 
   // async onRegisterPressed() {
@@ -72,9 +74,11 @@ export default class Register extends Component {
 
 
   onSubmission() {
-    console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
-    const { username, password } = this.props;
-    this.props.login({ username, password });
+    // console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
+    const { username, password } = this.state;
+    console.log("signup");
+    console.log(this.props.signup);
+    this.props.signup({'user': this.state});
     this.props.navigator.push({id: 'Home'});
   }
 
@@ -119,7 +123,7 @@ export default class Register extends Component {
            <Button
               style={styles.button}
               title="Sign Up!"
-              onPress={this.onSubmission.bind(this)} >
+              onPress={this.onSubmission} >
           </Button>
         </View>
         <View>

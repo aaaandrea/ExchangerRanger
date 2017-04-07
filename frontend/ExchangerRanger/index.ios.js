@@ -14,6 +14,7 @@ import {login, signup} from './actions/session_actions';
 
 import StockIndex from './components/stock_index';
 import RegisterContainer from './components/register_container';
+import Register from './components/register.js';
 import Login from './components/login';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
@@ -33,7 +34,7 @@ export default class ExchangerRanger extends Component {
     return (
       <Provider store={store}>
         <Navigator
-            initialRoute={{id: 'Register', name: 'Index'}}
+            initialRoute={{id: 'Splash', name: 'Index'}}
             renderScene={this.renderScene.bind(this)}
             configureScene={(route) => {
               if (route.sceneConfig) {

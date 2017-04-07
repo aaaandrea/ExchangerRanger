@@ -85,7 +85,7 @@ export default class Login extends Component {
     return (
       <KeyboardAvoidingView style={styles.allContainer}>
         <Text style={styles.quote}>
-          "No dough, no signup!"
+          "No dough, no show!"
         </Text>
         <Text style={styles.quoted}>
           - Lucky Day, The Three Amigos

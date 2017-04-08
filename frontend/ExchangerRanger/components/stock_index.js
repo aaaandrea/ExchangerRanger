@@ -33,7 +33,8 @@ export default class StockIndex extends Component {
     this.props.stocks.forEach(company => companies.push(company));
     console.log(companies);
 
-    this.setState({stocks: companies.filter(stock => stock.name.includes(value)||stock.symbol.includes(value))});
+    this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
+      ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
   }
 
   render() {

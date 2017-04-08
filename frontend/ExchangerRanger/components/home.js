@@ -16,20 +16,29 @@ const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
 {symbol: "GOOG", name: "Google", share_price: 64}];
 
 export default class Home extends Component {
+  constructor(props) {
+    super(props);
+    console.log(props);
+    this.state = {
+      companies: this.props.state.companies
+    };
+  }
 
   componentDidMount() {
-    this.props.fetchCompanies().then( () => (
+    this.props.fetchCompanies().then( (stocks) => (
       this.setState({
-        companies: this.props.companies
+        companies: stocks
       })
-    ));
+    )).bind(this);
   }
 
   render() {
-    console.log(this.props.state);
+    console.log(this.state.companies);
     return (
       <View style={styles.container}>
-        <StockIndex stocks={stocks} />
+
+        <StockIndex stocks={this.state.companies}/>
+
       </View>
     );
   }

@@ -5,11 +5,12 @@ RECEIVE_HOLDING } from '../actions/stock_actions';
 import merge from 'lodash/merge';
 
 const CompaniesReducer = (state = {}, action) => {
-  Object.freeze(state)
+  Object.freeze(state);
   let newState = merge({}, state);
 
   switch(action.type) {
     case RECEIVE_COMPANIES:
+      console.log(action.companies);
       return action.companies;
     case RECEIVE_COMPANY:
       const newCompany = {[action.company.id]: action.company};

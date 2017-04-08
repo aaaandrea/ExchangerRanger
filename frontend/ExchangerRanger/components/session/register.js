@@ -13,9 +13,6 @@ import {
   AcitivityIndicatorIOS,
 } from 'react-native';
 
-
-import { login, signup } from '../actions/session_actions';
-
 export default class Register extends Component {
   constructor() {
     super();
@@ -76,8 +73,14 @@ export default class Register extends Component {
 
   onSubmission() {
     // console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
-    const { username, password } = this.state;
-    this.props.signup(this.state);
+    console.log(this.state);
+    this.props.signup({
+      user:
+      {
+        username: this.state.username,
+        password: this.state.password
+      }
+    });
     this.props.navigator.push({id: 'Home'});
   }
 

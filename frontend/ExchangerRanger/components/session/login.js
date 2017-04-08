@@ -13,10 +13,7 @@ import {
   AcitivityIndicatorIOS,
 } from 'react-native';
 
-
-import { login, signup } from '../actions/session_actions';
-
-export default class Register extends Component {
+export default class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -26,8 +23,8 @@ export default class Register extends Component {
     };
   }
 
-  //
   // async onRegisterPressed() {
+
   //   this.setState({showProgress: true})
   //   try {
   //     let response = await fetch('https://exchangerranger.com/api/users', {
@@ -38,7 +35,7 @@ export default class Register extends Component {
   //                             },
   //                             body: JSON.stringify({
   //                               user:{
-  //                                 username: this.state.username,
+  //                                 name: this.state.name,
   //                                 password: this.state.password,
   //                               }
   //                             })
@@ -77,9 +74,61 @@ export default class Register extends Component {
   onSubmission() {
     // console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
     const { username, password } = this.state;
-    this.props.signup(this.state);
+    this.props.login({
+      user:
+      {
+        username: this.state.username,
+        password: this.state.password
+      }
+    });
     this.props.navigator.push({id: 'Home'});
   }
+
+   //   this.setState({showProgress: true})
+   //   try {
+   //     let response = await fetch('https://exchangerranger.com/api/users', {
+   //                             method: 'POST',
+   //                             headers: {
+   //                               'Accept': 'application/json',
+   //                               'Content-Type': 'application/json',
+   //                             },
+   //                             body: JSON.stringify({
+   //                               user:{
+   //                                 name: this.state.name,
+   //                                 password: this.state.password,
+   //                               }
+   //                             })
+   //                           });
+   //     let res = await response.text();
+   //     if (response.status >= 200 && response.status < 300) {
+   //         //Handle success
+   //         let accessToken = res;
+   //         console.log(accessToken);
+   //         //On success, store the access_token in the AsyncStorage
+   //         this.storeToken(accessToken);
+   //         this.redirect('home');
+   //     } else {
+   //         //Handle error
+   //         let error = res;
+   //         throw error;
+   //     }
+   //   } catch(errors) {
+   //     //errors are in JSON form
+   //     let formErrors = JSON.parse(errors);
+   //     let errorsArray = [];
+   //     for(var key in formErrors) {
+   //       if(formErrors[key].length > 1) {
+   //           formErrors[key].map(error =>
+   //                 errorsArray.push(`${key} ${error}`));
+   //       } else {
+   //           errorsArray.push(`${key} ${formErrors[key]}`);
+   //       }
+   //     }
+   //     this.setState({errors: errorsArray})
+   //     this.setState({showProgress: false});
+   //   }
+   // }
+
 
   render() {
     return (
@@ -119,7 +168,7 @@ export default class Register extends Component {
           style={styles.buttonContainer}>
            <Button
               style={styles.button}
-              title="signup!"
+              title="Log In"
               onPress={this.onSubmission.bind(this)} >
           </Button>
         </View>
@@ -186,3 +235,8 @@ const styles = StyleSheet.create({
   }
 
 });
+
+
+// <TouchableOpacity style={styles.buttonContainer}>
+//   <Text style={styles.buttonText}>Signup</Text>
+// </TouchableOpacity>

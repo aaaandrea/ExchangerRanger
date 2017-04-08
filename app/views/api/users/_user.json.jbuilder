@@ -1,2 +1,1 @@
-json.extract! user, :id, :username
-json.net_worth user.net_worth
+json.extract! user, :id, :username, :net_worth

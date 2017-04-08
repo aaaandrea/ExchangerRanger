@@ -10,12 +10,9 @@ import {
 } from 'react-native';
 
 import { Provider } from 'react-redux';
-import {login, signup} from './actions/session_actions';
-
 import StockIndex from './components/stock_index';
-import RegisterContainer from './components/register_container';
-import Register from './components/register.js';
-import Login from './components/login';
+import RegisterContainer from './components/session/register_container';
+import LoginContainer from './components/session/login_container';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
 
@@ -70,8 +67,8 @@ export default class ExchangerRanger extends Component {
       }
       if (routeId === 'Login') {
         return (
-          <Login
-            navigator={navigator} login={login}/>
+          <LoginContainer
+            navigator={navigator}/>
         );
       }
       if (routeId === 'Home') {

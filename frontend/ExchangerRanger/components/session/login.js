@@ -12,12 +12,10 @@ import {
   AsyncStorage,
   AcitivityIndicatorIOS,
 } from 'react-native';
-import { login, signup } from '../actions/session_actions';
 
 export default class Login extends Component {
   constructor() {
     super();
-    console.log("hello");
     this.state = {
       username: "",
       password: "",
@@ -76,9 +74,13 @@ export default class Login extends Component {
   onSubmission() {
     // console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
     const { username, password } = this.state;
-    console.log("signup");
-    console.log(this.props.signup);
-    this.props.signup(this.state);
+    this.props.login({
+      user:
+      {
+        username: this.state.username,
+        password: this.state.password
+      }
+    });
     this.props.navigator.push({id: 'Home'});
   }
 
@@ -166,7 +168,7 @@ export default class Login extends Component {
           style={styles.buttonContainer}>
            <Button
               style={styles.button}
-              title="Sign Up!"
+              title="Log In"
               onPress={this.onSubmission.bind(this)} >
           </Button>
         </View>

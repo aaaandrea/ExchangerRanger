@@ -7,24 +7,20 @@ export const fetchCompanies = (data) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: 'data.name',
-      symbol: 'data.symbol',
-      sharePrice: 'data.share_price'
+      data
     })
   });
 };
 
-export const fetchCompany = (id) => {
-  return fetch(`http://localhost:3000/api/companies/${id}`, {
+export const fetchCompany = (company) => {
+  return fetch(`http://localhost:3000/api/companies/${company.id}`, {
     method: 'GET',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: 'data.name',
-      symbol: 'data.symbol',
-      sharePrice: 'data.share_price'
+      company
     })
   });
 
@@ -38,9 +34,7 @@ export const createHolding = (data) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      userId: 'data.user_id',
-      companyId: 'data.company_id',
-      amount: 'data.amount'
+      data
     })
   });
 };
@@ -54,9 +48,7 @@ export const receiveHolding = (data) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      userId: 'data.user_id',
-      companyId: 'data.company_id',
-      amount: 'data.amount'
+      data
     })
   });
 };
@@ -69,9 +61,7 @@ export const updateHolding = (data) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      userId: 'data.user_id',
-      companyId: 'data.company_id',
-      amount: 'data.amount'
+      data
     })
   });
 };
@@ -84,9 +74,7 @@ export const updatePrice = (company) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: 'data.name',
-      symbol: 'data.symbol',
-      sharePrice: 'data.share_price'
+      company
     })
   });
 };

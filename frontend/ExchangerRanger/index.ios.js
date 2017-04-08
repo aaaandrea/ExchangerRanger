@@ -15,8 +15,7 @@ import RegisterContainer from './components/session/register_container';
 import LoginContainer from './components/session/login_container';
 import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
-
-import LeaderboardIndex from './components/leaderboard/leaderboard_index';
+import LeaderboardIndexContainer from './components/leaderboard/leaderboard_index_container';
 import configureStore from './store/store';
 import Home from './components/home';
 
@@ -85,7 +84,7 @@ export default class ExchangerRanger extends Component {
       }
       if (routeId === 'Leaderboard') {
         return (
-          <LeaderboardIndex
+          <LeaderboardIndexContainer
             navigator={navigator} />
         );
       }

@@ -41,7 +41,12 @@ export default class LeaderboardIndex extends Component {
     return currentMonth;
   }
 
+  componentDidMount() {
+    this.props.fetchUsers();
+  }
+
   render() {
+    console.log(this.props);
     return (
       <View style={styles.container}>
         <View style={styles.userBanner}>

@@ -12,10 +12,19 @@ import {
 } from 'react-native';
 
 export default class Home extends Component {
+
+  componentDidMount() {
+    this.props.fetchCompanies().then( () => (
+      this.setState({
+        companies: this.props.companies
+      })
+    ));
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        {console.log(this.props.stocks)}
+        <StockIndex stocks={this.props.state.stocks}/>
       </View>
     );
   }
@@ -25,7 +34,8 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    backgroundColor: 'black',
   }
 });
 

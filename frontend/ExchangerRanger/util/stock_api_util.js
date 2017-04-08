@@ -7,9 +7,9 @@ export const fetchCompanies = (data) => {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify({
-      name: '',
-      symbol: '',
-      share_price: ''
+      name: 'data.name',
+      symbol: 'data.symbol',
+      share_price: 'data.share_price'
     })
   });
 };
@@ -19,6 +19,8 @@ export const fetchCompany = (id) => {
     method: 'GET',
     url: `api/companies/${id}`
   });
+
+  
 };
 //make new holding
 export const createHolding = (data) => {

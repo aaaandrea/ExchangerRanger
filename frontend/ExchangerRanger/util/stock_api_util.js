@@ -15,12 +15,19 @@ export const fetchCompanies = (data) => {
 };
 
 export const fetchCompany = (id) => {
-  return $.ajax({
+  return fetch(`http://localhost:3000/api/companies/${id}`, {
     method: 'GET',
-    url: `api/companies/${id}`
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: 'data.name',
+      symbol: 'data.symbol',
+      share_price: 'data.share_price'
+    })
   });
 
-  
 };
 //make new holding
 export const createHolding = (data) => {

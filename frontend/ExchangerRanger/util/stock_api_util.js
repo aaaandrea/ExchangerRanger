@@ -45,6 +45,7 @@ export const createHolding = (data) => {
   });
 };
 
+
 export const receiveHolding = (data) => {
   return fetch(`http://localhost:3000/api/holdings/${data.id}`, {
     method: 'GET',

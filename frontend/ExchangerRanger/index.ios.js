@@ -76,7 +76,7 @@ export default class ExchangerRanger extends Component {
       }
       if (routeId === 'Home') {
         return (
-          <Home stocks={store.getState()}
+          <Home store={store.getState()}
             navigator={navigator} />
         );
       }

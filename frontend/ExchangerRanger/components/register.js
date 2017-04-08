@@ -12,6 +12,7 @@ import {
   AsyncStorage,
   AcitivityIndicatorIOS,
 } from 'react-native';
+
 export default class Register extends Component {
   constructor() {
     super();

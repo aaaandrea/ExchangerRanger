@@ -2,30 +2,43 @@
 import { receiveCurrentUser, receiveErrors } from '../actions/session_actions';
 
 export const login = (user) => {
-  return $.ajax({
+  return fetch('http://localhost:3000/api/users/:id', {
     method: 'POST',
-    url: '/api/session',
-    data: user
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: 'user.username',
+      password: 'user.password',
+    })
   });
 };
 
 export const logout = () => {
-  return $.ajax({
+  return fetch('http://localhost:3000/api/users/:id', {
     method: 'DELETE',
-    url: '/api/session'
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: 'user.username',
+      password: 'user.password',
+    })
   });
 };
 
 export const signup = user => {
   return fetch('http://localhost:3000/api/users', {
-  method: 'post',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    username: 'aaron',
-    password: 'typicode',
-  })
-});
+    method: 'post',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: 'user.username',
+      password: 'user.password',
+    })
+  });
 };

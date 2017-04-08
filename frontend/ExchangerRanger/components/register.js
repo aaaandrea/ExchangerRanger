@@ -77,8 +77,6 @@ export default class Register extends Component {
   onSubmission() {
     // console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
     const { username, password } = this.state;
-    console.log("signup");
-    console.log(this.props.signup);
     this.props.signup(this.state);
     this.props.navigator.push({id: 'Home'});
   }

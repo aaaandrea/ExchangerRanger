@@ -36,9 +36,7 @@ export default class Home extends Component {
     console.log(this.state.companies);
     return (
       <View style={styles.container}>
-
         <StockIndex stocks={this.state.companies}/>
-
       </View>
     );
   }

@@ -6,7 +6,6 @@ import Splash from '../splash';
 import configureStore from '../store/store';
 
 const Root = ({ store }) => {
-  console.log("root");
   const _ensureLoggedIn = (nextState, replace) => {
     const currentUser = store.getState().session.currentUser;
     if (!currentUser) {

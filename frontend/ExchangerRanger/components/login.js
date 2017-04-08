@@ -14,7 +14,6 @@ import {
 export default class Login extends Component {
   constructor(props) {
     super(props);
-    console.log(props);
 
     this.state = {
       username: this.props.username,

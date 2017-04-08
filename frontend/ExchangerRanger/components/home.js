@@ -22,9 +22,10 @@ export default class Home extends Component {
   }
 
   render() {
+    console.log(this.props.state);
     return (
       <View style={styles.container}>
-        <StockIndex stocks={this.props.state.stocks}/>
+        // <StockIndex stocks={this.props.state.stocks}/>
       </View>
     );
   }

@@ -5,8 +5,6 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 //clear errors
 
 export const signup = user => dispatch => {
-  console.log("action creator");
-  console.log(dispatch);
   return(
   APIUtil.signup(user)
     .then(newUser => dispatch(receiveCurrentUser(newUser)),

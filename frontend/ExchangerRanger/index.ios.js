@@ -30,7 +30,9 @@ import Home from './components/home';
 const store = configureStore();
 
 export default class ExchangerRanger extends Component {
+
   render() {
+    console.log(store.getState());
     return (
       <Provider store={store}>
         <Navigator
@@ -62,7 +64,7 @@ export default class ExchangerRanger extends Component {
       // }
       if (routeId === 'Register') {
         return (
-          <Register signup={signup}
+          <RegisterContainer
             navigator={navigator} />
         );
       }

@@ -24,13 +24,13 @@ export default class Home extends Component {
     };
   }
 
-  componentDidMount() {
-    this.props.fetchCompanies().then( (stocks) => (
-      this.setState({
-        companies: stocks
-      })
-    )).bind(this);
-  }
+  // componentDidMount() {
+  //   this.props.fetchCompanies().then( (stocks) => (
+  //     this.setState({
+  //       companies: stocks
+  //     })
+  //   )).bind(this);
+  // }
 
   render() {
     console.log(this.state.companies);

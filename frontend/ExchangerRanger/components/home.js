@@ -11,6 +11,10 @@ import {
   TouchableHighlight
 } from 'react-native';
 
+const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
+{symbol: "AAPL", name: "Apple", share_price: 70},
+{symbol: "GOOG", name: "Google", share_price: 64}];
+
 export default class Home extends Component {
   constructor(props) {
     super(props);
@@ -32,7 +36,9 @@ export default class Home extends Component {
     console.log(this.state.companies);
     return (
       <View style={styles.container}>
+
         <StockIndex stocks={this.state.companies}/>
+
       </View>
     );
   }

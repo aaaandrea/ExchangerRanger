@@ -28,7 +28,6 @@ const store = configureStore();
 export default class ExchangerRanger extends Component {
 
   render() {
-    console.log(store.getState());
     return (
       <Provider store={store}>
         <Navigator

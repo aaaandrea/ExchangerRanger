@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { login, signup, logout } from './../actions/session_actions';
+import { login, signup, logout } from './../../actions/session_actions';
 import Register from './register';
 import React, {Component} from 'react-native';
 

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StockIndex from './stock_index'
+import StockIndex from './stock_index';
 import {
   AppRegistry,
   StyleSheet,
@@ -15,9 +15,7 @@ export default class Home extends Component {
   render() {
     return (
       <View style={styles.container}>
-        {console.log("HEYHEYHEYHEYHEYHEY")}
         {console.log(this.props.stocks)}
-        {console.log("HEYHEYHEYHEYHEYHEY")}
       </View>
     );
   }

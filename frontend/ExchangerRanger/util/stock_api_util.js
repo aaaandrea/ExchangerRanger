@@ -1,9 +1,16 @@
 
 export const fetchCompanies = (data) => {
-  return $.ajax({
+  return fetch('http://localhost:3000/api/companies', {
     method: 'GET',
-    url: 'api/companies',
-    data
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      name: '',
+      symbol: '',
+      share_price: ''
+    })
   });
 };
 

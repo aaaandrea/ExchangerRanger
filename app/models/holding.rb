@@ -12,7 +12,7 @@
 
 class Holding < ApplicationRecord
   validates :company_id, :user_id, :amount, presence: true
-  validates :amount, greater_than_or_equal_to: 0
+  validate :non_negative_amount
 
   belongs_to :user
   belongs_to :company
@@ -26,12 +26,6 @@ class Holding < ApplicationRecord
     #here could be some return value
   end
 
-  #could be renamed to owner; in that case other instances of user...
-  #... should prob be changed to owner as well
-  # def user
-  #   User.find(self.user_id)
-  # end
-
   def sell(amount)
     if amount > self.amount
       throw "Can't sell more than you own!"
@@ -44,6 +38,10 @@ class Holding < ApplicationRecord
     end
     #code for updating user can be cleaned up and/or abstracted
     #some return value
+  end
+
+  def non_negative_amount
+    errors[:amount] << "cannot be negative" unless amount >= 0
   end
 
 end

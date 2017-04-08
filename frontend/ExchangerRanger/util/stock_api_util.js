@@ -46,11 +46,19 @@ export const createHolding = (data) => {
 };
 
 export const receiveHolding = (data) => {
-  return $.ajax({
+  return fetch(`http://localhost:3000/api/holdings/${data.id}`, {
     method: 'GET',
-    url: `api/holdings/${data.id}`,
-    data
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      userId: 'data.user_id',
+      companyId: 'data.company_id',
+      amount: 'data.amount'
+    })
   });
+
 };
 //change holding amount
 export const updateHolding = (data) => {

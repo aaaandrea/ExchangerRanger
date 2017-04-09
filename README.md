@@ -60,15 +60,19 @@ The app was built using Ruby on Rails on the back end with a postgreSQL database
 
 ## Primary Components
 ### User Auth
+User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials.
 
 ### Companies
+Company shares are the heart of ExchangerRanger, and are designed to be up to date. Users can buy, sell, sort, and filter companies on the fly. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
+
+### Search
+ExchangerRanger utilizes react-native-searchbar multisearch to search for companies utilizing fetch and http requests to ensure the most up to date information is retrieved..
 
 ### Holdings
 
 ### Leaderboard
 
-
-### TBD Features
+### Future Features
   - Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.
   - Visualizations for stock activity and user investments
   - Provide an RSS feed for each stock symbol and/or market sector.

@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { Component } from 'react';
 import StockIndexItem from './stock_index_item';
 import SearchBar from 'react-native-search-bar';
@@ -26,21 +27,25 @@ export default class StockIndex extends Component {
   componentDidMount(){
     //updatePrices
     this.props.fetchCompanies();
+    this.setState({stocks: this.props.stocks.slice(0,6)});
+  }
+
+  updateStocks(){
+    this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`))
   }
 
   filterResults(value){
-    console.log(value);
-    console.log(this.state);
+    // console.log(value);
+    // console.log(this.state);
     let companies = [];
     this.props.stocks.forEach(company => companies.push(company));
-    console.log(companies);
+    // console.log(companies);
 
     this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
       ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
   }
 
   render() {
-    console.log(this.props);
     const {stocks} = this.props;
     return (
       <View style={styles.container}>

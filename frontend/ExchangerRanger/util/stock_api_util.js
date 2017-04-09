@@ -15,11 +15,8 @@ export const fetchCompany = (company) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      company
-    })
-  });
+    }
+  }).then((response) => response.json());
 
 };
 //make new holding
@@ -35,7 +32,6 @@ export const createHolding = (data) => {
     })
   });
 };
-
 
 export const receiveHolding = (data) => {
   return fetch(`http://localhost:3000/api/holdings/${data.id}`, {

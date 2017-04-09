@@ -18,11 +18,11 @@ class Api::CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @company.update_price
     #below lines may be unnecessary
-    if @company.update(params[:share_price])
-      #do something maybe
-    else
-      render json: @company.errors.full_messages, status: 422
-    end
+    # if @company.update(params[:share_price])
+    #   #do something maybe
+    # else
+    #   render json: @company.errors.full_messages, status: 422
+    # end
   end
 
   #private

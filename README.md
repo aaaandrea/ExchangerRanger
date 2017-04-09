@@ -61,7 +61,7 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
 
 ## Primary Components
 ### User Auth
-User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials.
+User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset a login to ensure the user is the same as the user logged in the database.
 
 [need image or code]
 

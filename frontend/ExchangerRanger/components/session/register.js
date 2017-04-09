@@ -149,7 +149,8 @@ const styles = StyleSheet.create({
   quoteContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
+    margin: 8,
+    width: 200,
     height: 75,
     backgroundColor: '#74B530',
     borderRadius: 2,
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: '#F5FCFF',
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
     fontFamily: 'GillSans-Light',
     letterSpacing: 1,
   },

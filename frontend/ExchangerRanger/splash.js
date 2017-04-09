@@ -30,15 +30,17 @@ export default class Splash extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to ExchangerRanger!
-        </Text>
-        <Text style={styles.quote}>
-          "Money won is twice as sweet as money earned"
-        </Text>
-        <Text style={styles.quoted}>
-          - Eddie Felson, The Color of Money
-        </Text>
+        <View style={styles.welcomeContainer}>
+          <Text style={styles.welcome}>
+            Welcome to ExchangerRanger!
+          </Text>
+          <Text style={styles.quote}>
+            "Money won is twice as sweet as money earned"
+          </Text>
+          <Text style={styles.quoted}>
+            - Eddie Felson, The Color of Money
+          </Text>
+        </View>
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}
@@ -76,6 +78,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#115635',
   },
+  welcomeContainer: {
+
+  },
+  
   welcome: {
     color: '#BBD149',
     fontSize: 36,

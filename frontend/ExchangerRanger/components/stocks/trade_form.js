@@ -39,6 +39,7 @@ export default class TradeForm extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <View style={styles.form}>
       {renderIf(this.state.status)(

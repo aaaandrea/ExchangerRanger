@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import TradeForm from './trade_form';
+import TradeFormContainer from './trade_form_container';
 import {
   AppRegistry,
   StyleSheet,
@@ -28,7 +28,7 @@ export default class StockIndexItem extends Component {
             <Text style={styles.text}>
               {this.props.stock.symbol}
             </Text>
-            <TradeForm stock={this.props.stock} />
+            <TradeFormContainer stock={this.props.stock} />
             <Text style={styles.text}>
               ${this.dollarPrice(this.props.stock.share_price.toString())}
             </Text>

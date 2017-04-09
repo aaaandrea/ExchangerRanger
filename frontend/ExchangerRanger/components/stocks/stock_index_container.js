@@ -5,7 +5,7 @@ import React, {Component} from 'react-native';
 
 const mapStateToProps = (state) =>   {
   return ({
-    currentUser: state.currentUser,
+    currentUser: state.session.currentUser,
     stocks:
     Object.keys(state.stocks).slice(0,6).map(id => state.stocks[id])
   });

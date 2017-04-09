@@ -41,8 +41,6 @@ export default class StockIndex extends Component {
 
   render() {
     console.log(this.props);
-    console.log('STATE');
-    console.log(this.state);
     const {stocks} = this.props;
     return (
       <View style={styles.container}>

@@ -63,14 +63,22 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
 ### User Auth
 User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials.
 
+[need image or code]
+
 ### Holdings
 Holdings are the heart of ExchangerRanger, and are designed to be up to date. Users can buy, sell, sort, and filter companies on the fly to increase their holdings and net-worth. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
+
+[need image or code]
 
 ### Search
 ExchangerRanger utilizes react-native-searchbar multisearch to search for companies utilizing fetch and http requests to ensure the most up to date information is retrieved..
 
+[need image or code]
+
 ### Leaderboard
 A global leaderboard tracks all player's net-worth in order to have a winner at the end of each month.
+
+[need image or code]
 
 ### Future Features
   - Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.

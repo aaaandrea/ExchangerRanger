@@ -1,0 +1,22 @@
+$users = "
+Andrea
+Ryan
+Aaron
+TopDawg
+NextTimeWillBeBetter
+$$$$
+HiMom
+BenFrank
+TwoSense
+IAmTheWalrus
+IAmTheEggMan
+TheDoughBoy
+WageRider
+RevenueAvenue
+NoMoneyBack
+RideTheBull
+UncleScrooge
+PennyPincher
+WarrenBuffet
+RichardBranson
+".split("\n")

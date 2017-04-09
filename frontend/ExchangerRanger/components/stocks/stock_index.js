@@ -31,7 +31,7 @@ export default class StockIndex extends Component {
   }
 
   updateStocks(){
-    this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`))
+    this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`));
   }
 
   filterResults(value){

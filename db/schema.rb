@@ -32,12 +32,12 @@ ActiveRecord::Schema.define(version: 20170404160813) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",                         null: false
-    t.string   "password_digest",                  null: false
-    t.string   "session_token",                    null: false
-    t.integer  "cash_on_hand",    default: 100000, null: false
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
+    t.string   "username",                          null: false
+    t.string   "password_digest",                   null: false
+    t.string   "session_token",                     null: false
+    t.float    "cash_on_hand",    default: 20000.0, null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
     t.index ["session_token"], name: "index_users_on_session_token"
     t.index ["username"], name: "index_users_on_username"
   end

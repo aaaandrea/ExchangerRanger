@@ -34,12 +34,14 @@ export default class Splash extends Component {
           <Text style={styles.welcome}>
             Welcome to ExchangerRanger!
           </Text>
-          <Text style={styles.quote}>
-            "Money won is twice as sweet as money earned"
-          </Text>
-          <Text style={styles.quoted}>
-            - Eddie Felson, The Color of Money
-          </Text>
+          <View style={styles.quoteContainer}>
+            <Text style={styles.quote}>
+              "Money won is twice as sweet as money earned"
+            </Text>
+            <Text style={styles.quoted}>
+              - Eddie Felson, The Color of Money
+            </Text>
+          </View>
         </View>
         <View style={styles.buttonContainer}>
           <Button
@@ -76,12 +78,23 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#115635',
+    backgroundColor: '#F5FCFF',
   },
-  welcomeContainer: {
 
+  welcomeContainer: {
+    margin: 8,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -2
+    },
   },
-  
+
   welcome: {
     color: '#BBD149',
     fontSize: 36,
@@ -89,21 +102,46 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     margin: 10,
   },
+
+  quoteContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'column',
+    margin: 8,
+    width: 300,
+    height: 100,
+    backgroundColor: '#74B530',
+    borderRadius: 2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -2
+    },
+  },
+
   quote: {
+    margin: 6,
     textAlign: 'center',
-    color: '#BBD149',
+    color: '#F5FCFF',
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
+    fontFamily: 'GillSans-Light',
+    letterSpacing: 1,
   },
 
   quoted: {
     textAlign: 'center',
-    color: '#BBD149',
+    fontFamily: 'GillSans-Light',
     fontSize: 10,
     fontStyle: 'italic',
     fontWeight: '200',
+    letterSpacing: 1,
+    color: '#F5FCFF',
     paddingBottom: 10,
   },
+
   instructions: {
     textAlign: 'center',
     color: '#BBD149',
@@ -115,12 +153,21 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: '#74B530',
     width: 200,
-    margin: 5,
+    margin: 10,
+    borderRadius: 2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -2
+    },
   },
 
   button: {
     textAlign: 'center',
     color: '#115635',
     fontWeight: '700',
+    fontFamily: 'GillSans-Light',
   }
 });

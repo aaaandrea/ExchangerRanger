@@ -25,7 +25,7 @@ export default class TradeForm extends Component {
     this.state ={
       status:true,
       amount: 0
-    }
+    };
   }
 
   toggleStatus(){
@@ -39,8 +39,6 @@ export default class TradeForm extends Component {
   }
 
   render() {
-    console.log('SPAGET');
-    console.log(this.props);
     // window.props=this.props;
     return (
       <View style={styles.form}>

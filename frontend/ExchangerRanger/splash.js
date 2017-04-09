@@ -54,8 +54,8 @@ export default class Splash extends Component {
         </View>
         <View style={styles.buttonContainer}>
           <Button
-            title="Leaderboard"
-            onPress={() => this.props.navigator.push({id: 'Leaderboard'})} >
+            title="StockIndex"
+            onPress={() => this.props.navigator.push({id: 'StockIndex'})} >
           </Button>
         </View>
       </View>

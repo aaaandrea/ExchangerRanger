@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StockIndex from './stock_index';
+import StockIndex from './stocks/stock_index';
 import {
   AppRegistry,
   StyleSheet,

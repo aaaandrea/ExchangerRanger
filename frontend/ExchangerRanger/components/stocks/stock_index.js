@@ -30,7 +30,7 @@ export default class StockIndex extends Component {
     this.setState({stocks: this.props.stocks.slice(0,6)});
   }
 
-  initStocks(){
+  updateStocks(){
     this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`))
   }
 
@@ -50,7 +50,7 @@ export default class StockIndex extends Component {
     console.log('STATE');
     console.log(this.state);
     const stocks = this.state.stocks;
-    this.initStocks();
+    this.updateStocks();
     return (
       <View style={styles.container}>
         <SearchBar style={styles.search}

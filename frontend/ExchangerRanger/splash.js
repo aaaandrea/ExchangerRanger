@@ -45,38 +45,43 @@ export default class Splash extends Component {
             </Text>
           </View>
         </View>
-        <TouchableHighlight>
+        <TouchableHighlight
+          onPress={() => this.props.navigator.push({id: 'Register'})}
+          underlayColor='#FFFFFE'
+          activeOpacity={0.7}>
           <View style={styles.buttonContainer}>
             <Text style={styles.button}>
-              SIGN UP!
+              Sign Up
             </Text>
           </View>
         </TouchableHighlight>
-        <View style={styles.buttonContainer}>
-          <Button
-            style={styles.button}
-            title="Sign Up"
-            onPress={() => this.props.navigator.push({id: 'Register'})} >
-          </Button>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Login"
-            onPress={() => this.props.navigator.push({id: 'Login'})} >
-          </Button>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="StockIndex"
-            onPress={() => this.props.navigator.push({id: 'StockIndex'})} >
-          </Button>
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            title="Leaderboard"
-            onPress={() => this.props.navigator.push({id: 'Leaderboard'})} >
-          </Button>
-        </View>
+
+        <TouchableHighlight
+          onPress={() => this.props.navigator.push({id: 'Login'})} >
+          <View style={styles.buttonContainer}>
+            <Text style={styles.button}>
+              Login
+            </Text>
+          </View>
+        </TouchableHighlight>
+
+        <TouchableHighlight
+          onPress={() => this.props.navigator.push({id: 'StockIndex'})} >
+          <View style={styles.buttonContainer}>
+            <Text style={styles.button}>
+              StockIndex
+            </Text>
+          </View>
+        </TouchableHighlight>
+
+        <TouchableHighlight
+          onPress={() => this.props.navigator.push({id: 'Leaderboard'})} >
+          <View style={styles.buttonContainer}>
+            <Text style={styles.button}>
+              Leaderboard
+            </Text>
+          </View>
+        </TouchableHighlight>
       </View>
     );
   }
@@ -162,8 +167,11 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#74B530',
-    width: 200,
+    height: 40,
+    width: 300,
     margin: 10,
     borderRadius: 2,
     shadowColor: '#000000',

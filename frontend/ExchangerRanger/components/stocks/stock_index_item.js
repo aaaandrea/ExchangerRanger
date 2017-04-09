@@ -13,6 +13,13 @@ import {
 const Platform = require('Platform');
 
 export default class StockIndexItem extends Component {
+  dollarPrice(price_str){
+    if (price_str[price_str.length-2]==='.'){
+      return price_str+0;
+    }
+    return price_str;
+  }
+
   render() {
     return (
       <View style={styles.canvas}>
@@ -23,7 +30,7 @@ export default class StockIndexItem extends Component {
             </Text>
             <TradeForm stock={this.props.stock} />
             <Text style={styles.text}>
-              ${this.props.stock.share_price}
+              ${this.dollarPrice(this.props.stock.share_price.toString())}
             </Text>
           </View>
           <View style={styles.name}>

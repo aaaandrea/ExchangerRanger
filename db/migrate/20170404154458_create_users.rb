@@ -4,7 +4,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :username, presence: true, null: false
       t.string :password_digest, null: false
       t.string :session_token, null: false
-      t.integer :cash_on_hand, default: 100_000, null: false
+      t.float :cash_on_hand, default: 20_000, null: false
       t.timestamps
     end
 

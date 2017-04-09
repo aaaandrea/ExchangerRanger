@@ -14,6 +14,6 @@ $names.each_with_index do |name, i|
 end
 
 $users.each_with_index do |username, i|
-  cash = rand(10.01...100_000.00)
+  cash = rand(10.01...100_000.00).round(2)
   User.create(username: username, password: 'password', cash_on_hand: cash)
 end

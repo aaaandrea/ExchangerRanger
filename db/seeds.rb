@@ -8,13 +8,12 @@
 require_relative('names')
 require_relative('symbols')
 require_relative('users')
-require_relative('cash_on_hand')
 
 $names.each_with_index do |name, i|
   Company.create(symbol: $symbols[i], name: name, share_price: 0)
 end
 
 $users.each_with_index do |username, i|
-  cash = rand(10.00..100_000.00)
+  cash = rand(10.01...100_000.00)
   User.create(username: username, password: 'password', cash_on_hand: cash)
 end

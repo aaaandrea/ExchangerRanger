@@ -70,7 +70,6 @@ export default class Register extends Component {
   //   }
   // }
 
-
   onSubmission() {
     // console.log('Submitted: ', `${this.props.username} ${this.props.password}`);
     console.log(this.state);
@@ -87,12 +86,14 @@ export default class Register extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.allContainer}>
-        <Text style={styles.quote}>
-          "No dough, no show!"
-        </Text>
-        <Text style={styles.quoted}>
-          - Lucky Day, The Three Amigos
-        </Text>
+        <View style={styles.quoteContainer}>
+          <Text style={styles.quote}>
+            "No dough, no show!"
+          </Text>
+          <Text style={styles.quoted}>
+            - Lucky Day, The Three Amigos
+          </Text>
+        </View>
         <View style={styles.formContainer}>
           <View style={styles.inputOuter}>
             <TextInput
@@ -122,7 +123,7 @@ export default class Register extends Component {
           style={styles.buttonContainer}>
            <Button
               style={styles.button}
-              title="signup!"
+              title="Sign up!"
               onPress={this.onSubmission.bind(this)} >
           </Button>
         </View>
@@ -139,31 +140,53 @@ export default class Register extends Component {
 const styles = StyleSheet.create({
   allContainer: {
     flex: 1,
+    paddingTop: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#115635',
+    backgroundColor: '#F5FCFF',
+  },
+
+  quoteContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 15,
+    height: 75,
+    backgroundColor: '#74B530',
+    borderRadius: 2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -2
+    },
   },
 
   quote: {
+    margin: 6,
     textAlign: 'center',
-    color: '#BBD149',
+    color: '#F5FCFF',
     fontSize: 16,
     fontWeight: '700',
+    fontFamily: 'GillSans-Light',
+    letterSpacing: 1,
   },
 
   quoted: {
     textAlign: 'center',
-    color: '#BBD149',
+    fontFamily: 'GillSans-Light',
     fontSize: 10,
     fontStyle: 'italic',
     fontWeight: '200',
+    letterSpacing: 1,
+    color: '#F5FCFF',
     paddingBottom: 10,
   },
 
   formContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#115635',
+    backgroundColor: '#F5FCFF',
   },
 
   input: {

@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
   quoteContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    margin: 15,
+    margin: 10,
     height: 75,
     backgroundColor: '#74B530',
     borderRadius: 2,
@@ -187,13 +187,24 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#F5FCFF',
+    margin: 5,
   },
 
   input: {
     height: 30,
     width: 200,
     textAlign: 'center',
+    fontFamily: 'GillSans-Light',
     backgroundColor: '#BBD149',
+    marginTop: 8,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -1
+    },
+    borderRadius: 2,
   },
 
   inputOuter: {
@@ -203,12 +214,22 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: '#74B530',
     width: 200,
+    margin: 10,
+    borderRadius: 2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -2
+    },
   },
 
   button: {
     textAlign: 'center',
     color: '#115635',
     fontWeight: '700',
+    fontFamily: 'GillSans-Light',
   }
 
 });

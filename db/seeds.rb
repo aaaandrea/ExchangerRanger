@@ -15,5 +15,6 @@ $names.each_with_index do |name, i|
 end
 
 $users.each_with_index do |username, i|
-  User.create(username: username, password: 'password')
+  cash = Math.floor(Math.random() * (1_000_000 - 10)) + 10
+  User.create(username: username, password: 'password', cash_on_hand: cash)
 end

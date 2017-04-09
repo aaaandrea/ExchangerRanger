@@ -1,6 +1,6 @@
 $cash_on_hand = "
-Andrea
-Ryan
+24,097.23
+18,768.07
 Aaron
 TopDawg
 NextTimeWillBeBetter

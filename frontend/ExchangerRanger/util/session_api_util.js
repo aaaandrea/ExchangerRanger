@@ -12,7 +12,7 @@ export const login = user => {
     body: JSON.stringify(
       user
     )
-  });
+  }).then((response) => response.json());
 };
 
 export const logout = user => {
@@ -38,5 +38,5 @@ export const signup = user => {
     body: JSON.stringify(
       user
     )
-  });
+  }).then((response) => response.json());
 };

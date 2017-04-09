@@ -1,7 +1,7 @@
 # ExchangerRanger
 
 ## Background
-Stock market simulations can be fun competitions and a stepping stone to the real stock market.
+Users buy and sell stocks in order to improve their net-worth. Stock market simulations can be fun competitions and a stepping stone to the real stock market.
 
 This mobile application runs month-long competitions using actual stock market quotes, determining players’ net worth. Net worth is based on a player's cash on hand + total stock value. The winning user has highest net worth at end of simulation cycle.
 
@@ -62,14 +62,14 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
 User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset a login to ensure the user is the same as the user logged in the database.
 
 ##### Ensure user password matches password input
-  ```
+  ```ruby
   def password_is?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
   ```
 
 ##### Encrypting a user password
-  ```
+  ```ruby
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
     @password = password
@@ -77,7 +77,7 @@ User authentication is handled in Rails using BCrypt for password hashing. Passw
   ```
 
 ##### Ensure unique session token
-  ```
+  ```ruby
   def reset_session_token!
     self.session_token = new_session_token
     ensure_session_token_uniqueness
@@ -89,7 +89,7 @@ User authentication is handled in Rails using BCrypt for password hashing. Passw
 ### Ensuring reliable and up to date stock data
 Retrieving publicly available and reliable finance data was among the initial challenges of ExchangerRanger. After heavily researching a variety of APIs, most of which were out of date and no longer used, we discovered we could user the nokogiri gem which parses HTML via CSS3 selectors. Using Google Finance we parsed known company symbols seeded to our database in order to retrieve the current stock price.
 
-  ```
+  ```ruby
   def self.find_value(symbol)
     symbol = symbol.upcase
     url = "https://www.google.com/finance/getprices?i=60&p=1d&f=c&q=#{symbol}"
@@ -104,7 +104,7 @@ Retrieving publicly available and reliable finance data was among the initial ch
 Holdings are the heart of ExchangerRanger, and are designed to be up to date. Holdings are demonstrated as a simple join table which includes associations between companies and users, along with the quantity of stock a user currently owns. Users can buy, sell, sort, and filter companies on the fly to increase their holdings and net-worth. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
 
 ##### Holding database schema
-  ```
+  ```ruby
   create_table "holdings", force: :cascade do |t|
     t.integer  "company_id",             null: false
     t.integer  "user_id",                null: false
@@ -116,7 +116,7 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
   ```
 
 ##### When a user purchases stock they create a new holding with the quantity of stock they would like to own
-  ```
+  ```javascript
   export const createHolding = (data) => {
     return fetch(`http://localhost:3000/api/holdings`, {
       method: 'POST',
@@ -132,7 +132,7 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
   ```
 
 ##### The Rails user model calculates an individual player's net worth
-  ```
+  ```ruby
   def net_worth
     result = self.cash_on_hand
     self.holdings.each do |holding|

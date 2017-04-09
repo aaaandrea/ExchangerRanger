@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import StockIndexItem from './stock_index_item';
 import SearchBar from 'react-native-search-bar';
-import {fetchCompanies} from './../actions/stock_actions.js';
+import {fetchCompanies} from '../../actions/stock_actions.js';
 import {
   AppRegistry,
   StyleSheet,
@@ -41,6 +41,8 @@ export default class StockIndex extends Component {
 
   render() {
     console.log(this.props);
+    console.log('STATE');
+    console.log(this.state);
     const {stocks} = this.props;
     return (
       <View style={styles.container}>

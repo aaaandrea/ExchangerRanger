@@ -15,10 +15,10 @@ This mobile application runs month-long competitions using actual stock market q
 
 ## Structure
 ### Backend
-The app was built using Ruby on Rails on the back end with a postgreSQL database. Back end structure is RESTful and all the data requests use Fetch and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
+The app was built using Ruby on Rails on the back end with a postgreSQL database. Backend structure is RESTful and all the data requests use Fetch and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
 
 ### Frontend
-The React Native overall using the Redux cycle enabled us to have smooth transitioning between the necessary components. The React store allowed reliable state transfers between component changes, and communicating with the backend.
+The React Native overall using the Redux cycle enabled us to have smooth transitioning between the necessary components. The React store allowed reliable state transfers between component changes, and communicating with the backend. We chose React Native as a reliable frontend, in part for it's use of fetch requests over AJAX requests used in React.js. The fetch function, which you can see demonstrated in the Technologies & Technical Challenges section of this document, provides an elegant API in the window scope in order to handle JavaScript promises and request headers more explicitly. 
 
 ## Languages and Frameworks
   * [Ruby on Rails](http://rubyonrails.org/)
@@ -87,7 +87,7 @@ User authentication is handled in Rails using BCrypt for password hashing. Passw
   ```
 
 ### Ensuring reliable and up to date stock data
-Retrieving publicly available and reliable finance data was among the initial challenges of ExchangerRanger. After heavily researching a variety of APIs, most of which were out of date and no longer used, we discovered we could user the nokogiri gem which parses HTML via CSS3 selectors. Using Google Finance we parsed known company symbols seeded to our database in order to retrieve the current stock price.
+Retrieving publicly available and reliable finance data was among the initial challenges of ExchangerRanger. After heavily researching a variety of APIs, most of which were out of date and no longer used, we discovered we could user the Nokogiri gem which parses HTML via CSS3 selectors. Using Google Finance we parsed known company symbols seeded to our database in order to retrieve the current stock price.
 
   ```ruby
   def self.find_value(symbol)

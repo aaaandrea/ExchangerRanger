@@ -32,32 +32,32 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
     * [BCrypt](https://github.com/codahale/bcrypt-ruby)
 
 ## Technologies & Technical Challenges
-  - Pulling finance data from HTTP requests to Google Finance. Determining the delay (speed bump) from real-time.
-  - Building stock trade logic and ensuring valid orders.
-  - Using React Native Fetch functionality to enable up to date stock prices
+  * Pulling finance data from HTTP requests to Google Finance. Determining the delay (speed bump) from real-time.
+  * Building stock trade logic and ensuring valid orders.
+  * Using React Native Fetch functionality to enable up to date stock prices
 
 ## Responsibility breakdown
-  - Aaron:
-    - Proposal Readme
-    - HTTP requests
-    - Fetch Requests
-    - Leaderboard Component
-    - Video
-    - Demo Page
+  * Aaron:
+    * Proposal Readme
+    * HTTP requests
+    * Fetch Requests
+    * Leaderboard Component
+    * Video
+    * Demo Page
 
-  - Andrea:
-    - package.json
-    - User Authentication
-    - Fetch Requests
-    - Splash/Login/Sign up React Native Components
-    - Styling
-    - Production Readme
+  * Andrea:
+    * package.json
+    * User Authentication
+    * Fetch Requests
+    * Splash/Login/Sign up React Native Components
+    * Styling
+    * Production Readme
 
-  - Ryan:
-    - Database structure
-    - ActiveRecord implementation
-    - StockIndex/Home React Native Component
-    - Search
+  * Ryan:
+    * Database structure
+    * ActiveRecord implementation
+    * StockIndex/Home React Native Component
+    * Search
 
 ## Primary Components
 ### User Auth
@@ -71,7 +71,7 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Us
 [need image or code]
 
 ### Search
-ExchangerRanger utilizes react-native-searchbar multisearch to search for companies utilizing fetch and http requests to ensure the most up to date information is retrieved..
+ExchangerRanger utilizes react-native-searchbar to search for companies. ExchangerRanger utilizing fetch and http requests to ensure the most up to date information is retrieved..
 
 [need image or code]
 

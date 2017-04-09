@@ -1,4 +1,4 @@
-// import axios from 'axios';
+import axios from 'axios';
 import React, { Component } from 'react';
 import StockIndexItem from './stock_index_item';
 import SearchBar from 'react-native-search-bar';
@@ -30,9 +30,9 @@ export default class StockIndex extends Component {
     this.setState({stocks: this.props.stocks.slice(0,6)});
   }
 
-  // updateStocks(){
-  //   this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`))
-  // }
+  updateStocks(){
+    this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`));
+  }
 
   filterResults(value){
     // console.log(value);

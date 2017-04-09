@@ -169,14 +169,20 @@ export default class Login extends Component {
             />
           </View>
         </View>
-        <View
-          style={styles.buttonContainer}>
-           <Button
-              style={styles.button}
-              title="Log In"
-              onPress={this.onSubmission.bind(this)} >
-          </Button>
-        </View>
+
+        <TouchableHighlight
+          onPress={this.onSubmission.bind(this)}
+          underlayColor='#FFFFFE'
+          activeOpacity={0.7}>
+          <View
+            style={styles.buttonContainer}>
+             <Text
+                style={styles.button}>
+                Login
+             </Text>
+          </View>
+        </TouchableHighlight>
+
         <View>
           <Text>
             {this.state.errors}
@@ -263,7 +269,10 @@ const styles = StyleSheet.create({
   },
 
   buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
     backgroundColor: '#74B530',
+    height: 40,
     width: 200,
     margin: 10,
     borderRadius: 2,
@@ -278,8 +287,10 @@ const styles = StyleSheet.create({
 
   button: {
     textAlign: 'center',
-    color: '#115635',
-    fontWeight: '700',
+    color: '#FFFFFE',
+    fontWeight: '600',
+    fontSize: 16,
+    letterSpacing: 1,
     fontFamily: 'GillSans-Light',
   }
 

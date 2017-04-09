@@ -18,7 +18,7 @@ This mobile application runs month-long competitions using actual stock market q
 The app was built using Ruby on Rails on the back end with a postgreSQL database. Backend structure is RESTful and all the data requests use Fetch and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
 
 ### Frontend
-The React Native overall using the Redux cycle enabled us to have smooth transitioning between the necessary components. The React store allowed reliable state transfers between component changes, and communicating with the backend. We chose React Native as a reliable frontend, in part for it's use of fetch requests over AJAX requests used in React.js. The fetch function, which you can see demonstrated in the Technologies & Technical Challenges section of this document, provides an elegant API in the window scope in order to handle JavaScript promises and request headers more explicitly.
+The app is built with a React Native frontend utilizing the Redux cycle. This enabled us to have smooth transitioning between the necessary components. The React store allowed for a reliable transfer of state between components, and communicating the necessary requests to the backend. We chose React Native as a reliable frontend, in part for it's use of fetch requests over AJAX requests used in React.js. The fetch function, which you can see demonstrated in the Technologies & Technical Challenges section of this document, provides an elegant API in the window scope in order to handle JavaScript promises and request headers more explicitly.
 
 ## Languages and Frameworks
   * [Ruby on Rails](http://rubyonrails.org/)
@@ -60,7 +60,7 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
 ## Technologies & Technical Challenges
 ### Ensure mobile user security
 #### User Auth
-User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset a login to ensure the user is the same as the user logged in the database.
+User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset at login to ensure the user is the same as the user logged in the database.
 
 ##### Ensure user password matches password input
 

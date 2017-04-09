@@ -46,7 +46,7 @@ export default class LeaderboardIndex extends Component {
   }
 
   render() {
-    console.log(this.props);
+    const {users} = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.userBanner}>
@@ -76,9 +76,12 @@ export default class LeaderboardIndex extends Component {
             />
             <Text style={styles.tourneyDate}>{`${this.getMonth()} Leaderboard`.toUpperCase()}</Text>
           </View>
-
-          <LeaderboardIndexItem player={players[1]} rank={1}/>
-          <LeaderboardIndexItem player={players[0]} rank={2}/>
+          {
+            users.map( (user, idx) => (
+              <LeaderboardIndexItem player={user} rank={idx + 1} key={idx}/>
+              )
+            )
+          }
 
         </View>
       </View>

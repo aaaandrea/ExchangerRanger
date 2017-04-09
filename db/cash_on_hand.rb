@@ -1,4 +1,4 @@
-$users = "
+$cash_on_hand = "
 Andrea
 Ryan
 Aaron

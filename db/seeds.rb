@@ -7,7 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require_relative('names')
 require_relative('symbols')
+require_relative('users')
+require_relative('cash_on_hand')
 
 $names.each_with_index do |name, i|
   Company.create(symbol: $symbols[i], name: name, share_price: 0)
+end
+
+$users.each_with_index do |username, i|
+  User.create(username: username, password: 'password')
 end

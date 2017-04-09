@@ -10,10 +10,9 @@ import {
 } from 'react-native';
 
 import { Provider } from 'react-redux';
-import StockIndex from './components/stock_index';
+import StockIndexContainer from './components/stocks/stock_index_container';
 import RegisterContainer from './components/session/register_container';
 import LoginContainer from './components/session/login_container';
-import StockIndexItem from './components/stock_index_item';
 import Splash from './splash';
 import LeaderboardIndexContainer from './components/leaderboard/leaderboard_index_container';
 import configureStore from './store/store';
@@ -77,7 +76,7 @@ export default class ExchangerRanger extends Component {
       }
       if (routeId === 'StockIndex') {
         return (
-          <StockIndex
+          <StockIndexContainer
             navigator={navigator} />
         );
       }

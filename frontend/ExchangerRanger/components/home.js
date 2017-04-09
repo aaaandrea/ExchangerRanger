@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import StockIndex from './stock_index';
-import {fetchCompanies} from './../actions/stock_actions.js';
+import StockIndex from './stocks/stock_index';
 import {
   AppRegistry,
   StyleSheet,

@@ -6,7 +6,11 @@ export const fetchCompanies = () => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
+<<<<<<< HEAD
+   }).then((response) => response.json());
+=======
   }).then((response) => response.json());
+>>>>>>> master
 };
 
 export const fetchCompany = (company) => {

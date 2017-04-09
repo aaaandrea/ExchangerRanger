@@ -4,10 +4,9 @@ import StockIndex from './stock_index';
 import React, {Component} from 'react-native';
 
 const mapStateToProps = (state) =>   {
-  //sort users by networth here
   return ({
     stocks:
-    Object.keys(state.stocks).map(id => state.stocks[id]).slice(0,25)
+    Object.keys(state.stocks).slice(0,6).map(id => state.stocks[id])
   });
 };
 

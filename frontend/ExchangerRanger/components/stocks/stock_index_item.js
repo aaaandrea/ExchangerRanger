@@ -17,18 +17,18 @@ export default class StockIndexItem extends Component {
     return (
       <View style={styles.canvas}>
         <View style={styles.container}>
-          <View style={styles.info}>
+          <View style={styles.topLine}>
             <Text style={styles.text}>
               {this.props.stock.symbol}
             </Text>
-            <Text style={styles.text}>
-              {this.props.stock.name}
-            </Text>
-          </View>
-          <TradeForm stock={this.props.stock} />
-          <View style={styles.price}>
+            <TradeForm stock={this.props.stock} />
             <Text style={styles.text}>
               ${this.props.stock.share_price}
+            </Text>
+          </View>
+          <View style={styles.name}>
+            <Text style={styles.text}>
+              {this.props.stock.name}
             </Text>
           </View>
         </View>
@@ -40,7 +40,7 @@ export default class StockIndexItem extends Component {
 const styles = StyleSheet.create({
 
   canvas: {
-    height: 50,
+    height: 60,
     width: 200
   },
   container: {
@@ -48,13 +48,16 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'black',
-    flexDirection: 'row'
+    flexDirection: 'column'
   },
   text: {
     color: 'white'
   },
-  price: {
-
+  topLine: {
+    flex: 1,
+    alignItems: 'center',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   info: {
 

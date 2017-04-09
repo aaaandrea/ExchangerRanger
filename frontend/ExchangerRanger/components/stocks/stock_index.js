@@ -35,19 +35,20 @@ export default class StockIndex extends Component {
   }
 
   filterResults(value){
-    console.log(value);
-    console.log(this.state);
+    // console.log(value);
+    // console.log(this.state);
     let companies = [];
     this.props.stocks.forEach(company => companies.push(company));
-    console.log(companies);
+    // console.log(companies);
 
     this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
       ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
   }
 
   render() {
-    console.log(this.props);
-    console.log(this.state);
+    // console.log(this.props);
+    // console.log(this.state);
+    // console.log(this.props);
     const stocks = this.state.stocks;
     this.updateStocks();
     return (

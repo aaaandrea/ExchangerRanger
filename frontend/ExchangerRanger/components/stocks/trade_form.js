@@ -39,7 +39,9 @@ export default class TradeForm extends Component {
   }
 
   render() {
+    console.log('SPAGET');
     console.log(this.props);
+    // window.props=this.props;
     return (
       <View style={styles.form}>
       {renderIf(this.state.status)(

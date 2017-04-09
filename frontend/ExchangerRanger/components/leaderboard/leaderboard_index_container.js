@@ -6,7 +6,10 @@ import React, {Component} from 'react-native';
 const mapStateToProps = (state) =>   {
   //sort users by networth here
   return ({
-    users: Object.keys(state.users).map(id => state.users[id])
+    users:
+    Object.keys(state.users).map(id => state.users[id]).sort((a,b) => {
+      return a.net_worth - b.net_worth;
+    }).slice(0,5)
   });
 };
 

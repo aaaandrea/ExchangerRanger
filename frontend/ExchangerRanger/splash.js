@@ -111,11 +111,12 @@ const styles = StyleSheet.create({
   },
 
   welcome: {
-    color: '#115635',
+    color: '#FFFFFE',
+    textAlign: 'center',
     fontSize: 36,
+    letterSpacing: 1,
     fontWeight: '600',
     fontFamily: 'GillSans-Light',
-    textAlign: 'center',
     margin: 10,
   },
 
@@ -185,8 +186,10 @@ const styles = StyleSheet.create({
 
   button: {
     textAlign: 'center',
-    color: '#115635',
-    fontWeight: '700',
+    color: '#FFFFFE',
+    fontWeight: '600',
+    fontSize: 16,
+    letterSpacing: 1,
     fontFamily: 'GillSans-Light',
   }
 });

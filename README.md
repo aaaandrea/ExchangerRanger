@@ -20,7 +20,7 @@ The app was built using Ruby on Rails on the back end with a postgreSQL database
 ### Frontend
 The React Native overall using the Redux cycle enabled us to have smooth transitioning between the necessary components. The React store allowed reliable state transfers between component changes, and communicating with the backend.
 
-### Languages and Frameworks
+## Languages and Frameworks
   * [Ruby on Rails](http://rubyonrails.org/)
   * [PostgreSQL](https://www.postgresql.org/)
   * [React Native](https://facebook.github.io/react-native/)
@@ -28,6 +28,7 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
   * [Redux](https://github.com/reactjs/redux)
   * [Fetch](https://facebook.github.io/react-native/docs/network.html)
   * Gems
+    * [Nokogiri](http://www.nokogiri.org/)
     * [Jbuilder](https://github.com/rails/jbuilder)
     * [BCrypt](https://github.com/codahale/bcrypt-ruby)
 
@@ -85,15 +86,24 @@ User authentication is handled in Rails using BCrypt for password hashing. Passw
   end
   ```
 
-### Pulling finance data from HTTP requests to Google Finance. Determining the delay (speed bump) from real-time.
+### Ensuring reliable and up to date stock data
+Retrieving publicly available and reliable finance data was among the initial challenges of ExchangerRanger. After heavily researching a variety of APIs, most of which were out of date and no longer used, we discovered we could user the nokogiri gem which parses HTML via CSS3 selectors. Using Google Finance we parsed known company symbols seeded to our database in order to retrieve the current stock price.
 
-### Building stock trade logic and ensuring valid orders.
+  ```
+  def self.find_value(symbol)
+    symbol = symbol.upcase
+    url = "https://www.google.com/finance/getprices?i=60&p=1d&f=c&q=#{symbol}"
+    doc = Nokogiri::HTML(open(url))
+    current_price = doc.text.split(/\n/).last
+    current_price
+  end
+  ```
 
 ### Using React Native Fetch functionality to enable up to date stock prices
-### Holdings and net-worth demonstrates the React Native Fetch functionality
+#### Holdings and net-worth demonstrates the React Native Fetch functionality
 Holdings are the heart of ExchangerRanger, and are designed to be up to date. Holdings are demonstrated as a simple join table which includes associations between companies and users, along with the quantity of stock a user currently owns. Users can buy, sell, sort, and filter companies on the fly to increase their holdings and net-worth. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
 
-#### Holding database schema
+##### Holding database schema
   ```
   create_table "holdings", force: :cascade do |t|
     t.integer  "company_id",             null: false
@@ -105,7 +115,7 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
   end
   ```
 
-#### When a user purchases stock they create a new holding with the quantity of stock they would like to own
+##### When a user purchases stock they create a new holding with the quantity of stock they would like to own
   ```
   export const createHolding = (data) => {
     return fetch(`http://localhost:3000/api/holdings`, {
@@ -121,7 +131,7 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
   };
   ```
 
-#### The Rails user model calculates an individual player's net worth
+##### The Rails user model calculates an individual player's net worth
   ```
   def net_worth
     result = self.cash_on_hand
@@ -132,7 +142,6 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
     @net_worth = result
   end
   ```
-
 
 
 ### Future Features

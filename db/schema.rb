@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20170404160813) do
   create_table "companies", force: :cascade do |t|
     t.string   "name",        null: false
     t.string   "symbol",      null: false
-    t.integer  "share_price", null: false
+    t.float    "share_price", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.index ["name"], name: "index_companies_on_name", unique: true

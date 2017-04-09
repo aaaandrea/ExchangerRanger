@@ -3,7 +3,7 @@ class CreateCompanies < ActiveRecord::Migration[5.0]
     create_table :companies do |t|
       t.string :name, null: false
       t.string :symbol, null: false
-      t.integer :share_price, null: false
+      t.float :share_price, null: false
 
       t.timestamps
     end

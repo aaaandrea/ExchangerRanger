@@ -55,7 +55,7 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
     * ActiveRecord implementation
     * StockIndex/Home React Native Component
     * Searchbar implementation
-
+    * User net-worth
 
 ## Technologies & Technical Challenges
 ### Ensure mobile user security

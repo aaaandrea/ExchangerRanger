@@ -63,20 +63,86 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
 ### User Auth
 User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset a login to ensure the user is the same as the user logged in the database.
 
+```
+
+```
+
+
 [need image or code]
 
 ### Holdings
 Holdings are the heart of ExchangerRanger, and are designed to be up to date. Users can buy, sell, sort, and filter companies on the fly to increase their holdings and net-worth. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
+
+  ```
+  export const createHolding = (data) => {
+    return fetch(`http://localhost:3000/api/holdings`, {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        data
+      })
+    });
+  };
+  ```
 
 [need image or code]
 
 ### Search
 ExchangerRanger utilizes react-native-searchbar to search for companies. ExchangerRanger utilizing fetch and http requests to ensure the most up to date information is retrieved..
 
+#### Frontend
+  ```
+  <View style={styles.container}>
+    <SearchBar style={styles.search}
+      ref='searchBar'
+      placeholder='Search'
+      onChangeText={this.filterResults}
+    />
+  ```
+
+#### Filter results based on what the user types
+  ```
+  filterResults(value){
+    let companies = [];
+    this.props.stocks.forEach(company => companies.push(company));
+    this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
+      ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
+  }
+  ```
+
+#### Use Redux actions and Fetch request to retrieve filtered results from the backend
+
+##### Redux action
+  ```
+  export const fetchCompanies = filters => dispatch => (
+    APIUtil.fetchCompanies(filters)
+      .then(companies => dispatch(receiveCompanies(companies)))
+  );
+  ```
+##### Fetch Request
+  ```
+  export const fetchCompanies = () => {
+    return fetch('http://localhost:3000/api/companies', {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    }).then((response) => response.json());
+  };
+  ```
+
 [need image or code]
 
 ### Leaderboard
 A global leaderboard tracks all player's net-worth in order to have a winner at the end of each month.
+
+```
+
+```
 
 [need image or code]
 

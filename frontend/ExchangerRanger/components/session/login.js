@@ -133,18 +133,23 @@ export default class Login extends Component {
   render() {
     return (
       <KeyboardAvoidingView style={styles.allContainer}>
-        <Text style={styles.quote}>
-          "No dough, no show!"
-        </Text>
-        <Text style={styles.quoted}>
-          - Lucky Day, The Three Amigos
-        </Text>
+        <View style={styles.quoteContainer}>
+          <Text style={styles.quote}>
+            "No dough, no show!"
+          </Text>
+          <Text style={styles.quoted}>
+            - Lucky Day, The Three Amigos
+          </Text>
+      </View>
         <View style={styles.formContainer}>
           <View style={styles.inputOuter}>
             <TextInput
               style={styles.input}
               onChangeText={(username) => this.setState({username: username})}
               returnKeyType="next"
+              keyboardType="email-address"
+              autocapitalize="none"
+              autoCorrect={false}
               value={this.state.username}
               placeholder="Username"
               placeholderTextColor="#115635"

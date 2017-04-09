@@ -100,6 +100,9 @@ export default class Register extends Component {
               style={styles.input}
               onChangeText={(username) => this.setState({username: username})}
               returnKeyType="next"
+              keyboardType="email-address"
+              autocapitalize="none"
+              autoCorrect={false}
               value={this.state.username}
               placeholder="Username"
               placeholderTextColor="#115635"

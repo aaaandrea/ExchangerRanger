@@ -31,11 +31,6 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
     * [Jbuilder](https://github.com/rails/jbuilder)
     * [BCrypt](https://github.com/codahale/bcrypt-ruby)
 
-## Technologies & Technical Challenges
-  * Pulling finance data from HTTP requests to Google Finance. Determining the delay (speed bump) from real-time.
-  * Building stock trade logic and ensuring valid orders.
-  * Using React Native Fetch functionality to enable up to date stock prices
-
 ## Responsibility breakdown
   * Aaron:
     * Proposal Readme
@@ -57,22 +52,60 @@ The React Native overall using the Redux cycle enabled us to have smooth transit
     * Database structure
     * ActiveRecord implementation
     * StockIndex/Home React Native Component
-    * Search
+    * Searchbar implementation
 
-## Primary Components
-### User Auth
+
+## Technologies & Technical Challenges
+### Ensure mobile user security
+#### User Auth
 User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset a login to ensure the user is the same as the user logged in the database.
 
-```
+##### Ensure user password matches password input
+  ```
+  def password_is?(password)
+    BCrypt::Password.new(self.password_digest).is_password?(password)
+  end
+  ```
 
-```
+##### Encrypting a user password
+  ```
+  def password=(password)
+    self.password_digest = BCrypt::Password.create(password)
+    @password = password
+  end
+  ```
 
+##### Ensure unique session token
+  ```
+  def reset_session_token!
+    self.session_token = new_session_token
+    ensure_session_token_uniqueness
+    self.save
+    self.session_token
+  end
+  ```
 
-[need image or code]
+### Pulling finance data from HTTP requests to Google Finance. Determining the delay (speed bump) from real-time.
 
-### Holdings
-Holdings are the heart of ExchangerRanger, and are designed to be up to date. Users can buy, sell, sort, and filter companies on the fly to increase their holdings and net-worth. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
+### Building stock trade logic and ensuring valid orders.
 
+### Using React Native Fetch functionality to enable up to date stock prices
+### Holdings and net-worth demonstrates the React Native Fetch functionality
+Holdings are the heart of ExchangerRanger, and are designed to be up to date. Holdings are demonstrated as a simple join table which includes associations between companies and users, along with the quantity of stock a user currently owns. Users can buy, sell, sort, and filter companies on the fly to increase their holdings and net-worth. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
+
+#### Holding database schema
+  ```
+  create_table "holdings", force: :cascade do |t|
+    t.integer  "company_id",             null: false
+    t.integer  "user_id",                null: false
+    t.integer  "amount",     default: 0, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.index ["user_id"], name: "index_holdings_on_user_id"
+  end
+  ```
+
+#### When a user purchases stock they create a new holding with the quantity of stock they would like to own
   ```
   export const createHolding = (data) => {
     return fetch(`http://localhost:3000/api/holdings`, {
@@ -88,63 +121,19 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Us
   };
   ```
 
-[need image or code]
-
-### Search
-ExchangerRanger utilizes react-native-searchbar to search for companies. ExchangerRanger utilizing fetch and http requests to ensure the most up to date information is retrieved..
-
-#### Frontend
+#### The Rails user model calculates an individual player's net worth
   ```
-  <View style={styles.container}>
-    <SearchBar style={styles.search}
-      ref='searchBar'
-      placeholder='Search'
-      onChangeText={this.filterResults}
-    />
+  def net_worth
+    result = self.cash_on_hand
+    self.holdings.each do |holding|
+      share_price = holding.company.share_price
+      result += share_price * holding.amount
+    end
+    @net_worth = result
+  end
   ```
 
-#### Filter results based on what the user types
-  ```
-  filterResults(value){
-    let companies = [];
-    this.props.stocks.forEach(company => companies.push(company));
-    this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
-      ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
-  }
-  ```
 
-#### Use Redux actions and Fetch request to retrieve filtered results from the backend
-
-##### Redux action
-  ```
-  export const fetchCompanies = filters => dispatch => (
-    APIUtil.fetchCompanies(filters)
-      .then(companies => dispatch(receiveCompanies(companies)))
-  );
-  ```
-##### Fetch Request
-  ```
-  export const fetchCompanies = () => {
-    return fetch('http://localhost:3000/api/companies', {
-      method: 'GET',
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    }).then((response) => response.json());
-  };
-  ```
-
-[need image or code]
-
-### Leaderboard
-A global leaderboard tracks all player's net-worth in order to have a winner at the end of each month.
-
-```
-
-```
-
-[need image or code]
 
 ### Future Features
   - Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.

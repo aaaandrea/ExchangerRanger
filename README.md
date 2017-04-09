@@ -18,22 +18,23 @@ This mobile application runs month-long competitions using actual stock market q
 The app was built using Ruby on Rails on the back end with a postgreSQL database. Back end structure is RESTful and all the data requests use Fetch and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
 
 ### Frontend
+The React Native overall using the Redux cycle enabled us to have smooth transitioning between the necessary components. The React store allowed reliable state transfers between component changes, and communicating with the backend.
 
 ### Languages and Frameworks
-  * [Ruby on Rails]
-  * [PostgreSQL]
-  * [React Native]
-  * [React Native Searchbar]
-  * [Redux]
-  * [Fetch]
+  * [Ruby on Rails](http://rubyonrails.org/)
+  * [PostgreSQL](https://www.postgresql.org/)
+  * [React Native](https://facebook.github.io/react-native/)
+  * [React Native Searchbar](https://github.com/umhan35/react-native-search-bar)
+  * [Redux](https://github.com/reactjs/redux)
+  * [Fetch](https://facebook.github.io/react-native/docs/network.html)
   * Gems
-    * [Jbuilder]
-    * [BCrypt]
+    * [Jbuilder](https://github.com/rails/jbuilder)
+    * [BCrypt](https://github.com/codahale/bcrypt-ruby)
 
 ## Technologies & Technical Challenges
-  - Using ReactNative is a new technology for all engineers.
   - Pulling finance data from HTTP requests to Google Finance. Determining the delay (speed bump) from real-time.
   - Building stock trade logic and ensuring valid orders.
+  - Using React Native Fetch functionality to enable up to date stock prices
 
 ## Responsibility breakdown
   - Aaron:

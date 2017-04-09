@@ -20,7 +20,7 @@ export default class Home extends Component {
     super(props);
     console.log(props);
     this.state = {
-      companies: this.props.state.companies
+      companies: []
     };
   }
 
@@ -33,12 +33,10 @@ export default class Home extends Component {
   }
 
   render() {
-    console.log(this.state.companies);
+    console.log(this);
     return (
       <View style={styles.container}>
-
         <StockIndex stocks={this.state.companies}/>
-
       </View>
     );
   }

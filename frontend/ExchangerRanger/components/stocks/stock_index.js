@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import StockIndexItem from './stock_index_item';
 import SearchBar from 'react-native-search-bar';
+import {fetchCompanies} from './../actions/stock_actions.js';
 import {
   AppRegistry,
   StyleSheet,

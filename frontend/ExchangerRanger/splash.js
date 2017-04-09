@@ -78,13 +78,14 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFFFFE',
   },
 
   welcomeContainer: {
     margin: 8,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#74B530',
     borderRadius: 2,
     shadowColor: '#000000',
     shadowOpacity: 0.8,
@@ -96,9 +97,10 @@ const styles = StyleSheet.create({
   },
 
   welcome: {
-    color: '#BBD149',
+    color: '#115635',
     fontSize: 36,
-    fontWeight: '700',
+    fontWeight: '600',
+    fontFamily: 'GillSans-Light',
     textAlign: 'center',
     margin: 10,
   },
@@ -110,7 +112,7 @@ const styles = StyleSheet.create({
     margin: 8,
     width: 300,
     height: 100,
-    backgroundColor: '#74B530',
+    backgroundColor: '#FFFFFE',
     borderRadius: 2,
     shadowColor: '#000000',
     shadowOpacity: 0.8,
@@ -124,7 +126,7 @@ const styles = StyleSheet.create({
   quote: {
     margin: 6,
     textAlign: 'center',
-    color: '#F5FCFF',
+    color: '#115635',
     fontSize: 16,
     fontWeight: '600',
     fontFamily: 'GillSans-Light',
@@ -138,7 +140,7 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     fontWeight: '200',
     letterSpacing: 1,
-    color: '#F5FCFF',
+    color: '#115635',
     paddingBottom: 10,
   },
 

@@ -81,7 +81,7 @@ export default class Login extends Component {
         password: this.state.password
       }
     });
-    this.props.navigator.push({id: 'Home'});
+    this.props.navigator.push({id: 'StockIndex'});
   }
 
    //   this.setState({showProgress: true})

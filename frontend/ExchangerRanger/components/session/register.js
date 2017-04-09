@@ -81,7 +81,7 @@ export default class Register extends Component {
         password: this.state.password
       }
     });
-    this.props.navigator.push({id: 'Home'});
+    this.props.navigator.push({id: 'StockIndex'});
   }
 
   render() {

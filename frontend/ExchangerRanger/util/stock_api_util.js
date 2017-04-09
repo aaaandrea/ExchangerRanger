@@ -15,11 +15,8 @@ export const fetchCompany = (company) => {
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      company
-    })
-  });
+    }
+  }).then((response) => response.json());
 
 };
 //make new holding

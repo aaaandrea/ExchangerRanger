@@ -7,19 +7,28 @@ This mobile application runs month-long competitions using actual stock market q
 
 ## Features
   - Mobile application using React Native technology
-  - Gather actual stock quotes using API
-  - HTTP requests for real time stock quotes
-  - User can buy stock
-  - User can sell stock
+  - Gather real-time stock quotes using HTTP Requests
+  - User can buy and sell stock to earn/lose net-worth
+  - User can search for a specific stock
   - Global leaderboard based on players’ net worth
   - Download in the app store [here]()
 
 ## Structure
 ### Backend
+The app was built using Ruby on Rails on the back end with a postgreSQL database. Back end structure is RESTful and all the data requests use Fetch and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
 
 ### Frontend
 
-### Technical list
+### Languages and Frameworks
+  * [Ruby on Rails]
+  * [PostgreSQL]
+  * [React Native]
+  * [React Native Searchbar]
+  * [Redux]
+  * [Fetch]
+  * Gems
+    * [Jbuilder]
+    * [BCrypt]
 
 ## Technologies & Technical Challenges
   - Using ReactNative is a new technology for all engineers.
@@ -50,7 +59,6 @@ This mobile application runs month-long competitions using actual stock market q
     - Search
 
 ## Primary Components
-
 ### User Auth
 
 ### Companies

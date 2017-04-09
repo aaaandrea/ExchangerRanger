@@ -46,11 +46,7 @@ export default class StockIndex extends Component {
   }
 
   render() {
-    // console.log(this.props);
-    // console.log(this.state);
-    // console.log(this.props);
-    const stocks = this.state.stocks;
-    this.updateStocks();
+    const {stocks} = this.props;
     return (
       <View style={styles.container}>
         <SearchBar style={styles.search}

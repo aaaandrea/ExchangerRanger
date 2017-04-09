@@ -13,3 +13,86 @@
  *= require_tree .
  *= require_self
  */
+
+body.background {
+  background: url('http://res.cloudinary.com/dn4jhnh54/image/upload/c_scale,w_1554/v1491767469/washington_fdwetr.jpg');
+  margin: 0px;
+  padding: 0px;
+}
+
+div#header {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 13px;
+  color: black;
+  height: 50px;
+  background-color: black;
+  opacity: .9;
+
+}
+
+#header > div > p {
+  margin-left: 12px;
+  margin-right: 4px;
+}
+
+p.header-tag {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 14px;
+  display: block;
+  margin-left: 10px;
+  -webkit-margin-before: 1em;
+  -webkit-margin-after: 1em;
+}
+
+p.name {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 300;
+  color: white;
+  font-size: 14px;
+  opacity: 1 !important;
+}
+
+div.aaron {
+  display: flex;
+}
+
+div.andrea {
+  display: flex;
+}
+
+div.ryan {
+  display: flex;
+}
+
+
+#github img {
+    height: 20px;
+    width: 20px;
+    margin: 11px 4px;
+    filter: invert(100%);
+}
+
+#linkedin img {
+    height: 20px;
+    width: 20px;
+    margin: 11px 4px;
+    filter: invert(100%);
+}
+
+a#linkedin {
+  margin-right: 6px;
+}
+
+div#header img:hover {
+    height: 26px;
+    width: 26px;
+    margin: 5px 3px;
+}
+
+h1.title {
+  color: green;
+}

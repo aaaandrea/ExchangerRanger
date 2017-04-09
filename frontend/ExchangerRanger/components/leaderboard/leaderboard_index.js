@@ -14,12 +14,6 @@ import LeaderboardIndexItem from './leaderboard_index_item';
 
 const currentUser = {username: "nedders", net_worth: 8239.23};
 
-const players = [
-  {username: "aaronbnb", net_worth: 8850.35},
-  {username: "adelrio", net_worth: 14350.45},
-  {username: "rodeezy", net_worth: 2223.55}
-];
-
 export default class LeaderboardIndex extends Component {
   getMonth() {
     const d = new Date();

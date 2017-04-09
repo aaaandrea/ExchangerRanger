@@ -190,38 +190,72 @@ export default class Login extends Component {
 const styles = StyleSheet.create({
   allContainer: {
     flex: 1,
+    paddingTop: 15,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#115635',
+    backgroundColor: '#F5FCFF',
+  },
+
+  quoteContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    margin: 8,
+    width: 200,
+    height: 75,
+    backgroundColor: '#74B530',
+    borderRadius: 2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -2
+    },
   },
 
   quote: {
+    margin: 6,
     textAlign: 'center',
-    color: '#BBD149',
+    color: '#F5FCFF',
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '600',
+    fontFamily: 'GillSans-Light',
+    letterSpacing: 1,
   },
 
   quoted: {
     textAlign: 'center',
-    color: '#BBD149',
+    fontFamily: 'GillSans-Light',
     fontSize: 10,
     fontStyle: 'italic',
     fontWeight: '200',
+    letterSpacing: 1,
+    color: '#F5FCFF',
     paddingBottom: 10,
   },
 
   formContainer: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#115635',
+    backgroundColor: '#F5FCFF',
+    margin: 5,
   },
 
   input: {
     height: 30,
     width: 200,
     textAlign: 'center',
+    fontFamily: 'GillSans-Light',
     backgroundColor: '#BBD149',
+    marginTop: 8,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -1
+    },
+    borderRadius: 2,
   },
 
   inputOuter: {
@@ -231,12 +265,22 @@ const styles = StyleSheet.create({
   buttonContainer: {
     backgroundColor: '#74B530',
     width: 200,
+    margin: 10,
+    borderRadius: 2,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 2,
+    shadowOffset: {
+      height: 2,
+      width: -2
+    },
   },
 
   button: {
     textAlign: 'center',
     color: '#115635',
     fontWeight: '700',
+    fontFamily: 'GillSans-Light',
   }
 
 });

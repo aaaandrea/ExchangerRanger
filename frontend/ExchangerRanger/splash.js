@@ -11,7 +11,9 @@ import {
   StyleSheet,
   Text,
   View,
-  Button
+  Button,
+  TouchableHighlight,
+  TouchableOpacity,
 } from 'react-native';
 
 const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
@@ -43,6 +45,13 @@ export default class Splash extends Component {
             </Text>
           </View>
         </View>
+        <TouchableHighlight>
+          <View style={styles.buttonContainer}>
+            <Text style={styles.button}>
+              SIGN UP!
+            </Text>
+          </View>
+        </TouchableHighlight>
         <View style={styles.buttonContainer}>
           <Button
             style={styles.button}

@@ -15,12 +15,6 @@ export default class LeaderboardIndexItem extends Component {
           <View style={styles.rankBox}>
             <Text style={styles.rankText}>
               {this.props.rank}&nbsp;
-              {(this.props.rank === 3) ?
-                <Image style={styles.winner}>
-                </Image>
-              :
-              ""}
-
             </Text>
           </View>
           <Text style={styles.netWorthText}>

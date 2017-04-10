@@ -70,28 +70,6 @@ export default class Splash extends Component {
             </Text>
           </View>
         </TouchableHighlight>
-
-        <TouchableHighlight
-          onPress={() => this.props.navigator.push({id: 'StockIndex'})}
-          underlayColor='#FFFFFE'
-          activeOpacity={0.7}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.button}>
-              StockIndex
-            </Text>
-          </View>
-        </TouchableHighlight>
-
-        <TouchableHighlight
-          onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
-          underlayColor='#FFFFFE'
-          activeOpacity={0.7}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.button}>
-              Leaderboard
-            </Text>
-          </View>
-        </TouchableHighlight>
       </View>
     );
   }

@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowColor: '#000000',
     shadowOpacity: 0.8,
-   shadowRadius: 2,
-   shadowOffset: {
+    shadowRadius: 2,
+    shadowOffset: {
      height: 2,
      width: -2
    },

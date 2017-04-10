@@ -47,12 +47,11 @@ export default class LeaderboardIndex extends Component {
           <Text style={styles.userUsername}>{currentUser.username}</Text>
           <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
           <Text style={styles.userNetChange}>
-          {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
-            `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
-            `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
-
-          }&nbsp;
-          {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
+            {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
+              `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
+              `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
+            }&nbsp;
+            {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
           </Text>
         </View>
         <View style={styles.playerRankContainer}>

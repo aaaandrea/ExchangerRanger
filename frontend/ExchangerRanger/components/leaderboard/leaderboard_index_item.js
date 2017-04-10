@@ -68,12 +68,12 @@ const styles = StyleSheet.create({
   },
   nameText: {
     color: '#727272',
-    fontSize: 20,
+    fontSize: 16,
     fontFamily: 'GillSans-semibold'
   },
   netWorthText: {
     color: '#249b09',
-    fontSize: 28,
+    fontSize: 20,
     fontFamily: 'Gill Sans'
   },
   moneyContainer: {

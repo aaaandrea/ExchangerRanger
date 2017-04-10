@@ -10,22 +10,20 @@ import {
 export default class LeaderboardIndexItem extends Component {
   stringNetWorth() {
     let stringMoney = this.props.player.net_worth.toLocaleString();
-    let count = null;
+    let count = undefined;
     let result = "";
-    stringMoney.split().map((el) => {
+    let arrayMoney = stringMoney.split("");
+    arrayMoney.map((el) => {
       if (el === ".") {
         count = 0;
-        result += el;
       }
-      else if (count < 2) {
+      else if (count && count < 2) {
         if (parseInt(el) < 10) {
-          console.log(el);
-          el += 0;
-          result += el;
+          el.concat('0');
         }
         count += 1;
-        result += el;
       }
+      result.concat(el);
     });
     return result;
   }

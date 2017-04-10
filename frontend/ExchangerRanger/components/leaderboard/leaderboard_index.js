@@ -53,7 +53,9 @@ export default class LeaderboardIndex extends Component {
             underlayColor='#FFFFFE'
             activeOpacity={0.7}>
             <View style={styles.buttonContainer}>
-               <Text style={styles.button}>Home</Text>
+               <Text style={styles.button}>
+                 Home
+               </Text>
             </View>
           </TouchableHighlight>
           <Text style={styles.userUsername}>{currentUser.username}</Text>

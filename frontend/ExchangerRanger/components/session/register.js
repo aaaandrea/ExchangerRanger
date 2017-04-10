@@ -35,7 +35,7 @@ export default class Register extends Component {
 
   onSubmission() {
     const user = Object.assign({}, this.state);
-    this.props.login(user);
+    this.props.signup({user});
     // this.props.navigator.push({id: 'StockIndex'});
   }
 

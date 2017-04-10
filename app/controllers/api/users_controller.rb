@@ -35,6 +35,6 @@ class Api::UsersController < ApplicationController
 
   def user_params
     # params = JSON.parse('params')
-    params.require(:session).permit(:username, :password)
+    params.require(:user).permit(:username, :password)
   end
 end

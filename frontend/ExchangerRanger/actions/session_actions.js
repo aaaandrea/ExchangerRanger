@@ -9,6 +9,21 @@ export const signup = user => dispatch => {
   APIUtil.signup(user)
     .then(newUser => dispatch(receiveCurrentUser(newUser)),
       err => dispatch(receiveErrors(err.responseJSON))));};
+
+
+
+// export const signup = user => dispatch => {
+//   return(
+//     APIUtil.signup(user)
+//       .then(_newUser => {
+//         if(_newUser instanceof Array){
+//           dispatch(receiveErrors(_newUser));
+//         } else {
+//           dispatch(receiveCurrentUser(_newUser));
+//         }
+//       })
+//   );
+// };
 //
 // export const login = user => dispatch => {
 //   return(APIUtil.login(user)
@@ -18,15 +33,17 @@ export const signup = user => dispatch => {
 
 
 export const login = user => dispatch => {
-  return(APIUtil.login(user)
-    .then(_user => {
-      if(_user instanceof Array){
-        dispatch(receiveErrors(_user));
-      } else {
-        dispatch(receiveCurrentUser(_user));
-      }
-    })
-);};
+  return(
+    APIUtil.login(user)
+      .then(_user => {
+        if(_user instanceof Array){
+          dispatch(receiveErrors(_user));
+        } else {
+          dispatch(receiveCurrentUser(_user));
+        }
+      })
+  );
+};
 
 export const logout = () => dispatch => (
   APIUtil.logout().then(user => dispatch(receiveCurrentUser(null)))

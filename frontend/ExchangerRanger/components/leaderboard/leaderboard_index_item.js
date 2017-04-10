@@ -9,22 +9,17 @@ import {
 
 export default class LeaderboardIndexItem extends Component {
   render() {
+    let money = this.props.player.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     return (
       <View style={styles.canvas}>
         <View style={styles.container}>
           <View style={styles.rankBox}>
             <Text style={styles.rankText}>
               {this.props.rank}&nbsp;
-              {(this.props.rank === 3) ?
-                <Image style={styles.winner}>
-                </Image>
-              :
-              ""}
-
             </Text>
           </View>
           <Text style={styles.netWorthText}>
-            ${this.props.player.net_worth}
+            {money}
           </Text>
           <View style={styles.moneyContainer}>
           <Text style={styles.nameText}>
@@ -74,12 +69,12 @@ const styles = StyleSheet.create({
   },
   nameText: {
     color: '#727272',
-    fontSize: 20,
+    fontSize: 16,
     fontFamily: 'GillSans-semibold'
   },
   netWorthText: {
     color: '#249b09',
-    fontSize: 28,
+    fontSize: 20,
     fontFamily: 'Gill Sans'
   },
   moneyContainer: {

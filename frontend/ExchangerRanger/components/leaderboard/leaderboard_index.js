@@ -39,20 +39,31 @@ export default class LeaderboardIndex extends Component {
     this.props.fetchUsers();
   }
 
+  onSubmission() {
+    this.props.navigator.push({id: 'StockIndex'});
+  }
+
   render() {
     const {users} = this.props;
     return (
       <View style={styles.container}>
+        <TouchableHighlight
+          onPress={this.onSubmission.bind(this)}
+          underlayColor='#FFFFFE'
+          activeOpacity={0.7}>
+          <View style={styles.buttonContainer}>
+             <Text style={styles.button}>Home</Text>
+          </View>
+        </TouchableHighlight>
         <View style={styles.userBanner}>
           <Text style={styles.userUsername}>{currentUser.username}</Text>
           <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
           <Text style={styles.userNetChange}>
-          {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
-            `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
-            `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
-
-          }&nbsp;
-          {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
+            {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
+              `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
+              `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
+            }&nbsp;
+            {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
           </Text>
         </View>
         <View style={styles.playerRankContainer}>
@@ -124,8 +135,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     shadowColor: '#000000',
     shadowOpacity: 0.8,
-   shadowRadius: 2,
-   shadowOffset: {
+    shadowRadius: 2,
+    shadowOffset: {
      height: 2,
      width: -2
    },

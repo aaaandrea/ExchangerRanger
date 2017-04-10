@@ -56,6 +56,7 @@ export default class LeaderboardIndex extends Component {
       }
       return rank;
     });
+    let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     return (
       <View style={styles.container}>
         <View style={styles.userBanner}>
@@ -70,7 +71,7 @@ export default class LeaderboardIndex extends Component {
             </View>
           </TouchableHighlight>
           <Text style={styles.userUsername}>{currentUser.username}</Text>
-          <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
+          <Text style={styles.userNetWorth}>{money}</Text>
           <Text style={styles.userNetChange}>
             {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
               `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :

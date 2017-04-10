@@ -11,7 +11,8 @@ import {
   Button,
   Navigator,
   TouchableOpacity,
-  TouchableHighlight
+  TouchableHighlight,
+  Image
 } from 'react-native';
 const Platform = require('Platform');
 
@@ -60,6 +61,7 @@ export default class StockIndex extends Component {
 
   render() {
     const {currentUser} = this.props;
+    let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     return (
       <View>
         <View style={styles.userBanner}>
@@ -68,21 +70,23 @@ export default class StockIndex extends Component {
             underlayColor='#FFFFFE'
             activeOpacity={0.7}>
             <View style={styles.buttonContainer}>
-              <Text style={styles.button}>
-                Leaderboard
-              </Text>
+              <Image source={require('./../leaderboard/flag.png')}
+                    style={styles.flag}
+              />
             </View>
           </TouchableHighlight>
-          <Text style={styles.userUsername}>{currentUser.username}</Text>
-          <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
-          <Text style={styles.userNetChange}>
-          {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
-            `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
-            `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
+          <View style={styles.userWords}>
+            <Text style={styles.userUsername}>{currentUser.username}</Text>
+            <Text style={styles.userNetWorth}>{money}</Text>
+            <Text style={styles.userNetChange}>
+            {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
+              `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
+              `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
 
-          }&nbsp;
-          {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
-          </Text>
+            }&nbsp;
+            {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
+            </Text>
+          </View>
         </View>
         <View style={styles.container}>
           <SearchBar style={styles.search}
@@ -90,16 +94,6 @@ export default class StockIndex extends Component {
   	        placeholder='Search'
             onChangeText={this.filterResults}
           />
-          <TouchableHighlight
-            onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
-            underlayColor='#FFFFFE'
-            activeOpacity={0.7}>
-            <View style={styles.buttonContainer}>
-              <Text style={styles.button}>
-                Leaderboard
-              </Text>
-            </View>
-          </TouchableHighlight>
         {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
         </View>
       </View>
@@ -125,8 +119,14 @@ const styles = StyleSheet.create({
     marginTop: 18,
     height: 80,
     backgroundColor: '#74B530',
-
+    flexDirection: 'row'
   },
+
+  userWords: {
+    flexDirection: 'column',
+    alignItems: 'flex-end'
+  },
+
   userUsername: {
     fontFamily: 'GillSans-Light',
     fontSize: 14,
@@ -134,16 +134,47 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
   },
+
   userNetWorth: {
     fontFamily: 'GillSans-Light',
     fontSize: 36,
     textAlign: 'center',
     color: 'white',
   },
+
   userNetChange: {
     textAlign: 'center',
     color: 'white',
     fontFamily: 'Helvetica',
     fontSize: 12,
   },
+
+  buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#74B530',
+    margin: 3,
+    borderRadius: 1,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    shadowOffset: {
+      height: 1,
+      width: -1
+    },
+  },
+
+  flag: {
+    marginTop: 2,
+    height: 30,
+    width: 40,
+    alignItems: 'center',
+  },
+
+  button: {
+    textAlign: 'center',
+    color: '#FFFFFE',
+    fontWeight: '600',
+    fontSize: 14,
+  }
 });

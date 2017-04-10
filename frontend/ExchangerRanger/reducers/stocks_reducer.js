@@ -7,6 +7,7 @@ import merge from 'lodash/merge';
 const CompaniesReducer = (state = {}, action) => {
   // console.log(action);
   Object.freeze(state);
+  // console.log(action);
   let newState = merge({}, state);
 
   switch(action.type) {

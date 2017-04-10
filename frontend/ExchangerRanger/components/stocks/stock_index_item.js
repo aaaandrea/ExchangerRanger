@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import TradeFormContainer from './trade_form_container';
+// import {fetchCompany} from '../../actions/stock_actions';
 import {
   AppRegistry,
   StyleSheet,
@@ -13,6 +14,10 @@ import {
 const Platform = require('Platform');
 
 export default class StockIndexItem extends Component {
+  componentDidMount(){
+    this.props.fetchCompany(this.props.stock);
+  }
+
   dollarPrice(price_str){
     if (price_str[price_str.length-2]==='.'){
       return price_str+0;

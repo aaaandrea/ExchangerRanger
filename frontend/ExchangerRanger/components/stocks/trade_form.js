@@ -24,14 +24,24 @@ export default class TradeForm extends Component {
     super();
     this.state ={
       status:true,
-      amount: 0
+      amount: 0,
+      orderType: 'buy'
     };
+  }
+
+  componentDidMount(){
+    
   }
 
   toggleStatus(){
     this.setState({
       status:!this.state.status
     });
+
+  }
+
+  submitOrder(){
+
   }
 
   onChanged(text) {
@@ -60,7 +70,9 @@ export default class TradeForm extends Component {
             value = {this.state.myNumber}
             />
           </View>
-          <Button title="-" onPress={()=>this.toggleStatus()}></Button>
+
+          <Button title="v" onPress={()=>this.submitOrder()}></Button>
+
         </View>
       )}
       </View>

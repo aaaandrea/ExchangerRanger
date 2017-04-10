@@ -8,7 +8,7 @@ const mapStateToProps = (state) =>   {
   return ({
     users:
     Object.keys(state.users).map(id => state.users[id]).sort((a,b) => {
-      return a.net_worth - b.net_worth;
+      return b.net_worth - a.net_worth;
     }).slice(0,5)
   });
 };

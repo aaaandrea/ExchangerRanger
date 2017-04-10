@@ -26,8 +26,9 @@ export default class StockIndex extends Component {
 
   componentDidMount(){
     //updatePrices
-    this.props.fetchCompanies();
-    this.setState({stocks: this.props.stocks.slice(0,6)});
+
+    // this.props.fetchCompanies();
+    this.updateStocks()
   }
 
   updateStocks(){
@@ -46,7 +47,11 @@ export default class StockIndex extends Component {
   }
 
   render() {
+<<<<<<< HEAD
     const {stocks} = this.props;
+=======
+    console.log(this.props);
+>>>>>>> d652904d3017bab33cf88b5c7aafeae723a4b043
     return (
       <View style={styles.container}>
         <SearchBar style={styles.search}
@@ -54,6 +59,7 @@ export default class StockIndex extends Component {
 	        placeholder='Search'
           onChangeText={this.filterResults}
         />
+<<<<<<< HEAD
 
         <TouchableHighlight
           onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
@@ -66,6 +72,9 @@ export default class StockIndex extends Component {
           </View>
         </TouchableHighlight>
       {stocks.slice(0,5).map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
+=======
+      {this.props.stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
+>>>>>>> d652904d3017bab33cf88b5c7aafeae723a4b043
       </View>
     );
   }

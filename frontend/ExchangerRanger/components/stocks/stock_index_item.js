@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: 'white',
+    backgroundColor: '#F5F5F5',
     flexDirection: 'column'
   },
   text: {
@@ -86,10 +86,10 @@ const styles = StyleSheet.create({
     color: '#6d6d6d',
     fontSize: 12,
     marginLeft: 8,
-    marginBottom: 8,
+    marginBottom: 4,
   },
   priceText: {
-    color: '#727272',
+    color: '#8c8c8c',
     fontSize: 24,
     marginTop: 18,
     marginRight: 10,

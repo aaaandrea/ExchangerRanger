@@ -62,14 +62,27 @@ export default class StockIndex extends Component {
   }
 
   render() {
-    // console.log(this.props);
     return (
+      <View>
+      <View style={styles.userBanner}>
+        <Text style={styles.userUsername}>{currentUser.username}</Text>
+        <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
+        <Text style={styles.userNetChange}>
+        {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
+          `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
+          `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
+
+        }&nbsp;
+        {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
+        </Text>
+      </View>
       <View style={styles.container}>
         <SearchBar style={styles.search}
           ref='searchBar'
 	        placeholder='Search'
           onChangeText={this.filterResults}
         />
+
 
         <TouchableHighlight
           onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
@@ -82,6 +95,8 @@ export default class StockIndex extends Component {
           </View>
         </TouchableHighlight>
       {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
+
+      </View>
       </View>
     );
   }
@@ -90,11 +105,40 @@ export default class StockIndex extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 18,
-    alignItems: 'flex-start'
+    marginTop: 10,
+    alignItems: 'flex-start',
+    borderRadius: 2,
   },
   search: {
     height: 35,
     alignSelf: 'stretch',
-  }
+    marginLeft: 10,
+    marginRight: 10,
+
+  },
+  userBanner: {
+    marginTop: 18,
+    height: 80,
+    backgroundColor: '#74B530',
+
+  },
+  userUsername: {
+    fontFamily: 'GillSans-Light',
+    fontSize: 14,
+    letterSpacing: 1,
+    textAlign: 'center',
+    color: 'white',
+  },
+  userNetWorth: {
+    fontFamily: 'GillSans-Light',
+    fontSize: 36,
+    textAlign: 'center',
+    color: 'white',
+  },
+  userNetChange: {
+    textAlign: 'center',
+    color: 'white',
+    fontFamily: 'Helvetica',
+    fontSize: 12,
+  },
 });

@@ -4,6 +4,7 @@ import Splash from './splash';
 import React, {Component} from 'react-native';
 
 const mapStateToProps = (state) =>   {
+  console.log(state);
   return ({
     stocks:
     Object.keys(state.stocks).map(id => state.stocks[id])

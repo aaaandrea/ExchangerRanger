@@ -52,6 +52,9 @@ const styles = StyleSheet.create({
       width: -1
     },
     borderRadius: 2,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderColor: '#c4c4c4',
 
   },
   winner: {

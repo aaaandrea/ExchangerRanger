@@ -22,13 +22,12 @@ export default class Login extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedIn) {
-      console.log(this.props);
-      this.props.navigator.pop();
-      this.props.navigator.push({id: 'StockIndex'});
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.loggedIn) {
+  //     this.props.navigator.pop();
+  //     this.props.navigator.push({id: 'StockIndex'});
+  //   }
+  // }
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();

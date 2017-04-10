@@ -18,7 +18,8 @@ const Platform = require('Platform');
 export default class StockIndex extends Component {
   constructor(props){
     super(props);
-    this.state={
+    console.log(this.props);
+    this.state = {
       stocks: this.props.stocks.slice(0,5)
     };
     this.filterResults = this.filterResults.bind(this);
@@ -62,41 +63,39 @@ export default class StockIndex extends Component {
   }
 
   render() {
+    const {currentUser} = this.props;
     return (
       <View>
-      <View style={styles.userBanner}>
-        <Text style={styles.userUsername}>{currentUser.username}</Text>
-        <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
-        <Text style={styles.userNetChange}>
-        {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
-          `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
-          `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
+        <View style={styles.userBanner}>
+          <Text style={styles.userUsername}>{currentUser.username}</Text>
+          <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
+          <Text style={styles.userNetChange}>
+          {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
+            `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
+            `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
 
-        }&nbsp;
-        {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
-        </Text>
-      </View>
-      <View style={styles.container}>
-        <SearchBar style={styles.search}
-          ref='searchBar'
-	        placeholder='Search'
-          onChangeText={this.filterResults}
-        />
-
-
-        <TouchableHighlight
-          onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
-          underlayColor='#FFFFFE'
-          activeOpacity={0.7}>
-          <View style={styles.buttonContainer}>
-            <Text style={styles.button}>
-              Leaderboard
-            </Text>
-          </View>
-        </TouchableHighlight>
-      {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
-
-      </View>
+          }&nbsp;
+          {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
+          </Text>
+        </View>
+        <View style={styles.container}>
+          <SearchBar style={styles.search}
+            ref='searchBar'
+  	        placeholder='Search'
+            onChangeText={this.filterResults}
+          />
+          <TouchableHighlight
+            onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
+            underlayColor='#FFFFFE'
+            activeOpacity={0.7}>
+            <View style={styles.buttonContainer}>
+              <Text style={styles.button}>
+                Leaderboard
+              </Text>
+            </View>
+          </TouchableHighlight>
+        {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
+        </View>
       </View>
     );
   }

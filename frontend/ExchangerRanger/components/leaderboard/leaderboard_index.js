@@ -12,8 +12,6 @@ import {
 } from 'react-native';
 import LeaderboardIndexItem from './leaderboard_index_item';
 
-const currentUser = {username: "nedders", net_worth: 8239.23};
-
 export default class LeaderboardIndex extends Component {
   getMonth() {
     const d = new Date();
@@ -43,8 +41,22 @@ export default class LeaderboardIndex extends Component {
     this.props.navigator.push({id: 'StockIndex'});
   }
 
+  userRanks() {
+
+  }
+
   render() {
+    const currentUser = this.props.currentUser;
     const {users} = this.props;
+    let rank = 0;
+    const currentRank = users.forEach( (user, i) => {
+      if (user.username === currentUser.username) {
+        rank = i + 1;
+        return rank;
+      }
+      return rank;
+    });
+    console.log(rank);
     return (
       <View style={styles.container}>
         <View style={styles.userBanner}>
@@ -69,11 +81,11 @@ export default class LeaderboardIndex extends Component {
           </Text>
         </View>
         <View style={styles.playerRankContainer}>
-          <Text style={styles.playerRank}>
-          23
-          </Text>
           <Text style={styles.playerRanking}>
-          GLOBAL RANKING
+            YOUR GLOBAL RANKING
+          </Text>
+          <Text style={styles.playerRank}>
+            {rank}
           </Text>
         </View>
         <View style={styles.leaderboardContainer}>

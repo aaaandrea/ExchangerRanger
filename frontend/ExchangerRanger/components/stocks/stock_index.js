@@ -63,6 +63,16 @@ export default class StockIndex extends Component {
     return (
       <View>
         <View style={styles.userBanner}>
+          <TouchableHighlight
+            onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
+            underlayColor='#FFFFFE'
+            activeOpacity={0.7}>
+            <View style={styles.buttonContainer}>
+              <Text style={styles.button}>
+                Leaderboard
+              </Text>
+            </View>
+          </TouchableHighlight>
           <Text style={styles.userUsername}>{currentUser.username}</Text>
           <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
           <Text style={styles.userNetChange}>

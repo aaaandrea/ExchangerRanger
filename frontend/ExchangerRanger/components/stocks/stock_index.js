@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import StockIndexItem from './stock_index_item';
+import StockIndexItemContainer from './stock_index_item_container';
 import SearchBar from 'react-native-search-bar';
 import {fetchCompanies} from '../../actions/stock_actions.js';
 import {
@@ -81,7 +81,7 @@ export default class StockIndex extends Component {
             </Text>
           </View>
         </TouchableHighlight>
-      {this.state.stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
+      {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
       </View>
     );
   }

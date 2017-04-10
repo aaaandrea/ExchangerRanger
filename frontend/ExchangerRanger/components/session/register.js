@@ -50,6 +50,11 @@ export default class Register extends Component {
             - Lucky Day, The Three Amigos
           </Text>
         </View>
+        <View>
+          <Text style={styles.formErrors}>
+            {this.props.errors}
+          </Text>
+        </View>
         <View style={styles.formContainer}>
           <View style={styles.inputOuter}>
             <TextInput
@@ -146,6 +151,16 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     color: '#F5FCFF',
     paddingBottom: 10,
+  },
+
+  formErrors: {
+    height: 30,
+    marginTop: 10,
+    textAlign: 'center',
+    fontFamily: 'GillSans-Light',
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#ED7B15',
   },
 
   formContainer: {

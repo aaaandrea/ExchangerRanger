@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component } from 'react';
-import StockIndexItem from './stock_index_item';
+import StockIndexItemContainer from './stock_index_item_container';
 import SearchBar from 'react-native-search-bar';
 import {fetchCompanies} from '../../actions/stock_actions.js';
 import {
@@ -19,34 +19,50 @@ export default class StockIndex extends Component {
   constructor(props){
     super(props);
     this.state={
-      stocks: this.props.stocks
+      stocks: this.props.stocks.slice(0,5)
     };
     this.filterResults=this.filterResults.bind(this);
   }
 
   componentDidMount(){
     //updatePrices
-    this.props.fetchCompanies();
-    this.setState({stocks: this.props.stocks.slice(0,6)});
+
+    // this.props.fetchCompanies();
+    this.updateStocks();
   }
 
   updateStocks(){
-    this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`));
+    this.state.stocks.forEach(stock => {
+      axios.patch(`http://localhost:3000/api/companies/${stock.id}`);
+    });
   }
 
   filterResults(value){
     // console.log(value);
     // console.log(this.state);
-    let companies = [];
-    this.props.stocks.forEach(company => companies.push(company));
     // console.log(companies);
+    this.setState({stocks:[]});
+    let stocks = [];
+    let i = 0;
+    let stock;
+    while (stocks.length < 6 && i< this.props.stocks.length){
+      stock = this.props.stocks[i];
+      if(stock.name.toLowerCase().includes(value.toLowerCase())
+        ||stock.symbol.toLowerCase().includes(value.toLowerCase())){
+          axios.patch(`http://localhost:3000/api/companies/${stock.id}`);
+          stocks.push(stock);
+        }
+      i++;
+    }
+    this.setState({stocks: stocks});
 
-    this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
-      ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
+
+    // this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
+    //   ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
   }
 
   render() {
-    const {stocks} = this.props;
+    // console.log(this.props);
     return (
       <View style={styles.container}>
         <SearchBar style={styles.search}
@@ -65,7 +81,7 @@ export default class StockIndex extends Component {
             </Text>
           </View>
         </TouchableHighlight>
-      {stocks.slice(0,5).map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
+      {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
       </View>
     );
   }

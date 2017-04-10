@@ -67,7 +67,7 @@ export default class StockIndex extends Component {
         <View style={styles.userBanner}>
           <TouchableHighlight
             onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
-            underlayColor='#FFFFFE'
+            underlayColor='#74B530'
             activeOpacity={0.7}>
             <View style={styles.buttonContainer}>
               <Image source={require('./../leaderboard/flag.png')}
@@ -166,8 +166,8 @@ const styles = StyleSheet.create({
 
   flag: {
     marginTop: 2,
-    height: 30,
-    width: 40,
+    height: 70,
+    width: 90,
     alignItems: 'center',
   },
 

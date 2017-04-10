@@ -70,15 +70,17 @@ export default class LeaderboardIndex extends Component {
                </Text>
             </View>
           </TouchableHighlight>
-          <Text style={styles.userUsername}>{currentUser.username}</Text>
-          <Text style={styles.userNetWorth}>{money}</Text>
-          <Text style={styles.userNetChange}>
-            {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
-              `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
-              `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
-            }&nbsp;
-            {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
-          </Text>
+          <View style={styles.userWords}>
+            <Text style={styles.userUsername}>{currentUser.username}</Text>
+            <Text style={styles.userNetWorth}>{money}</Text>
+            <Text style={styles.userNetChange}>
+              {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
+                `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
+                `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
+              }&nbsp;
+              {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
+            </Text>
+          </View>
         </View>
         <View style={styles.playerRankContainer}>
           <Text style={styles.playerRanking}>
@@ -119,6 +121,10 @@ const styles = StyleSheet.create({
     height: 80,
     backgroundColor: '#74B530',
 
+  },
+  userWords: {
+    flexDirection: 'column',
+    alignItems: 'flex-end'
   },
   userUsername: {
     fontFamily: 'GillSans-Light',
@@ -201,4 +207,25 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#74B530',
+    margin: 3,
+    borderRadius: 1,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    shadowOffset: {
+      height: 1,
+      width: -1
+    },
+  },
+
+  button: {
+    textAlign: 'center',
+    color: '#FFFFFE',
+    fontWeight: '600',
+    fontSize: 14,
+  }
 });

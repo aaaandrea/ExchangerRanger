@@ -26,23 +26,25 @@ export default class StockIndex extends Component {
 
   componentDidMount(){
     //updatePrices
-    this.props.fetchCompanies();
+    // this.props.fetchCompanies();
+
     this.setState({stocks: this.props.stocks.slice(0,6)});
   }
 
   updateStocks(){
-    this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`))
+    this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`));
+    // return this.state.stocks
   }
 
   filterResults(value){
-    console.log(this.props.stocks);
+    // console.log(this.props.stocks);
     this.setState({stocks: this.props.stocks.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
       ||stock.symbol.toLowerCase().includes(value.toLowerCase())).slice(0,6)});
-    // this.updateStocks();
+    this.updateStocks();
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <View style={styles.container}>
         <SearchBar style={styles.search}

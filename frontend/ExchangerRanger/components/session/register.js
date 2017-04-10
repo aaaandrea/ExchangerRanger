@@ -22,12 +22,12 @@ export default class Register extends Component {
       errors: [],
     };
   }
-
-  componentDidMount(){
-    console.log("BOBBYYYYYY");
-    console.log(this.props);
-    this.props.stocks.forEach(stock => this.props.updatePrice(stock));
-  }
+  //
+  // componentDidMount(){
+  //   console.log("BOBBYYYYYY");
+  //   console.log(this.props);
+  //   this.props.stocks.forEach(stock => this.props.updatePrice(stock));
+  // }
 
   onSubmission() {
     console.log(this.state);

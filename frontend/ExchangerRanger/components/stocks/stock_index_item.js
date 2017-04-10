@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import TradeFormContainer from './trade_form_container';
 import {
   AppRegistry,
@@ -19,6 +20,10 @@ export default class StockIndexItem extends Component {
     }
     return price_str;
   }
+
+  // componentDidMount(){
+  //   return axios.patch(`http://localhost:3000/api/companies/${this.props.stock.id}`);
+  // }
 
   render() {
     return (

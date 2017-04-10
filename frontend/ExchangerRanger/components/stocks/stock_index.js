@@ -19,7 +19,7 @@ export default class StockIndex extends Component {
   constructor(props){
     super(props);
     this.state={
-      stocks: this.props.stocks
+      stocks: this.props.stocks.slice(0,5)
     };
     this.filterResults=this.filterResults.bind(this);
   }
@@ -28,30 +28,41 @@ export default class StockIndex extends Component {
     //updatePrices
 
     // this.props.fetchCompanies();
-    this.updateStocks()
+    this.updateStocks();
   }
 
   updateStocks(){
-    this.state.stocks.forEach(stock => axios.patch(`http://localhost:3000/api/companies/${stock.id}`));
+    this.state.stocks.forEach(stock => {
+      axios.patch(`http://localhost:3000/api/companies/${stock.id}`);
+    });
   }
 
   filterResults(value){
     // console.log(value);
     // console.log(this.state);
-    let companies = [];
-    this.props.stocks.forEach(company => companies.push(company));
     // console.log(companies);
+    this.setState({stocks:[]});
+    let stocks = [];
+    let i = 0;
+    let stock;
+    while (stocks.length < 6 && i< this.props.stocks.length){
+      stock = this.props.stocks[i];
+      if(stock.name.toLowerCase().includes(value.toLowerCase())
+        ||stock.symbol.toLowerCase().includes(value.toLowerCase())){
+          axios.patch(`http://localhost:3000/api/companies/${stock.id}`);
+          stocks.push(stock);
+        }
+      i++;
+    }
+    this.setState({stocks: stocks});
 
-    this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
-      ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
+
+    // this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
+    //   ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
   }
 
   render() {
-<<<<<<< HEAD
-    const {stocks} = this.props;
-=======
-    console.log(this.props);
->>>>>>> d652904d3017bab33cf88b5c7aafeae723a4b043
+    // console.log(this.props);
     return (
       <View style={styles.container}>
         <SearchBar style={styles.search}
@@ -59,7 +70,6 @@ export default class StockIndex extends Component {
 	        placeholder='Search'
           onChangeText={this.filterResults}
         />
-<<<<<<< HEAD
 
         <TouchableHighlight
           onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
@@ -71,10 +81,7 @@ export default class StockIndex extends Component {
             </Text>
           </View>
         </TouchableHighlight>
-      {stocks.slice(0,5).map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
-=======
-      {this.props.stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
->>>>>>> d652904d3017bab33cf88b5c7aafeae723a4b043
+      {this.state.stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
       </View>
     );
   }

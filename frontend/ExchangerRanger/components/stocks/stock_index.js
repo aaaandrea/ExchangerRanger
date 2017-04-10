@@ -14,7 +14,7 @@ import {
   TouchableHighlight,
   Image
 } from 'react-native';
-const Platform = require('Platform');
+
 
 export default class StockIndex extends Component {
   constructor(props){
@@ -62,6 +62,7 @@ export default class StockIndex extends Component {
   render() {
     const {currentUser} = this.props;
     let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
+
     return (
       <View>
         <View style={styles.userBanner}>

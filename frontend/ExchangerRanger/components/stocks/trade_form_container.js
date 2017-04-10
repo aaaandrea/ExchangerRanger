@@ -4,8 +4,15 @@ import TradeForm from './trade_form';
 import React, {Component} from 'react-native';
 
 const mapStateToProps = (state, ownProps) =>   {
+  let user;
+  if (state.session.currentUser){
+    user = state.session.currentUser;
+  }
+  else{
+    user = {username: '', net_worth: 1, holdings: [], id: 1};
+  }
   return ({
-    currentUser: state.session.currentUser,
+    currentUser: user,
     stock: ownProps.stock
   });
 };

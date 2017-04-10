@@ -33,7 +33,7 @@ export default class StockIndexItem extends Component {
             <Text style={styles.symbol}>
               {this.props.stock.symbol}
             </Text>
-            <TradeFormContainer stock={this.props.stock} />
+            <TradeFormContainer navigator={this.props.navigator} stock={this.props.stock} />
             <Text style={styles.priceText}>
               ${this.dollarPrice(this.props.stock.share_price.toString())}
             </Text>

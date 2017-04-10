@@ -23,9 +23,8 @@ export default class Login extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    // const { navigate } = this.props.navigation;
     if (nextProps.loggedIn) {
-      // navigate('StockIndex');
+      console.log(this.props);
       this.props.navigator.pop();
       this.props.navigator.push({id: 'StockIndex'});
     }

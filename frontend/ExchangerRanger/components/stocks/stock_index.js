@@ -21,7 +21,7 @@ export default class StockIndex extends Component {
     this.state={
       stocks: this.props.stocks.slice(0,5)
     };
-    this.filterResults=this.filterResults.bind(this);
+    this.filterResults = this.filterResults.bind(this);
   }
 
   componentDidMount(){

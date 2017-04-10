@@ -23,15 +23,20 @@ export default class Register extends Component {
     };
   }
 
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn() {
+    if (this.props.loggedIn) {
+      this.props.navigator.push({id: 'StockIndex'});
+    }
+  }
+
   onSubmission() {
-    this.props.signup({
-      user:
-      {
-        username: this.state.username,
-        password: this.state.password
-      }
-    });
-    this.props.navigator.push({id: 'StockIndex'});
+    const user = Object.assign({}, this.state);
+    this.props.login(user);
+    // this.props.navigator.push({id: 'StockIndex'});
   }
 
   render() {

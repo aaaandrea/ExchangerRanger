@@ -62,6 +62,8 @@ The app is built with a React Native frontend utilizing the Redux cycle. This en
 #### User Auth
 User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset at login to ensure the user is the same as the user logged in the database.
 
+    ![user auth](https://github.com/adelrio1/stockSectorVisualizer/blob/master/docs/images/Screen%20Shot%202017-04-10%20at%201.41.05%20AM.png)
+
 ##### Ensure user password matches password input
 
   ```ruby

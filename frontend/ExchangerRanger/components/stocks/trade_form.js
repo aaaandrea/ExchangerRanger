@@ -1,5 +1,6 @@
 import renderIf from '../../renderif';
 import React, { Component } from 'react';
+import { merge } from 'lodash';
 import {
   AppRegistry,
   StyleSheet,
@@ -23,6 +24,7 @@ export default class TradeForm extends Component {
   constructor(){
     super();
     this.state ={
+      id: 0,
       status:true,
       amount: 0,
       orderType: 'buy',
@@ -37,18 +39,46 @@ export default class TradeForm extends Component {
   componentDidMount(){
     this.state.holding.user_id = this.props.currentUser.id;
     this.state.holding.company_id = this.props.stock.id;
+
+    Object.values(this.props.currentUser.holdings).forEach(holding =>{
+      if (holding.company_id === this.props.stock.id){
+        this.setState({id: holding.id});
+      }
+    });
+    // if (this.props.currentUser.holdings.includes())
   }
 
   toggleStatus(){
     this.setState({
       status: !this.state.status
     });
-
   }
 
   submitOrder(){
-    let holding = this.props.createHolding({holding: this.state.holding});
+    let holding = merge({},this.state.holding);
+    let userHoldings = [];
+
+    Object.keys(this.props.currentUser.holdings).forEach
+    (id => userHoldings.push(this.props.currentUser.holdings[id].company_id));
+
+    console.log(userHoldings);
+    this.setState({holding: holding});
     console.log(holding);
+
+    if (userHoldings.includes(holding.company_id)) {
+      let prevHolding;
+      this.props.currentUser.holdings.forEach( id => {
+        if(this.props.currentUser.holdings[id].company_id === holding.company_id) {
+          prevHolding = this.props.currentUser.holdings[id];
+        }
+      });
+
+      holding.amount += prevHolding.amount;
+
+      this.props.updateHolding({holding: holding});
+    } else {
+      this.props.createHolding({holding: holding});
+    }
   }
 
   onChanged(text) {
@@ -60,7 +90,6 @@ export default class TradeForm extends Component {
 
   render() {
     // window.props=this.props;
-    // console.log(this.props.currentUser);
     return (
       <View style={styles.form}>
       {renderIf(this.state.status)(

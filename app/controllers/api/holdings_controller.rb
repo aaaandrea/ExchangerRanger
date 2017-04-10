@@ -11,6 +11,7 @@ class Api::HoldingsController < ApplicationController
 
   def update
     @holding = Holding.find(params[:id])
+    debugger
     @holding.trade(params[:amount])
     # if @holding.update(params[:amount])
     #   render "api/holdings/show"
@@ -33,7 +34,7 @@ class Api::HoldingsController < ApplicationController
   private
 
   def holding_params
-    params.require(:holding).permit(:user_id, :company_id)
+    params.require(:holding).permit(:user_id, :company_id, :amount)
   end
 
 end

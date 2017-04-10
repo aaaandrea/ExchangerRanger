@@ -12,7 +12,7 @@
 
 class Holding < ApplicationRecord
   validates :company_id, :user_id, :amount, presence: true
-  validates :user_id, uniqueness: {scope: :company_id}
+  # validates :user_id, uniqueness: {scope: :company_id}
   validate :non_negative_amount
 
   belongs_to :user
@@ -29,6 +29,10 @@ class Holding < ApplicationRecord
     #update company share price here (live http request)
     user.update_attribute(:cash_on_hand, user.cash_on_hand - amount * company.share_price)
     #here could be some return value
+  end
+
+  def self.find_by_credentials(user_id, company_id)
+    Holding.where(user_id: user_id, company_id: company_id)
   end
 
   # def buy(amount)

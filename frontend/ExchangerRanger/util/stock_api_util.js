@@ -40,10 +40,10 @@ export const receiveHolding = (data) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
+    body: JSON.stringify(
       data
-    })
-  });
+    )
+  }).then((response) => response.json());
 };
 //change holding amount
 export const updateHolding = (data) => {
@@ -53,10 +53,10 @@ export const updateHolding = (data) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
+    body: JSON.stringify(
       data
-    })
-  });
+    )
+  }).then((response) => response.json());
 };
 //update company price
 export const updatePrice = (company) => {

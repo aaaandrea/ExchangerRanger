@@ -62,7 +62,7 @@ export default class LeaderboardIndex extends Component {
         <View style={styles.userBanner}>
           <TouchableHighlight
             onPress={this.onSubmission.bind(this)}
-            underlayColor='#FFFFFE'
+            underlayColor='#74B530'
             activeOpacity={0.7}>
             <View style={styles.buttonContainer}>
                <Text style={styles.button}>
@@ -117,10 +117,10 @@ const styles = StyleSheet.create({
     paddingTop: 15,
   },
   userBanner: {
-    marginTop: 5,
+    marginTop: 18,
     height: 80,
     backgroundColor: '#74B530',
-
+    flexDirection: 'row'
   },
   userWords: {
     flexDirection: 'column',
@@ -220,6 +220,8 @@ const styles = StyleSheet.create({
       height: 1,
       width: -1
     },
+    height: 70,
+    width: 80,
   },
 
   button: {

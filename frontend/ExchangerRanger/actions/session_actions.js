@@ -10,10 +10,16 @@ export const signup = user => dispatch => {
     .then(newUser => dispatch(receiveCurrentUser(newUser)),
       err => dispatch(receiveErrors(err.responseJSON))));};
 //after login, may need to add another then and fetch stocks...?
+
 export const login = user => dispatch => {
   return(APIUtil.login(user)
-    .then(sessionUser => dispatch(receiveCurrentUser(sessionUser)),
-      err => dispatch(receiveErrors(err.responseJSON)))
+    .then(_user => {
+      if(_user instanceof Array){
+        dispatch(receiveErrors(_user));
+      } else {
+        dispatch(receiveCurrentUser(_user));
+      }
+    })
 );};
 
 export const logout = () => dispatch => (

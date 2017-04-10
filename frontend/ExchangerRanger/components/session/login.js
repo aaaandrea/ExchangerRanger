@@ -33,10 +33,6 @@ export default class Login extends Component {
       }
     });
     this.props.navigator.push({id: 'StockIndex'});
-  //   console.log("PROPS!!!");
-  //   console.log(this.props);
-  //   if (this.props.session.currentUser) {
-  //   }
   }
 
   render() {

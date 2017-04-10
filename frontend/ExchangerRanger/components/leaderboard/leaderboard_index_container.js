@@ -4,8 +4,6 @@ import LeaderboardIndex from './leaderboard_index';
 import React, {Component} from 'react-native';
 
 const mapStateToProps = (state) =>   {
-  //sort users by networth here
-  console.log(state);
   return ({
     currentUser: {state},
     users:

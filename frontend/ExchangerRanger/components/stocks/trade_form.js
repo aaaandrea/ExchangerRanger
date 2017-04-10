@@ -42,9 +42,10 @@ export default class TradeForm extends Component {
     // console.log(holdingId);
   }
 
-  toggleStatus(){
+  toggleStatus(type){
     this.setState({
-      status: !this.state.status
+      status: !this.state.status,
+      orderType: type
     });
 
   }
@@ -53,7 +54,7 @@ export default class TradeForm extends Component {
     const holding = {
       user_id: this.props.currentUser.id,
       company_id: this.props.stock.id,
-      amount: parseInt(this.state.amount)
+      amount: parseInt(this.state.amount)*(this.state.orderType==='sell' ? -1 : 1)
     }
   //   console.log(this.state);
   //  let holding = {
@@ -99,9 +100,9 @@ export default class TradeForm extends Component {
       <View style={styles.form}>
       {renderIf(this.state.status)(
         <View style={styles.buySell}>
-          <Button title="buy" color="#74B530" onPress={()=>this.toggleStatus()}></Button>
+          <Button title="buy" color="#74B530" onPress={()=>this.toggleStatus('buy')}></Button>
           <Text style={styles.line}>|</Text>
-          <Button title="sell" color="#e05a57" onPress={()=>this.toggleStatus()}></Button>
+          <Button title="sell" color="#e05a57" onPress={()=>this.toggleStatus('sell')}></Button>
         </View>
       )}
       {renderIf(!this.state.status)(

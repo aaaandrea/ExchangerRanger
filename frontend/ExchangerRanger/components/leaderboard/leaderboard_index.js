@@ -56,7 +56,6 @@ export default class LeaderboardIndex extends Component {
       }
       return rank;
     });
-    console.log(rank);
     return (
       <View style={styles.container}>
         <View style={styles.userBanner}>

@@ -5,7 +5,6 @@ import Register from './register';
 import React, {Component} from 'react-native';
 
 const mapStateToProps = (state) =>   {
-  console.log(state);
   return ({
     loggedIn: Boolean(state.session.currentUser),
     errors: state.session.errors

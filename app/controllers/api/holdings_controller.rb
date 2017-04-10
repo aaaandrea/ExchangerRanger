@@ -2,10 +2,9 @@ class Api::HoldingsController < ApplicationController
 
   def create
     @holding = Holding.new(holding_params)
-    # if @holding.save
-    #   render "api/holdings/show"
-    # else
-    unless @holding.save
+    if @holding.save
+      render "api/holdings/show"
+    else
       render json: @holding.errors.full_messages, status: 422
     end
   end
@@ -34,7 +33,7 @@ class Api::HoldingsController < ApplicationController
   private
 
   def holding_params
-    params.require(:holdings).permit(:user_id, :company_id)
+    params.require(:holding).permit(:user_id, :company_id)
   end
 
 end

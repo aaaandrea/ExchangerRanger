@@ -12,6 +12,7 @@
 
 class Holding < ApplicationRecord
   validates :company_id, :user_id, :amount, presence: true
+  validates :user_id, uniqueness: {scope: :company_id}
   validate :non_negative_amount
 
   belongs_to :user

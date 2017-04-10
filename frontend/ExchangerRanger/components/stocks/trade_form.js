@@ -25,12 +25,18 @@ export default class TradeForm extends Component {
     this.state ={
       status:true,
       amount: 0,
-      orderType: 'buy'
+      orderType: 'buy',
+      holding: {
+        user_id: 0,
+        company_id: 0,
+        amount: 0
+      }
     };
   }
 
   componentDidMount(){
-
+    this.state.holding.user_id = this.props.currentUser.id;
+    this.state.holding.company_id = this.props.stock.id;
   }
 
   toggleStatus(){
@@ -41,16 +47,20 @@ export default class TradeForm extends Component {
   }
 
   submitOrder(){
-
+    let holding = this.props.createHolding({holding: this.state.holding});
+    console.log(holding);
   }
 
   onChanged(text) {
+    let orderType = this.state.orderType;
+    let shareAmount = orderType==="sell"? - text : text;
     this.setState({amount: text});
+    this.setState({amount: shareAmount });
   }
 
   render() {
     // window.props=this.props;
-    console.log(this.props.currentUser);
+    // console.log(this.props.currentUser);
     return (
       <View style={styles.form}>
       {renderIf(this.state.status)(

@@ -27,9 +27,9 @@ export const createHolding = (data) => {
       'Accept': 'application/json',
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
+    body: JSON.stringify(
       data
-    })
+    )
   }).then((response) => response.json());
 };
 

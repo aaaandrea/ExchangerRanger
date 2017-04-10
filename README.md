@@ -140,7 +140,6 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
   ```
 
 ##### The Rails user model calculates an individual player's net worth
-    <img src='https://raw.githubusercontent.com/adelrio1/stockSectorVisualizer/master/docs/images/leaderboard.jpg'></img>
 
   ```ruby
   def net_worth

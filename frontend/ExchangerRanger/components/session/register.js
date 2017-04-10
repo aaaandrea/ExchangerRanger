@@ -30,7 +30,6 @@ export default class Register extends Component {
   // }
 
   onSubmission() {
-    console.log(this.state);
     this.props.signup({
       user:
       {

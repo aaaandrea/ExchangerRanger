@@ -66,16 +66,10 @@ export default class TradeForm extends Component {
    Object.keys(this.props.currentUser.holdings).forEach
    (id => userHoldings.push(this.props.currentUser.holdings[id].company_id));
 
-   console.log(this.props);
-   console.log(userHoldings);
-   console.log(holding);
 
    if (userHoldings.includes(holding.company_id)) {
      let prevHolding;
      this.props.currentUser.holdings.forEach( co => {
-       console.log(co);
-       console.log(this.props);
-       console.log(holding);
        if(co.company_id === holding.company_id) {
          prevHolding = co;
        }

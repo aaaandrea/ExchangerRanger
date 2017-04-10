@@ -4,12 +4,12 @@ import LeaderboardIndex from './leaderboard_index';
 import React, {Component} from 'react-native';
 
 const mapStateToProps = (state) =>   {
-  //sort users by networth here
   return ({
+    currentUser: state.session.currentUser,
     users:
     Object.keys(state.users).map(id => state.users[id]).sort((a,b) => {
       return b.net_worth - a.net_worth;
-    }).slice(0,5)
+    })
   });
 };
 

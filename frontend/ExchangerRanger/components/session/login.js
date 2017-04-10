@@ -14,8 +14,8 @@ import {
 } from 'react-native';
 
 export default class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       password: "",
@@ -23,20 +23,27 @@ export default class Login extends Component {
     };
   }
 
-  onSubmission() {
-    const { username, password } = this.state;
-    this.props.login({
-      user:
-      {
-        username: this.state.username,
-        password: this.state.password
-      }
-    });
-    this.props.navigator.push({id: 'StockIndex'});
-  //   console.log("PROPS!!!");
-  //   console.log(this.props);
-  //   if (this.props.session.currentUser) {
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.loggedIn) {
+  //     this.props.navigator.pop();
+  //     this.props.navigator.push({id: 'StockIndex'});
   //   }
+  // }
+
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn() {
+    if (this.props.loggedIn) {
+      this.props.navigator.push({id: 'StockIndex'});
+    }
+  }
+
+  onSubmission() {
+    const user = Object.assign({}, this.state);
+    this.props.login(user);
+    // this.props.navigator.push({id: 'StockIndex'});
   }
 
   render() {
@@ -49,7 +56,12 @@ export default class Login extends Component {
           <Text style={styles.quoted}>
             - Lucky Day, The Three Amigos
           </Text>
-      </View>
+        </View>
+        <View>
+          <Text style={styles.formErrors}>
+            {this.props.errors}
+          </Text>
+        </View>
         <View style={styles.formContainer}>
           <View style={styles.inputOuter}>
             <TextInput
@@ -73,6 +85,7 @@ export default class Login extends Component {
               autocapitalize="none"
               autoCorrect={false}
               value={this.state.password}
+              secureTextEntry={true}
               placeholder="Password"
               placeholderTextColor="#115635"
             />
@@ -91,12 +104,6 @@ export default class Login extends Component {
              </Text>
           </View>
         </TouchableHighlight>
-
-        <View>
-          <Text>
-            {this.state.errors}
-          </Text>
-        </View>
       </KeyboardAvoidingView>
     );
   }
@@ -147,6 +154,16 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     color: '#F5FCFF',
     paddingBottom: 10,
+  },
+
+  formErrors: {
+    height: 30,
+    marginTop: 10,
+    textAlign: 'center',
+    fontFamily: 'GillSans-Light',
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#ED7B15',
   },
 
   formContainer: {

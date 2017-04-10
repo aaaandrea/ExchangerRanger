@@ -22,22 +22,21 @@ export default class Register extends Component {
       errors: [],
     };
   }
-  //
-  // componentDidMount(){
-  //   console.log("BOBBYYYYYY");
-  //   console.log(this.props);
-  //   this.props.stocks.forEach(stock => this.props.updatePrice(stock));
-  // }
+
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn() {
+    if (this.props.loggedIn) {
+      this.props.navigator.push({id: 'StockIndex'});
+    }
+  }
 
   onSubmission() {
-    this.props.signup({
-      user:
-      {
-        username: this.state.username,
-        password: this.state.password
-      }
-    });
-    this.props.navigator.push({id: 'StockIndex'});
+    const user = Object.assign({}, this.state);
+    this.props.signup({user});
+    // this.props.navigator.push({id: 'StockIndex'});
   }
 
   render() {
@@ -51,11 +50,16 @@ export default class Register extends Component {
             - Lucky Day, The Three Amigos
           </Text>
         </View>
+        <View>
+          <Text style={styles.formErrors}>
+            {this.props.errors}
+          </Text>
+        </View>
         <View style={styles.formContainer}>
           <View style={styles.inputOuter}>
             <TextInput
               style={styles.input}
-              onChangeText={(username) => this.setState({username: username})}
+              onChangeText={(username) => this.setState({username})}
               returnKeyType="next"
               keyboardType="email-address"
               autocapitalize="none"
@@ -68,12 +72,13 @@ export default class Register extends Component {
           <View style={styles.inputOuter}>
             <TextInput
               style={styles.input}
-              onChangeText={(val) => this.setState({password: val})}
+              onChangeText={(password) => this.setState({password})}
               returnKeyType="go"
               keyboardType="email-address"
               autocapitalize="none"
               autoCorrect={false}
               value={this.state.password}
+              secureTextEntry={true}
               placeholder="Password"
               placeholderTextColor="#115635"
             />
@@ -146,6 +151,16 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     color: '#F5FCFF',
     paddingBottom: 10,
+  },
+
+  formErrors: {
+    height: 30,
+    marginTop: 10,
+    textAlign: 'center',
+    fontFamily: 'GillSans-Light',
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#ED7B15',
   },
 
   formContainer: {

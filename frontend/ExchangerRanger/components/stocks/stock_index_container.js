@@ -12,6 +12,7 @@ const mapStateToProps = (state) =>   {
   else{
     user = {username: '', net_worth: 1, holdings: [], id: 1};
   }
+
   return ({
     currentUser: user,
     stocks:

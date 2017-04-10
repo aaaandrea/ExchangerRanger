@@ -8,7 +8,29 @@ import {
 } from 'react-native';
 
 export default class LeaderboardIndexItem extends Component {
+  stringNetWorth() {
+    let stringMoney = this.props.player.net_worth.toLocaleString();
+    let count = null;
+    let result = "";
+    stringMoney.split().map((el) => {
+      if (el === ".") {
+        count = 0;
+        result += el;
+      }
+      else if (count < 2) {
+        if (parseInt(el) < 10) {
+          console.log(el);
+          el += 0;
+          result += el;
+        }
+        count += 1;
+        result += el;
+      }
+    });
+    return result;
+  }
   render() {
+    let stringMoney = this.stringNetWorth();
     return (
       <View style={styles.canvas}>
         <View style={styles.container}>
@@ -18,7 +40,7 @@ export default class LeaderboardIndexItem extends Component {
             </Text>
           </View>
           <Text style={styles.netWorthText}>
-            ${this.props.player.net_worth}
+            ${stringMoney}
           </Text>
           <View style={styles.moneyContainer}>
           <Text style={styles.nameText}>

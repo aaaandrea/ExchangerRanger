@@ -1,3 +1,5 @@
+require 'json'
+
 class Api::UsersController < ApplicationController
 
   def create
@@ -32,6 +34,7 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
+    # params = JSON.parse('params')
     params.require(:user).permit(:username, :password)
   end
 end

@@ -14,29 +14,37 @@ import {
 } from 'react-native';
 
 export default class Login extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       password: "",
-      errors: [],
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    // const { navigate } = this.props.navigation;
+    if (nextProps.loggedIn) {
+      // navigate('StockIndex');
+      this.props.navigator.pop();
+      this.props.navigator.push({id: 'StockIndex'});
+    }
+  }
+
+  componentDidUpdate() {
+    this.redirectIfLoggedIn();
+  }
+
+  redirectIfLoggedIn() {
+    if (this.props.loggedIn) {
+      this.props.navigator.push({id: 'StockIndex'});
+    }
+  }
+
   onSubmission() {
-    const { username, password } = this.state;
-    this.props.login({
-      user:
-      {
-        username: this.state.username,
-        password: this.state.password
-      }
-    });
-    this.props.navigator.push({id: 'StockIndex'});
-  //   console.log("PROPS!!!");
-  //   console.log(this.props);
-  //   if (this.props.session.currentUser) {
-  //   }
+    const user = Object.assign({}, this.state);
+    this.props.login(user);
+    // this.props.navigator.push({id: 'StockIndex'});
   }
 
   render() {
@@ -73,6 +81,7 @@ export default class Login extends Component {
               autocapitalize="none"
               autoCorrect={false}
               value={this.state.password}
+              secureTextEntry={true}
               placeholder="Password"
               placeholderTextColor="#115635"
             />

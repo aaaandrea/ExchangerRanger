@@ -22,12 +22,6 @@ export default class Register extends Component {
       errors: [],
     };
   }
-  //
-  // componentDidMount(){
-  //   console.log("BOBBYYYYYY");
-  //   console.log(this.props);
-  //   this.props.stocks.forEach(stock => this.props.updatePrice(stock));
-  // }
 
   onSubmission() {
     console.log(this.state);
@@ -56,7 +50,7 @@ export default class Register extends Component {
           <View style={styles.inputOuter}>
             <TextInput
               style={styles.input}
-              onChangeText={(username) => this.setState({username: username})}
+              onChangeText={(username) => this.setState({username})}
               returnKeyType="next"
               keyboardType="email-address"
               autocapitalize="none"
@@ -69,12 +63,13 @@ export default class Register extends Component {
           <View style={styles.inputOuter}>
             <TextInput
               style={styles.input}
-              onChangeText={(val) => this.setState({password: val})}
+              onChangeText={(password) => this.setState({password})}
               returnKeyType="go"
               keyboardType="email-address"
               autocapitalize="none"
               autoCorrect={false}
               value={this.state.password}
+              secureTextEntry={true}
               placeholder="Password"
               placeholderTextColor="#115635"
             />

@@ -29,7 +29,7 @@ export const logout = user => {
 
 export const signup = user => {
   return fetch('http://localhost:3000/api/users', {
-    method: 'post',
+    method: 'POST',
     headers: {
       'Accept': 'application/json',
       'Content-Type': 'application/json'

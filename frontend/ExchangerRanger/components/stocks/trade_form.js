@@ -30,12 +30,12 @@ export default class TradeForm extends Component {
   }
 
   componentDidMount(){
-    
+
   }
 
   toggleStatus(){
     this.setState({
-      status:!this.state.status
+      status: !this.state.status
     });
 
   }
@@ -50,6 +50,7 @@ export default class TradeForm extends Component {
 
   render() {
     // window.props=this.props;
+    console.log(this.props.currentUser);
     return (
       <View style={styles.form}>
       {renderIf(this.state.status)(
@@ -61,7 +62,7 @@ export default class TradeForm extends Component {
       )}
       {renderIf(!this.state.status)(
         <View style={styles.order}>
-          <Button title="+" onPress={()=>this.toggleStatus()}></Button>
+          <Button title="x" onPress={()=>this.toggleStatus()}></Button>
           <View style={styles.textInputContainer}>
             <TextInput
             style={styles.textInput}

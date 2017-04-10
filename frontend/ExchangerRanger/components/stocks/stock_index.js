@@ -13,7 +13,7 @@ import {
   TouchableOpacity,
   TouchableHighlight
 } from 'react-native';
-const Platform = require('Platform');
+
 
 export default class StockIndex extends Component {
   constructor(props){
@@ -62,6 +62,7 @@ export default class StockIndex extends Component {
   }
 
   render() {
+    const {currentUser} = this.props;
     return (
       <View>
       <View style={styles.userBanner}>

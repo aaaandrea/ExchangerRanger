@@ -35,7 +35,7 @@ export default class TradeForm extends Component {
   }
 
   onChanged(text) {
-    this.setState({amount: text})
+    this.setState({amount: text});
   }
 
   render() {
@@ -44,14 +44,14 @@ export default class TradeForm extends Component {
       <View style={styles.form}>
       {renderIf(this.state.status)(
         <View style={styles.buySell}>
-          <Button title="Buy" color="green" onPress={()=>this.toggleStatus()}></Button>
+          <Button title="buy" color="#74B530" onPress={()=>this.toggleStatus()}></Button>
           <Text style={styles.line}>|</Text>
-          <Button title="Sell" color="red" onPress={()=>this.toggleStatus()}></Button>
+          <Button title="sell" color="#e05a57" onPress={()=>this.toggleStatus()}></Button>
         </View>
       )}
       {renderIf(!this.state.status)(
         <View style={styles.order}>
-          <Button title="x" onPress={()=>this.toggleStatus()}></Button>
+          <Button title="+" onPress={()=>this.toggleStatus()}></Button>
           <View style={styles.textInputContainer}>
             <TextInput
             style={styles.textInput}
@@ -60,7 +60,7 @@ export default class TradeForm extends Component {
             value = {this.state.myNumber}
             />
           </View>
-          <Button title="v" onPress={()=>this.toggleStatus()}></Button>
+          <Button title="-" onPress={()=>this.toggleStatus()}></Button>
         </View>
       )}
       </View>
@@ -70,13 +70,14 @@ export default class TradeForm extends Component {
 
 const styles = StyleSheet.create({
   form: {
-
+    position: 'absolute',
+    paddingTop: 18,
+    marginLeft: 165,
   },
   order: {
     flex: 1,
-    alignItems: 'center',
     justifyContent: 'space-around',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   line: {
     color: 'grey'
@@ -85,7 +86,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    flexDirection: 'row'
+    flexDirection: 'row',
     // padding: 23
   },
   textInput: {

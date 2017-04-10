@@ -62,7 +62,7 @@ The app is built with a React Native frontend utilizing the Redux cycle. This en
 #### User Auth
 User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset at login to ensure the user is the same as the user logged in the database.
 
-    ![user auth](/docs/images/auth.jpg?raw=true "User Auth")
+  <img src='https://raw.githubusercontent.com/adelrio1/stockSectorVisualizer/master/docs/images/auth.jpg'></img>
 
 ##### Ensure user password matches password input
 
@@ -140,7 +140,7 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
   ```
 
 ##### The Rails user model calculates an individual player's net worth
-    ![leaderboard](/docs/images/leaderboard.jpg?raw=true "Leaderboard")
+    <img src='https://raw.githubusercontent.com/adelrio1/stockSectorVisualizer/master/docs/images/leaderboard.jpg'></img>
 
   ```ruby
   def net_worth

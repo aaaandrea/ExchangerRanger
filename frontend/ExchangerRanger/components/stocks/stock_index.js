@@ -34,7 +34,7 @@ export default class StockIndex extends Component {
 
   updateStocks(){
     this.state.stocks.forEach(stock => {
-      axios.patch(`http://localhost:3000/api/companies/${stock.id}`);
+      axios.patch(`http://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
     });
   }
 
@@ -47,7 +47,7 @@ export default class StockIndex extends Component {
       stock = this.props.stocks[i];
       if(stock.name.toLowerCase().includes(value.toLowerCase())
         ||stock.symbol.toLowerCase().includes(value.toLowerCase())){
-          axios.patch(`http://localhost:3000/api/companies/${stock.id}`);
+          axios.patch(`http://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
           stocks.push(stock);
         }
       i++;

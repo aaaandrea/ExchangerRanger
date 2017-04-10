@@ -124,7 +124,7 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
 
   ```javascript
   export const createHolding = (data) => {
-    return fetch(`http://localhost:3000/api/holdings`, {
+    return fetch(`http://exchanger-ranger.herokuapp.com/api/holdings`, {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

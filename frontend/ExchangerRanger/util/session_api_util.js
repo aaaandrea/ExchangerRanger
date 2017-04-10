@@ -2,7 +2,7 @@
 import { receiveCurrentUser, receiveErrors } from '../actions/session_actions';
 
 export const login = user => {
-  return fetch(`http://localhost:3000/api/session`, {
+  return fetch(`http://exchanger-ranger.herokuapp.com/api/session`, {
     method: 'POST',
     headers: {
       'Accept': 'application/json',
@@ -15,7 +15,7 @@ export const login = user => {
 };
 
 export const logout = user => {
-  return fetch(`http://localhost:3000/api/session/${user.id}`, {
+  return fetch(`http://exchanger-ranger.herokuapp.com/api/session/${user.id}`, {
     method: 'DELETE',
     headers: {
       'Accept': 'application/json',
@@ -28,7 +28,7 @@ export const logout = user => {
 };
 
 export const signup = user => {
-  return fetch('http://localhost:3000/api/users', {
+  return fetch('http://exchanger-ranger.herokuapp.com/api/users', {
     method: 'POST',
     headers: {
       'Accept': 'application/json',

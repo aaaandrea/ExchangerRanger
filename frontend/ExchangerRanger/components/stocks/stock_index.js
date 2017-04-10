@@ -27,8 +27,6 @@ export default class StockIndex extends Component {
   componentDidMount(){
     //updatePrices
     // this.props.fetchCompanies();
-
-    this.setState({stocks: this.props.stocks.slice(0,6)});
   }
 
   updateStocks(){
@@ -44,7 +42,7 @@ export default class StockIndex extends Component {
   }
 
   render() {
-    // console.log(this.state);
+    console.log(this.props);
     return (
       <View style={styles.container}>
         <SearchBar style={styles.search}
@@ -52,7 +50,7 @@ export default class StockIndex extends Component {
 	        placeholder='Search'
           onChangeText={this.filterResults}
         />
-      {this.state.stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
+      {this.props.stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
       </View>
     );
   }

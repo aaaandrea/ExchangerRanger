@@ -12,8 +12,6 @@ import {
 } from 'react-native';
 import LeaderboardIndexItem from './leaderboard_index_item';
 
-const currentUser = {username: "nedders", net_worth: 8239.23};
-
 export default class LeaderboardIndex extends Component {
   getMonth() {
     const d = new Date();
@@ -43,8 +41,22 @@ export default class LeaderboardIndex extends Component {
     this.props.navigator.push({id: 'StockIndex'});
   }
 
+  userRanks() {
+
+  }
+
   render() {
+    const currentUser = this.props.currentUser;
     const {users} = this.props;
+    let rank = 0;
+    const currentRank = users.forEach( (user, i) => {
+      if (user.username === currentUser.username) {
+        rank = i + 1;
+        return rank;
+      }
+      return rank;
+    });
+    let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     return (
       <View style={styles.container}>
         <View style={styles.userBanner}>
@@ -58,22 +70,24 @@ export default class LeaderboardIndex extends Component {
                </Text>
             </View>
           </TouchableHighlight>
-          <Text style={styles.userUsername}>{currentUser.username}</Text>
-          <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
-          <Text style={styles.userNetChange}>
-            {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
-              `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
-              `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
-            }&nbsp;
-            {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
-          </Text>
+          <View style={styles.userWords}>
+            <Text style={styles.userUsername}>{currentUser.username}</Text>
+            <Text style={styles.userNetWorth}>{money}</Text>
+            <Text style={styles.userNetChange}>
+              {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
+                `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
+                `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
+              }&nbsp;
+              {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
+            </Text>
+          </View>
         </View>
         <View style={styles.playerRankContainer}>
-          <Text style={styles.playerRank}>
-          23
-          </Text>
           <Text style={styles.playerRanking}>
-          GLOBAL RANKING
+            YOUR GLOBAL RANKING
+          </Text>
+          <Text style={styles.playerRank}>
+            {rank}
           </Text>
         </View>
         <View style={styles.leaderboardContainer}>
@@ -107,6 +121,10 @@ const styles = StyleSheet.create({
     height: 80,
     backgroundColor: '#74B530',
 
+  },
+  userWords: {
+    flexDirection: 'column',
+    alignItems: 'flex-end'
   },
   userUsername: {
     fontFamily: 'GillSans-Light',
@@ -189,4 +207,25 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#74B530',
+    margin: 3,
+    borderRadius: 1,
+    shadowColor: '#000000',
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    shadowOffset: {
+      height: 1,
+      width: -1
+    },
+  },
+
+  button: {
+    textAlign: 'center',
+    color: '#FFFFFE',
+    fontWeight: '600',
+    fontSize: 14,
+  }
 });

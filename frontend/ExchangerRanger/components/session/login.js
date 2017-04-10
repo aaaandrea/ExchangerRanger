@@ -19,17 +19,16 @@ export default class Login extends Component {
     this.state = {
       username: "",
       password: "",
+      errors: [],
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    // const { navigate } = this.props.navigation;
-    if (nextProps.loggedIn) {
-      // navigate('StockIndex');
-      this.props.navigator.pop();
-      this.props.navigator.push({id: 'StockIndex'});
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.loggedIn) {
+  //     this.props.navigator.pop();
+  //     this.props.navigator.push({id: 'StockIndex'});
+  //   }
+  // }
 
   componentDidUpdate() {
     this.redirectIfLoggedIn();
@@ -57,7 +56,12 @@ export default class Login extends Component {
           <Text style={styles.quoted}>
             - Lucky Day, The Three Amigos
           </Text>
-      </View>
+        </View>
+        <View>
+          <Text style={styles.formErrors}>
+            {this.props.errors}
+          </Text>
+        </View>
         <View style={styles.formContainer}>
           <View style={styles.inputOuter}>
             <TextInput
@@ -100,12 +104,6 @@ export default class Login extends Component {
              </Text>
           </View>
         </TouchableHighlight>
-
-        <View>
-          <Text>
-            {this.state.errors}
-          </Text>
-        </View>
       </KeyboardAvoidingView>
     );
   }
@@ -156,6 +154,16 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
     color: '#F5FCFF',
     paddingBottom: 10,
+  },
+
+  formErrors: {
+    height: 30,
+    marginTop: 10,
+    textAlign: 'center',
+    fontFamily: 'GillSans-Light',
+    fontSize: 18,
+    fontWeight: '600',
+    color: '#ED7B15',
   },
 
   formContainer: {

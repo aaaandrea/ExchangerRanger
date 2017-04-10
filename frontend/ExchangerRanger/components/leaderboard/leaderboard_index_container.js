@@ -5,11 +5,11 @@ import React, {Component} from 'react-native';
 
 const mapStateToProps = (state) =>   {
   return ({
-    currentUser: {state},
+    currentUser: state.session.currentUser,
     users:
     Object.keys(state.users).map(id => state.users[id]).sort((a,b) => {
       return b.net_worth - a.net_worth;
-    }).slice(0,5)
+    })
   });
 };
 

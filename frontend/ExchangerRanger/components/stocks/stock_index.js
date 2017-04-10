@@ -18,7 +18,6 @@ const Platform = require('Platform');
 export default class StockIndex extends Component {
   constructor(props){
     super(props);
-    console.log(this.props);
     this.state = {
       stocks: this.props.stocks.slice(0,5)
     };
@@ -39,9 +38,6 @@ export default class StockIndex extends Component {
   }
 
   filterResults(value){
-    // console.log(value);
-    // console.log(this.state);
-    // console.log(companies);
     this.setState({stocks:[]});
     let stocks = [];
     let i = 0;

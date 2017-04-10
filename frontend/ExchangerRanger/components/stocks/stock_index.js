@@ -35,18 +35,14 @@ export default class StockIndex extends Component {
   }
 
   filterResults(value){
-    // console.log(value);
-    // console.log(this.state);
-    let companies = [];
-    this.props.stocks.forEach(company => companies.push(company));
-    // console.log(companies);
-
-    this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
-      ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
+    console.log(this.props.stocks);
+    this.setState({stocks: this.props.stocks.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
+      ||stock.symbol.toLowerCase().includes(value.toLowerCase())).slice(0,6)});
+    // this.updateStocks();
   }
 
   render() {
-    const {stocks} = this.props;
+    console.log(this.state);
     return (
       <View style={styles.container}>
         <SearchBar style={styles.search}
@@ -54,7 +50,7 @@ export default class StockIndex extends Component {
 	        placeholder='Search'
           onChangeText={this.filterResults}
         />
-      {stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
+      {this.state.stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
       </View>
     );
   }

@@ -22,6 +22,7 @@ const mapDispatchToProps = (dispatch, {location}) => ({
   login: (user) => dispatch(login(user)),
   signup: (user) => dispatch(signup(user)),
   logout: () => dispatch(logout())
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

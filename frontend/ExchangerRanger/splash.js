@@ -21,6 +21,10 @@ const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
 {symbol: "GOOG", name: "Google", share_price: 64}];
 
 export default class Splash extends Component {
+  componentDidMount(){
+    this.props.fetchCompanies();
+  }
+
   componentWillMount() {
     // var navigator = this.props.navigator;
     // setTimeout(() => {

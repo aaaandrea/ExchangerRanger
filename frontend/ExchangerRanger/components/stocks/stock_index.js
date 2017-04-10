@@ -63,11 +63,11 @@ export default class StockIndex extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginTop: 18,
+    alignItems: 'flex-start'
   },
   search: {
     height: 35,
-    width: 200
+    alignSelf: 'stretch',
   }
 });

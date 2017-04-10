@@ -13,7 +13,7 @@ import { Provider } from 'react-redux';
 import StockIndexContainer from './components/stocks/stock_index_container';
 import RegisterContainer from './components/session/register_container';
 import LoginContainer from './components/session/login_container';
-import Splash from './splash';
+import SplashContainer from './splash_container';
 import LeaderboardIndexContainer from './components/leaderboard/leaderboard_index_container';
 import configureStore from './store/store';
 // const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
@@ -44,7 +44,7 @@ export default class ExchangerRanger extends Component {
       var routeId = route.id;
       if (routeId === 'Splash') {
         return (
-          <Splash
+          <SplashContainer
             navigator={navigator} />
         );
       }

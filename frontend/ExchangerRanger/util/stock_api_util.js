@@ -30,7 +30,7 @@ export const createHolding = (data) => {
     body: JSON.stringify({
       data
     })
-  });
+  }).then((response) => response.json());
 };
 
 export const receiveHolding = (data) => {
@@ -69,5 +69,5 @@ export const updatePrice = (company) => {
     body: JSON.stringify({
       company
     })
-  });
+  }).then((response) => response.json());
 };

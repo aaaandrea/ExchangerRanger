@@ -4,7 +4,6 @@ import TradeForm from './trade_form';
 import React, {Component} from 'react-native';
 
 const mapStateToProps = (state, ownProps) =>   {
-  console.log(state);
   return ({
     currentUser: state.session.currentUser,
     stock: ownProps.stock

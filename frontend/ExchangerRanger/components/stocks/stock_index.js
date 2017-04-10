@@ -54,7 +54,18 @@ export default class StockIndex extends Component {
 	        placeholder='Search'
           onChangeText={this.filterResults}
         />
-      {stocks.map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
+
+        <TouchableHighlight
+          onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
+          underlayColor='#FFFFFE'
+          activeOpacity={0.7}>
+          <View style={styles.buttonContainer}>
+            <Text style={styles.button}>
+              Leaderboard
+            </Text>
+          </View>
+        </TouchableHighlight>
+      {stocks.slice(0,5).map(stock => <StockIndexItem stock={stock} key={stock.id}/>)}
       </View>
     );
   }
@@ -63,11 +74,11 @@ export default class StockIndex extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center'
+    marginTop: 18,
+    alignItems: 'flex-start'
   },
   search: {
     height: 35,
-    width: 200
+    alignSelf: 'stretch',
   }
 });

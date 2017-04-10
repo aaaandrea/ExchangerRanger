@@ -23,7 +23,7 @@ class Holding < ApplicationRecord
       flash.now[:errors] = "can't have negative amount"
       return
     end
-    self.update_attribute(:amount, self.amount+amount)
+    self.update_attribute(:amount, amount)
     user = User.find(self.user_id)
     company = Company.find(self.company_id)
     #update company share price here (live http request)

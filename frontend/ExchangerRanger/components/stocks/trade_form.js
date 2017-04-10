@@ -9,7 +9,7 @@ import {
   Navigator,
   TextInput
 } from 'react-native';
-const Platform = require('Platform');
+
 
 //x button is to cancel
 //v btn represents check mark to approve (functionality pending)
@@ -24,19 +24,22 @@ export default class TradeForm extends Component {
     super();
     this.state ={
       status:true,
-      amount: 0,
       orderType: 'buy',
-      holding: {
-        user_id: 0,
-        company_id: 0,
-        amount: 0
-      }
+      user_id: 0,
+      company_id: 0,
+      amount: 0
     };
   }
 
   componentDidMount(){
-    this.state.holding.user_id = this.props.currentUser.id;
-    this.state.holding.company_id = this.props.stock.id;
+    // let holding = {};
+    // holding.user_id = this.props.currentUser.id;
+    // holding.company_id = this.props.stock.id;
+    // holding.amount = 0;
+    // // let holdingId;
+    // let holdingId = (this.props.createHolding({holding: holding})
+    //                 .then(response => response.json()));
+    // console.log(holdingId);
   }
 
   toggleStatus(){
@@ -47,8 +50,45 @@ export default class TradeForm extends Component {
   }
 
   submitOrder(){
-    let holding = this.props.createHolding({holding: this.state.holding});
-    console.log(holding);
+    const holding = {
+      user_id: this.props.currentUser.id,
+      company_id: this.props.stock.id,
+      amount: parseInt(this.state.amount)
+    }
+  //   console.log(this.state);
+  //  let holding = {
+  //    user_id: this.props.user_id,
+  //    company_id: this.state.company_id,
+  //    amount: this.state.amount
+  //  };
+    let userHoldings = [];
+
+   Object.keys(this.props.currentUser.holdings).forEach
+   (id => userHoldings.push(this.props.currentUser.holdings[id].company_id));
+
+   console.log(this.props);
+   console.log(userHoldings);
+   console.log(holding);
+
+   if (userHoldings.includes(holding.company_id)) {
+     let prevHolding;
+     this.props.currentUser.holdings.forEach( co => {
+       console.log(co);
+       console.log(this.props);
+       console.log(holding);
+       if(co.company_id === holding.company_id) {
+         prevHolding = co;
+       }
+     });
+     holding.id = prevHolding.id;
+     holding.amount += parseInt(prevHolding.amount);
+
+     this.props.updateHolding({holding: holding});
+   } else {
+     this.props.createHolding({holding: holding});
+   }
+    // console.log(holding);
+    this.props.navigator.push({id: 'StockIndex'});
   }
 
   onChanged(text) {
@@ -60,7 +100,7 @@ export default class TradeForm extends Component {
 
   render() {
     // window.props=this.props;
-    // console.log(this.props.currentUser);
+    // console.log(this.props);
     return (
       <View style={styles.form}>
       {renderIf(this.state.status)(
@@ -77,7 +117,7 @@ export default class TradeForm extends Component {
             <TextInput
             style={styles.textInput}
             keyboardType = 'numeric'
-            onChangeText = {(text)=> this.onChanged(text)}
+            onChangeText = {(amount)=> this.setState({amount})}
             value = {this.state.myNumber}
             />
           </View>

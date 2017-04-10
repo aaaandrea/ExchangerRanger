@@ -95,7 +95,8 @@ export default class StockIndex extends Component {
             </Text>
           </View>
         </TouchableHighlight>
-      {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
+      {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}
+        navigator={this.props.navigator}/>)}
 
       </View>
       </View>

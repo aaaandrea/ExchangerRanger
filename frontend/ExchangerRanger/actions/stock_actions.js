@@ -46,5 +46,5 @@ export const receiveCompany = company => ({
 
 export const receiveHolding = holding => ({
   type: RECEIVE_HOLDING,
-  booking
+  holding
 });

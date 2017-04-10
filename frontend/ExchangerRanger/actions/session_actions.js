@@ -9,7 +9,13 @@ export const signup = user => dispatch => {
   APIUtil.signup(user)
     .then(newUser => dispatch(receiveCurrentUser(newUser)),
       err => dispatch(receiveErrors(err.responseJSON))));};
-//after login, may need to add another then and fetch stocks...?
+//
+// export const login = user => dispatch => {
+//   return(APIUtil.login(user)
+//     .then(sessionUser => dispatch(receiveCurrentUser(sessionUser)),
+//       err => dispatch(receiveErrors(err.responseJSON)))
+// );};
+
 
 export const login = user => dispatch => {
   return(APIUtil.login(user)

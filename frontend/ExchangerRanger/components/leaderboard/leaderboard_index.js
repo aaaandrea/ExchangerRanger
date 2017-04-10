@@ -47,15 +47,17 @@ export default class LeaderboardIndex extends Component {
     const {users} = this.props;
     return (
       <View style={styles.container}>
-        <TouchableHighlight
-          onPress={this.onSubmission.bind(this)}
-          underlayColor='#FFFFFE'
-          activeOpacity={0.7}>
-          <View style={styles.buttonContainer}>
-             <Text style={styles.button}>Home</Text>
-          </View>
-        </TouchableHighlight>
         <View style={styles.userBanner}>
+          <TouchableHighlight
+            onPress={this.onSubmission.bind(this)}
+            underlayColor='#FFFFFE'
+            activeOpacity={0.7}>
+            <View style={styles.buttonContainer}>
+               <Text style={styles.button}>
+                 Home
+               </Text>
+            </View>
+          </TouchableHighlight>
           <Text style={styles.userUsername}>{currentUser.username}</Text>
           <Text style={styles.userNetWorth}>${currentUser.net_worth}</Text>
           <Text style={styles.userNetChange}>

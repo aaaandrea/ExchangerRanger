@@ -166,9 +166,9 @@ const styles = StyleSheet.create({
   },
 
   flag: {
-    marginTop: 2,
     height: 70,
     width: 90,
+    marginTop: 2,
     alignItems: 'center',
   },
 

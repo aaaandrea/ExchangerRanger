@@ -41,12 +41,39 @@ export default class LeaderboardIndex extends Component {
     this.props.navigator.push({id: 'StockIndex'});
   }
 
-  userRanks() {
+  userStats(netWorth) {
+    let userSym;
+    if (Math.round(netWorth - 20000) > 0) {
+      userSym = "+";
+    } else if (Math.round(netWorth - 20000) < 0) {
+      userSym = "-";
+    } else {
+      userSym = "~";
+    }
 
+    let userPercentage = "(" + userSym +
+                          (Math.round(netWorth - 20000)/20000).toString().slice(0,4)
+                          + "%)"+ " PAST MONTH";
+
+    return userPercentage;
+  }
+
+  banner(netWorth) {
+    let userNetChange = `${(Math.round((netWorth - 20000) * 100)/100)}`;
+    let userSym;
+    if (Math.round(netWorth - 20000) > 0) {
+      userSym = "+";
+    } else if (Math.round(netWorth - 20000) < 0) {
+      userSym = "-";
+    } else {
+      userSym = "~";
+    }
+    let userBanner = userSym + userNetChange;
+    return userBanner;
   }
 
   render() {
-    const currentUser = this.props.currentUser;
+    const { currentUser } = this.props;
     const {users} = this.props;
     let rank = 0;
     const currentRank = users.forEach( (user, i) => {
@@ -56,6 +83,8 @@ export default class LeaderboardIndex extends Component {
       }
       return rank;
     });
+    let percentage = `${this.userStats(parseInt(currentUser.net_worth))}`;
+    let banner = `${this.banner(parseInt(currentUser.net_worth))}`;
     let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     return (
       <View style={styles.container}>
@@ -73,13 +102,7 @@ export default class LeaderboardIndex extends Component {
           <View style={styles.userWords}>
             <Text style={styles.userUsername}>{currentUser.username}</Text>
             <Text style={styles.userNetWorth}>{money}</Text>
-            <Text style={styles.userNetChange}>
-              {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
-                `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
-                `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
-              }&nbsp;
-              {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
-            </Text>
+            <Text style={styles.userNetChange}>{banner} &nbsp;{ percentage }</Text>
           </View>
         </View>
         <View style={styles.playerRankContainer}>
@@ -98,7 +121,7 @@ export default class LeaderboardIndex extends Component {
             <Text style={styles.tourneyDate}>{`${this.getMonth()} Leaderboard`.toUpperCase()}</Text>
           </View>
           {
-            users.map( (user, idx) => (
+            users.slice(0,5).map( (user, idx) => (
               <LeaderboardIndexItem player={user} rank={idx + 1} key={idx}/>
               )
             )
@@ -114,7 +137,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F5FCFF',
-    paddingTop: 15,
   },
   userBanner: {
     marginTop: 18,
@@ -124,7 +146,9 @@ const styles = StyleSheet.create({
   },
   userWords: {
     flexDirection: 'column',
-    alignItems: 'flex-end'
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 38,
   },
   userUsername: {
     fontFamily: 'GillSans-Light',
@@ -208,11 +232,12 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   buttonContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#74B530',
-    margin: 3,
-    borderRadius: 1,
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 3,
     shadowColor: '#000000',
     shadowOpacity: 0.8,
     shadowRadius: 1,
@@ -220,10 +245,10 @@ const styles = StyleSheet.create({
       height: 1,
       width: -1
     },
-    height: 70,
-    width: 80,
+    borderRadius: 1,
+    height: 45,
+    width: 56,
   },
-
   button: {
     textAlign: 'center',
     color: '#FFFFFE',

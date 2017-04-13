@@ -31,17 +31,6 @@ export default class TradeForm extends Component {
     };
   }
 
-  componentDidMount(){
-    // let holding = {};
-    // holding.user_id = this.props.currentUser.id;
-    // holding.company_id = this.props.stock.id;
-    // holding.amount = 0;
-    // // let holdingId;
-    // let holdingId = (this.props.createHolding({holding: holding})
-    //                 .then(response => response.json()));
-    // console.log(holdingId);
-  }
-
   toggleStatus(type){
     this.setState({
       status: !this.state.status,
@@ -55,13 +44,8 @@ export default class TradeForm extends Component {
       user_id: this.props.currentUser.id,
       company_id: this.props.stock.id,
       amount: parseInt(this.state.amount)*(this.state.orderType==='sell' ? -1 : 1)
-    }
-  //   console.log(this.state);
-  //  let holding = {
-  //    user_id: this.props.user_id,
-  //    company_id: this.state.company_id,
-  //    amount: this.state.amount
-  //  };
+    };
+
     let userHoldings = [];
 
    Object.keys(this.props.currentUser.holdings).forEach
@@ -82,7 +66,7 @@ export default class TradeForm extends Component {
    } else {
      this.props.createHolding({holding: holding});
    }
-    // console.log(holding);
+
     this.props.navigator.push({id: 'StockIndex'});
   }
 
@@ -94,8 +78,7 @@ export default class TradeForm extends Component {
   }
 
   render() {
-    // window.props=this.props;
-    // console.log(this.props);
+
     return (
       <View style={styles.form}>
       {renderIf(this.state.status)(
@@ -116,9 +99,7 @@ export default class TradeForm extends Component {
             value = {this.state.myNumber}
             />
           </View>
-
           <Button title="v" onPress={()=>this.submitOrder()}></Button>
-
         </View>
       )}
       </View>
@@ -145,7 +126,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     flexDirection: 'row',
-    // padding: 23
   },
   textInput: {
     height: 25,
@@ -154,5 +134,4 @@ const styles = StyleSheet.create({
   textInputContainer: {
     width: 35
   }
-
 });

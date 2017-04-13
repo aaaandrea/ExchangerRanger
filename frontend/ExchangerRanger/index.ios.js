@@ -16,9 +16,6 @@ import LoginContainer from './components/session/login_container';
 import SplashContainer from './splash_container';
 import LeaderboardIndexContainer from './components/leaderboard/leaderboard_index_container';
 import configureStore from './store/store';
-// const stocks = [{symbol: "YHOO", name: "Yahoo", share_price: 50},
-// {symbol: "AAPL", name: "Apple", share_price: 70},
-// {symbol: "GOOG", name: "Google", share_price: 64}];
 
 const store = configureStore();
 
@@ -105,13 +102,5 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-//
-// <Text style={styles.instructions}>
-//   To get started, edit index.ios.js
-// </Text>
-// <Text style={styles.instructions}>
-//   Press Cmd+R to reload,{'\n'}
-//   Cmd+D or shake for dev menu
-// </Text>
 
 AppRegistry.registerComponent('ExchangerRanger', () => ExchangerRanger);

@@ -26,15 +26,12 @@ export default class StockIndex extends Component {
   }
 
   componentDidMount(){
-    //updatePrices
-
-    // this.props.fetchCompanies();
     this.updateStocks();
   }
 
   updateStocks(){
     this.state.stocks.forEach(stock => {
-      axios.patch(`http://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
+      axios.patch(`https://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
     });
   }
 
@@ -47,7 +44,7 @@ export default class StockIndex extends Component {
       stock = this.props.stocks[i];
       if(stock.name.toLowerCase().includes(value.toLowerCase())
         ||stock.symbol.toLowerCase().includes(value.toLowerCase())){
-          axios.patch(`http://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
+          axios.patch(`https://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
           stocks.push(stock);
         }
       i++;
@@ -59,12 +56,44 @@ export default class StockIndex extends Component {
     //   ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
   }
 
+  userStats(net_worth) {
+    let userSym;
+    if (Math.round(net_worth - 20000) > 0) {
+      userSym = "+";
+    } else if (Math.round(net_worth - 20000) < 0) {
+      userSym = "-";
+    } else {
+      userSym = "~";
+    }
+
+    let userPercentage = "(" + userSym +
+                          (Math.round(net_worth - 20000)/20000).toString().slice(0,4)
+                          + "%)"+ " PAST MONTH";
+
+    return userPercentage;
+  }
+
+  banner(net_worth) {
+    let userNetChange = `${(Math.round((net_worth - 20000) * 100)/100)}`;
+    let userSym;
+    if (Math.round(net_worth - 20000) > 0) {
+      userSym = "+";
+    } else if (Math.round(net_worth - 20000) < 0) {
+      userSym = "-";
+    } else {
+      userSym = "~";
+    }
+    let userBanner = userSym + userNetChange;
+    return userBanner;
+  }
+
   render() {
     const {currentUser} = this.props;
     let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
-
+    let percentage = `${this.userStats(parseInt(currentUser.net_worth))}`;
+    let banner = `${this.banner(parseInt(currentUser.net_worth))}`;
     return (
-      <View>
+      <View style={styles.bannerContainer}>
         <View style={styles.userBanner}>
           <TouchableHighlight
             onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
@@ -79,14 +108,7 @@ export default class StockIndex extends Component {
           <View style={styles.userWords}>
             <Text style={styles.userUsername}>{currentUser.username}</Text>
             <Text style={styles.userNetWorth}>{money}</Text>
-            <Text style={styles.userNetChange}>
-            {((Math.round((10000 - currentUser.net_worth) * 100)/100) > 10000) ?
-              `+${(Math.round((10000 - currentUser.net_worth) * 100)/100)}` :
-              `-${(Math.round((10000 - currentUser.net_worth) * 100)/100)}`
-
-            }&nbsp;
-            {`(${(Math.round(currentUser.net_worth - 10000)/100)}%) PAST MONTH`}
-            </Text>
+            <Text style={styles.userNetChange}>{banner} &nbsp;{ percentage }</Text>
           </View>
         </View>
         <View style={styles.container}>
@@ -106,7 +128,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 10,
-    alignItems: 'flex-start',
     borderRadius: 2,
   },
   search: {
@@ -114,64 +135,64 @@ const styles = StyleSheet.create({
     alignSelf: 'stretch',
     marginLeft: 10,
     marginRight: 10,
-
   },
   userBanner: {
     marginTop: 18,
     height: 80,
     backgroundColor: '#74B530',
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
-
   userWords: {
     flexDirection: 'column',
-    alignItems: 'flex-end'
+    alignItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 38,
   },
-
   userUsername: {
     fontFamily: 'GillSans-Light',
     fontSize: 14,
     letterSpacing: 1,
     textAlign: 'center',
+    justifyContent: 'center',
     color: 'white',
   },
-
   userNetWorth: {
     fontFamily: 'GillSans-Light',
     fontSize: 36,
+    justifyContent: 'center',
     textAlign: 'center',
     color: 'white',
   },
-
   userNetChange: {
     textAlign: 'center',
     color: 'white',
     fontFamily: 'Helvetica',
     fontSize: 12,
   },
-
   buttonContainer: {
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#74B530',
-    margin: 3,
-    borderRadius: 1,
+    marginTop: 15,
+    marginLeft: 15,
+    marginRight: 3,
     shadowColor: '#000000',
     shadowOpacity: 0.8,
     shadowRadius: 1,
     shadowOffset: {
-      height: 1,
+      height: 2,
       width: -1
     },
+    borderRadius: 1,
+    height: 45,
+    width: 56,
   },
-
   flag: {
-    height: 70,
-    width: 90,
+    height: 40,
+    width: 50,
     marginTop: 2,
     alignItems: 'center',
+    justifyContent: 'center',
   },
-
   button: {
     textAlign: 'center',
     color: '#FFFFFE',

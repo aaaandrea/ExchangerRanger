@@ -4,7 +4,6 @@ import StockIndex from './stock_index';
 import React, {Component} from 'react-native';
 
 const mapStateToProps = (state) =>   {
-  // console.log(state);
   let user;
   if (state.session.currentUser){
     user = state.session.currentUser;

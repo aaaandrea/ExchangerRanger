@@ -18,11 +18,11 @@ export default class StockIndexItem extends Component {
     this.props.fetchCompany(this.props.stock);
   }
 
-  dollarPrice(price_str){
-    if (price_str[price_str.length-2]==='.'){
-      return price_str+0;
+  dollarPrice(priceStr){
+    if (priceStr[priceStr.length-2]==='.'){
+      return priceStr+0;
     }
-    return price_str;
+    return priceStr;
   }
 
   render() {
@@ -99,10 +99,5 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-between'
-  },
-  info: {
-
-  },
-
-
+  }
 });

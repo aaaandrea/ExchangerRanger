@@ -7,7 +7,9 @@ import {
   View,
   Button,
   Navigator,
-  TextInput
+  TextInput,
+  Image,
+  TouchableOpacity
 } from 'react-native';
 
 
@@ -68,6 +70,7 @@ export default class TradeForm extends Component {
    }
 
     // this.props.navigator.push({id: 'StockIndex'});
+    this.toggleStatus();
   }
 
   onChanged(text) {
@@ -90,7 +93,9 @@ export default class TradeForm extends Component {
       )}
       {renderIf(!this.state.status)(
         <View style={styles.order}>
-          <Button title="x" onPress={()=>this.toggleStatus()}></Button>
+          <TouchableOpacity onPress={()=>this.toggleStatus()}>
+            <Image source={require("./cross-mark.png")} style={styles.image} />
+          </TouchableOpacity>
           <View style={styles.textInputContainer}>
             <TextInput
             style={styles.textInput}
@@ -99,7 +104,9 @@ export default class TradeForm extends Component {
             value = {this.state.myNumber}
             />
           </View>
-          <Button title="v" onPress={()=>this.submitOrder()}></Button>
+          <TouchableOpacity onPress={()=>this.submitOrder()}>
+            <Image source={require("./tick-mark.png")} style={styles.image} />
+          </TouchableOpacity>
         </View>
       )}
       </View>
@@ -133,5 +140,10 @@ const styles = StyleSheet.create({
   },
   textInputContainer: {
     width: 35
+  },
+  image: {
+    height: 20,
+    width: 20,
+    backgroundColor: 'white'
   }
 });

@@ -70,6 +70,7 @@ export default class Splash extends Component {
             </Text>
           </View>
         </TouchableHighlight>
+        
       </View>
     );
   }

@@ -57,6 +57,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginRight: 10,
     marginTop: 10,
+    backgroundColor: '#F5F5F5',
     borderStyle: 'solid',
     borderWidth: 1,
     borderColor: '#c4c4c4',
@@ -71,7 +72,6 @@ const styles = StyleSheet.create({
   },
   container: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
     flexDirection: 'column'
   },
   text: {

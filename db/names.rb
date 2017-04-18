@@ -3152,4 +3152,4 @@ Zions Bancorporation
 Zoe&#39;s Kitchen, Inc.
 Zoetis Inc.
 ZTO Express (Cayman) Inc.
-Zweig Fund, Inc. (The)".split("\n")
+Zweig Fund, Inc. (The)".split("\n").drop(1)

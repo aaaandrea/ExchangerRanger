@@ -74,7 +74,7 @@ export default class StockIndex extends Component {
   }
 
   banner(net_worth) {
-    let userNetChange = `${(Math.round((net_worth - 20000) * 100)/100)}`;
+    let userNetChange = `${(Math.round((net_worth - 20000) * 100)/100).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2})}`;
     let userSym;
     if (Math.round(net_worth - 20000) > 0) {
       userSym = "+";
@@ -159,7 +159,6 @@ const styles = StyleSheet.create({
   userNetWorth: {
     fontFamily: 'GillSans-Light',
     fontSize: 36,
-    justifyContent: 'center',
     textAlign: 'center',
     color: 'white',
   },
@@ -171,6 +170,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: '#74B530',
     marginTop: 15,
     marginLeft: 15,
@@ -179,7 +179,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 1,
     shadowOffset: {
-      height: 2,
+      height: 1,
       width: -1
     },
     borderRadius: 1,
@@ -192,11 +192,6 @@ const styles = StyleSheet.create({
     marginTop: 2,
     alignItems: 'center',
     justifyContent: 'center',
-  },
-  button: {
-    textAlign: 'center',
-    color: '#FFFFFE',
-    fontWeight: '600',
-    fontSize: 14,
+    backgroundColor: '#74B530',
   }
 });

@@ -69,8 +69,10 @@ export default class TradeForm extends Component {
      this.props.createHolding({holding: holding});
    }
 
+
     // this.props.navigator.push({id: 'StockIndex'});
     this.toggleStatus();
+
   }
 
   onChanged(text) {

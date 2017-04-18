@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchCompanies, fetchCompany, updateHolding, createHolding } from './../../actions/stock_actions';
+import { fetchCompanies, fetchCompany, updateHolding, createHolding, updatePrice } from './../../actions/stock_actions';
 import TradeForm from './trade_form';
 import React, {Component} from 'react-native';
 

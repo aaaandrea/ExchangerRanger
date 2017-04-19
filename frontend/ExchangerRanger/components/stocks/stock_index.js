@@ -5,6 +5,7 @@ import SearchBar from 'react-native-search-bar';
 import {fetchCompanies} from '../../actions/stock_actions.js';
 import {
   AppRegistry,
+  ScrollView,
   StyleSheet,
   Text,
   View,
@@ -40,7 +41,7 @@ export default class StockIndex extends Component {
     let stocks = [];
     let i = 0;
     let stock;
-    while (stocks.length < 10 && i< this.props.stocks.length){
+    while (stocks.length < 15 && i< this.props.stocks.length){
       stock = this.props.stocks[i];
       if (stock.symbol.toLowerCase().slice(0, value.length).includes(`${value.toLowerCase()}`) ||
       (stock.name.toLowerCase().slice(0, value.length).includes(value.toLowerCase()))) {
@@ -89,48 +90,51 @@ export default class StockIndex extends Component {
 
   render() {
     const {currentUser} = this.props;
-    console.log(this.props);
+    var _scrollView = ScrollView;
     let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     let percentage = `${this.userStats(parseInt(currentUser.net_worth))}`;
     let banner = `${this.banner(parseInt(currentUser.net_worth))}`;
     return (
-      <View style={styles.bannerContainer}>
-        <View style={styles.userBanner}>
-          <TouchableHighlight
-            onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
-            underlayColor='#74B530'
-            activeOpacity={0.7}>
-            <View style={styles.buttonContainer}>
-              <Image source={require('./../leaderboard/flag.png')}
-                    style={styles.flag}
-              />
+        <ScrollView
+          scrollEventThrottle={200}>
+          <View style={styles.bannerContainer}>
+          <View style={styles.userBanner}>
+            <TouchableHighlight
+              onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
+              underlayColor='#74B530'
+              activeOpacity={0.7}>
+              <View style={styles.buttonContainer}>
+                <Image source={require('./../leaderboard/flag.png')}
+                      style={styles.flag}
+                />
+              </View>
+            </TouchableHighlight>
+            <View style={styles.userWords}>
+              <Text style={styles.userUsername}>{currentUser.username}</Text>
+              <Text style={styles.userNetWorth}>{money}</Text>
+              <Text style={styles.userNetChange}>{banner} &nbsp;{ percentage }</Text>
             </View>
-          </TouchableHighlight>
-          <View style={styles.userWords}>
-            <Text style={styles.userUsername}>{currentUser.username}</Text>
-            <Text style={styles.userNetWorth}>{money}</Text>
-            <Text style={styles.userNetChange}>{banner} &nbsp;{ percentage }</Text>
+            <TouchableHighlight
+              onPress={() => this.props.navigator.push({id: 'UserShow'})}
+              underlayColor='#74B530'
+              activeOpacity={0.7}>
+              <View style={styles.button2Container}>
+                <Image source={require('./flat.png')}
+                      style={styles.ledger}
+                />
+              </View>
+            </TouchableHighlight>
           </View>
-          <TouchableHighlight
-            onPress={() => this.props.navigator.push({id: 'UserShow'})}
-            underlayColor='#74B530'
-            activeOpacity={0.7}>
-            <View style={styles.button2Container}>
-              <Image source={require('./flat.png')}
-                    style={styles.ledger}
-              />
-            </View>
-          </TouchableHighlight>
+          <View style={styles.container}>
+            <SearchBar style={styles.search}
+              ref='searchBar'
+    	        placeholder='Search'
+              onChangeText={this.filterResults}
+            />
+          {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
+          </View>
         </View>
-        <View style={styles.container}>
-          <SearchBar style={styles.search}
-            ref='searchBar'
-  	        placeholder='Search'
-            onChangeText={this.filterResults}
-          />
-        {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
-        </View>
-      </View>
+      </ScrollView>
     );
   }
 }

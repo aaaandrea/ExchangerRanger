@@ -1,8 +1,4 @@
-import axios from 'axios';
 import React, { Component } from 'react';
-import StockIndexItemContainer from './stock_index_item_container';
-import SearchBar from 'react-native-search-bar';
-import {fetchCompanies} from '../../actions/stock_actions.js';
 import {
   AppRegistry,
   StyleSheet,
@@ -10,51 +6,12 @@ import {
   View,
   Button,
   Navigator,
+  Image,
   TouchableOpacity,
-  TouchableHighlight,
-  Image
+  TouchableHighlight
 } from 'react-native';
 
-
-export default class StockIndex extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      stocks: this.props.stocks.slice(0,5)
-    };
-    this.filterResults = this.filterResults.bind(this);
-  }
-
-  componentDidMount(){
-    this.updateStocks();
-  }
-
-  updateStocks(){
-    this.state.stocks.forEach(stock => {
-      axios.patch(`https://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
-    });
-  }
-
-  filterResults(value){
-    this.setState({stocks:[]});
-    let stocks = [];
-    let i = 0;
-    let stock;
-    while (stocks.length < 10 && i< this.props.stocks.length){
-      stock = this.props.stocks[i];
-      if (stock.symbol.toLowerCase().slice(0, value.length).includes(`${value.toLowerCase()}`) ||
-      (stock.name.toLowerCase().slice(0, value.length).includes(value.toLowerCase()))) {
-        axios.patch(`https://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
-        stocks.push(stock);
-      }
-      i++;
-    }
-    this.setState({stocks: stocks});
-
-
-    // this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
-    //   ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
-  }
+export default class UserShow extends Component {
 
   userStats(net_worth) {
     let userSym;
@@ -89,7 +46,6 @@ export default class StockIndex extends Component {
 
   render() {
     const {currentUser} = this.props;
-    console.log(this.props);
     let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     let percentage = `${this.userStats(parseInt(currentUser.net_worth))}`;
     let banner = `${this.banner(parseInt(currentUser.net_worth))}`;
@@ -112,23 +68,15 @@ export default class StockIndex extends Component {
             <Text style={styles.userNetChange}>{banner} &nbsp;{ percentage }</Text>
           </View>
           <TouchableHighlight
-            onPress={() => this.props.navigator.push({id: 'UserShow'})}
+            onPress={() => this.props.navigator.push({id: 'Home'})}
             underlayColor='#74B530'
             activeOpacity={0.7}>
             <View style={styles.button2Container}>
-              <Image source={require('./flat.png')}
+              <Image source={require('./receipt.png')}
                     style={styles.ledger}
               />
             </View>
           </TouchableHighlight>
-        </View>
-        <View style={styles.container}>
-          <SearchBar style={styles.search}
-            ref='searchBar'
-  	        placeholder='Search'
-            onChangeText={this.filterResults}
-          />
-        {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
         </View>
       </View>
     );

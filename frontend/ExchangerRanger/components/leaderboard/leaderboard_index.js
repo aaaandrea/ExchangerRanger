@@ -46,7 +46,7 @@ export default class LeaderboardIndex extends Component {
     if (Math.round(netWorth - 20000) > 0) {
       userSym = "+";
     } else if (Math.round(netWorth - 20000) < 0) {
-      userSym = "-";
+      userSym = "";
     } else {
       userSym = "~";
     }
@@ -59,12 +59,12 @@ export default class LeaderboardIndex extends Component {
   }
 
   banner(netWorth) {
-    let userNetChange = `${(Math.round((netWorth - 20000) * 100)/100)}`;
+    let userNetChange = `${Math.round(netWorth - 20000).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2})}`;
     let userSym;
     if (Math.round(netWorth - 20000) > 0) {
       userSym = "+";
     } else if (Math.round(netWorth - 20000) < 0) {
-      userSym = "-";
+      userSym = "";
     } else {
       userSym = "~";
     }

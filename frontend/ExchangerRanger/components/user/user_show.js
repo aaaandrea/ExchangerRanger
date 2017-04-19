@@ -1,61 +1,17 @@
-import axios from 'axios';
 import React, { Component } from 'react';
-import StockIndexItemContainer from './stock_index_item_container';
-import SearchBar from 'react-native-search-bar';
-import {fetchCompanies} from '../../actions/stock_actions.js';
 import {
   AppRegistry,
-  ScrollView,
   StyleSheet,
   Text,
   View,
   Button,
   Navigator,
+  Image,
   TouchableOpacity,
-  TouchableHighlight,
-  Image
+  TouchableHighlight
 } from 'react-native';
 
-
-export default class StockIndex extends Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      stocks: this.props.stocks.slice(0,5)
-    };
-    this.filterResults = this.filterResults.bind(this);
-  }
-
-  componentDidMount(){
-    this.updateStocks();
-  }
-
-  updateStocks(){
-    this.state.stocks.forEach(stock => {
-      axios.patch(`https://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
-    });
-  }
-
-  filterResults(value){
-    this.setState({stocks:[]});
-    let stocks = [];
-    let i = 0;
-    let stock;
-    while (stocks.length < 15 && i< this.props.stocks.length){
-      stock = this.props.stocks[i];
-      if (stock.symbol.toLowerCase().slice(0, value.length).includes(`${value.toLowerCase()}`) ||
-      (stock.name.toLowerCase().slice(0, value.length).includes(value.toLowerCase()))) {
-        axios.patch(`https://exchanger-ranger.herokuapp.com/api/companies/${stock.id}`);
-        stocks.push(stock);
-      }
-      i++;
-    }
-    this.setState({stocks: stocks});
-
-
-    // this.setState({stocks: companies.filter(stock => stock.name.toLowerCase().includes(value.toLowerCase())
-    //   ||stock.symbol.toLowerCase().includes(value.toLowerCase()))});
-  }
+export default class UserShow extends Component {
 
   userStats(net_worth) {
     let userSym;
@@ -90,51 +46,39 @@ export default class StockIndex extends Component {
 
   render() {
     const {currentUser} = this.props;
-    var _scrollView = ScrollView;
     let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     let percentage = `${this.userStats(parseInt(currentUser.net_worth))}`;
     let banner = `${this.banner(parseInt(currentUser.net_worth))}`;
     return (
-        <ScrollView
-          scrollEventThrottle={200}>
-          <View style={styles.bannerContainer}>
-          <View style={styles.userBanner}>
-            <TouchableHighlight
-              onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
-              underlayColor='#74B530'
-              activeOpacity={0.7}>
-              <View style={styles.buttonContainer}>
-                <Image source={require('./../leaderboard/flag.png')}
-                      style={styles.flag}
-                />
-              </View>
-            </TouchableHighlight>
-            <View style={styles.userWords}>
-              <Text style={styles.userUsername}>{currentUser.username}</Text>
-              <Text style={styles.userNetWorth}>{money}</Text>
-              <Text style={styles.userNetChange}>{banner} &nbsp;{ percentage }</Text>
+      <View style={styles.bannerContainer}>
+        <View style={styles.userBanner}>
+          <TouchableHighlight
+            onPress={() => this.props.navigator.push({id: 'Leaderboard'})}
+            underlayColor='#74B530'
+            activeOpacity={0.7}>
+            <View style={styles.buttonContainer}>
+              <Image source={require('./../leaderboard/flag.png')}
+                    style={styles.flag}
+              />
             </View>
-            <TouchableHighlight
-              onPress={() => this.props.navigator.push({id: 'UserShow'})}
-              underlayColor='#74B530'
-              activeOpacity={0.7}>
-              <View style={styles.button2Container}>
-                <Image source={require('./flat.png')}
-                      style={styles.ledger}
-                />
-              </View>
-            </TouchableHighlight>
+          </TouchableHighlight>
+          <View style={styles.userWords}>
+            <Text style={styles.userUsername}>{currentUser.username}</Text>
+            <Text style={styles.userNetWorth}>{money}</Text>
+            <Text style={styles.userNetChange}>{banner} &nbsp;{ percentage }</Text>
           </View>
-          <View style={styles.container}>
-            <SearchBar style={styles.search}
-              ref='searchBar'
-    	        placeholder='Search'
-              onChangeText={this.filterResults}
-            />
-          {this.state.stocks.map(stock => <StockIndexItemContainer stock={stock} key={stock.id}/>)}
-          </View>
+          <TouchableHighlight
+            onPress={() => this.props.navigator.push({id: 'Home'})}
+            underlayColor='#74B530'
+            activeOpacity={0.7}>
+            <View style={styles.button2Container}>
+              <Image source={require('./receipt.png')}
+                    style={styles.ledger}
+              />
+            </View>
+          </TouchableHighlight>
         </View>
-      </ScrollView>
+      </View>
     );
   }
 }

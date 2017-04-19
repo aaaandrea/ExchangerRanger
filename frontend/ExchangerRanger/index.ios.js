@@ -13,6 +13,7 @@ import { Provider } from 'react-redux';
 import StockIndexContainer from './components/stocks/stock_index_container';
 import RegisterContainer from './components/session/register_container';
 import LoginContainer from './components/session/login_container';
+import UserShowContainer from './components/user/user_show_container';
 import SplashContainer from './splash_container';
 import LeaderboardIndexContainer from './components/leaderboard/leaderboard_index_container';
 import configureStore from './store/store';
@@ -66,6 +67,12 @@ export default class ExchangerRanger extends Component {
       if (routeId === 'Leaderboard') {
         return (
           <LeaderboardIndexContainer
+            navigator={navigator} />
+        );
+      }
+      if (routeId === 'UserShow') {
+        return (
+          <UserShowContainer
             navigator={navigator} />
         );
       }

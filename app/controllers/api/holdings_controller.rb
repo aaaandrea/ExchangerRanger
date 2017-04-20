@@ -12,13 +12,11 @@ class Api::HoldingsController < ApplicationController
 
   def update
     @holding = Holding.find(params[:holding][:id])
-    puts params[:holding][:amount]
     @holding.trade(params[:holding][:amount].to_i)
-    # if @holding.update(params[:amount])
-    #   render "api/holdings/show"
-    # else
-    #   render json: @holding.errors.full_messages, status: 422
-    # end
+    #this destroy isn't working but we need something here.
+    #when user sells all their shares, they still retain the holding though with no shares
+    #it doesn't make sense and messes with buy sell render logic on stock index item
+    @holding.destroy if @holding.amount === 0
   end
 
   def show

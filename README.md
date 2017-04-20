@@ -1,6 +1,9 @@
 # ExchangerRanger
 
 ## Background
+
+[Try a live demo](https://exchangerranger.github.io/ExchangerRangerDemo/)
+
 Users buy and sell stocks in order to improve their net-worth. Stock market simulations can be fun competitions and a stepping stone to the real stock market.
 
 This mobile application runs month-long competitions using actual stock market quotes, determining players’ net worth. Net worth is based on a player's cash on hand + total stock value. The winning user has highest net worth at end of simulation cycle.

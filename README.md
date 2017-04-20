@@ -14,7 +14,7 @@ This mobile application runs month-long competitions using actual stock market q
   * User can buy and sell stock to earn/lose net-worth
   * User can search for a specific stock
   * Global leaderboard based on players’ net worth
-  * Download in the app store [here]()
+  * Download in the app store
 
 ## Structure
 ### Backend

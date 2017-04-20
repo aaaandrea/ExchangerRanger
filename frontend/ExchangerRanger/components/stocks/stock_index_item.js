@@ -26,6 +26,7 @@ export default class StockIndexItem extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       <View style={styles.canvas}>
         <View style={styles.container}>
@@ -35,7 +36,7 @@ export default class StockIndexItem extends Component {
             </Text>
             <TradeFormContainer navigator={this.props.navigator} stock={this.props.stock} />
             <Text style={styles.priceText}>
-              ${this.dollarPrice(this.props.stock.share_price.toString())}
+              <Text style={styles.dollarSign}>$</Text>{this.dollarPrice(this.props.stock.share_price.toString())}
             </Text>
           </View>
           <View style={styles.name}>
@@ -88,9 +89,14 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginBottom: 4,
   },
+  dollarSign: {
+    color: '#a3a3a3',
+    fontSize: 12,
+    paddingRight: 2,
+  },
   priceText: {
-    color: '#8c8c8c',
-    fontSize: 24,
+    color: '#6d6d6d',
+    fontSize: 22,
     marginTop: 18,
     marginRight: 10,
   },

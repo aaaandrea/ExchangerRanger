@@ -95,6 +95,7 @@ export default class StockIndex extends Component {
     let percentage = `${this.userStats(parseInt(currentUser.net_worth))}`;
     let banner = `${this.banner(parseInt(currentUser.net_worth))}`;
     return (
+        <View style={styles.scrollFix}>
         <ScrollView
           scrollEventThrottle={200}>
           <View style={styles.bannerContainer}>
@@ -119,7 +120,7 @@ export default class StockIndex extends Component {
               underlayColor='#74B530'
               activeOpacity={0.7}>
               <View style={styles.button2Container}>
-                <Image source={require('./flat.png')}
+                <Image source={require('./ledger.png')}
                       style={styles.ledger}
                 />
               </View>
@@ -135,11 +136,15 @@ export default class StockIndex extends Component {
           </View>
         </View>
       </ScrollView>
+      </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
+  scrollFix: {
+    marginTop: 10,
+  },
   container: {
     flex: 1,
     marginTop: 10,

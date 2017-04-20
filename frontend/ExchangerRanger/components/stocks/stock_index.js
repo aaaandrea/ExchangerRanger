@@ -143,7 +143,7 @@ export default class StockIndex extends Component {
 
 const styles = StyleSheet.create({
   scrollFix: {
-    marginTop: 10,
+    marginTop: 18,
   },
   container: {
     flex: 1,
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   userBanner: {
-    marginTop: 18,
+    marginTop: 0,
     height: 80,
     backgroundColor: '#74B530',
     flexDirection: 'row',

@@ -18,14 +18,13 @@ export default class StockIndexItem extends Component {
     this.props.fetchCompany(this.props.stock);
   }
 
-  dollarPrice(priceStr) {
-    return Math.floor(priceStr).toString();
+  dollarPrice(price) {
+    return Math.floor(price).toString();
   }
 
-  centPrice(priceStr) {
-    priceStr = priceStr.toString();
-    let decimalIdx = priceStr.indexOf(".");
-    return priceStr.slice(decimalIdx);
+  centPrice(price) {
+    let cents = (price % 1).toFixed(2).toString();
+    return cents.slice(cents.length - 3);
   }
 
   render() {

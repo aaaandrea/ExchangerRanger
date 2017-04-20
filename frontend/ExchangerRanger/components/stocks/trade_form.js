@@ -101,7 +101,7 @@ export default class TradeForm extends Component {
 
   onChanged(text) {
     let orderType = this.state.orderType;
-    let shareAmount = orderType==="sell"? - text : text;
+    let shareAmount = orderType === "sell" ? - text : text;
     this.setState({amount: text});
     this.setState({amount: shareAmount });
   }
@@ -114,7 +114,7 @@ export default class TradeForm extends Component {
       <View style={styles.form}>
       {renderIf(this.state.status)(
         <View style={styles.buySell}>
-          <Button title={buyCheck} color="#74B530" onPress={()=>this.toggleStatus('buy')}></Button>
+          <Button title="buy" color="#74B530" onPress={()=>this.toggleStatus('buy')}></Button>
           <Text style={styles.line}>|</Text>
           <Button title={sellCheck} color="#e05a57" onPress={()=>this.toggleStatus('sell')}></Button>
         </View>

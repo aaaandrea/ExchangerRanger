@@ -149,6 +149,7 @@ const styles = StyleSheet.create({
     flex: 1,
     marginTop: 10,
     borderRadius: 2,
+    marginBottom: 5,
   },
   search: {
     height: 35,

@@ -107,7 +107,6 @@ export default class TradeForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     let sellCheck = this.sellCheck();
     let buyCheck = this.buyCheck();
     return (

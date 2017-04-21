@@ -31,6 +31,8 @@ export default class TradeForm extends Component {
       company_id: 0,
       amount: 0
     };
+    this.sellCheck = this.sellCheck.bind(this);
+    this.buyCheck = this.buyCheck.bind(this);
   }
 
   toggleStatus(type){
@@ -41,6 +43,30 @@ export default class TradeForm extends Component {
 
   }
 
+  sellCheck() {
+    const { stock } = this.props;
+    let sellText = "";
+    let userHoldings = this.userCurrentHoldings();
+    if (userHoldings.includes(stock.id)) {
+      sellText = "sell";
+    }
+    return sellText;
+  }
+
+  buyCheck() {
+  }
+
+  userCurrentHoldings() {
+    let userHoldings = [];
+
+    const { holdings } = this.props;
+
+    Object.keys(holdings).forEach(id =>
+      userHoldings.push(holdings[id].company_id));
+
+    return userHoldings;
+  }
+
   submitOrder(){
     const holding = {
       user_id: this.props.currentUser.id,
@@ -48,11 +74,7 @@ export default class TradeForm extends Component {
       amount: parseInt(this.state.amount)*(this.state.orderType==='sell' ? -1 : 1)
     };
 
-    let userHoldings = [];
-
-   Object.keys(this.props.currentUser.holdings).forEach
-   (id => userHoldings.push(this.props.currentUser.holdings[id].company_id));
-
+    let userHoldings = this.userCurrentHoldings();
 
    if (userHoldings.includes(holding.company_id)) {
      let prevHolding;
@@ -61,10 +83,12 @@ export default class TradeForm extends Component {
          prevHolding = co;
        }
      });
+
      holding.id = prevHolding.id;
      holding.amount += parseInt(prevHolding.amount);
 
      this.props.updateHolding({holding: holding});
+
    } else {
      this.props.createHolding({holding: holding});
    }
@@ -77,20 +101,21 @@ export default class TradeForm extends Component {
 
   onChanged(text) {
     let orderType = this.state.orderType;
-    let shareAmount = orderType==="sell"? - text : text;
+    let shareAmount = orderType === "sell" ? - text : text;
     this.setState({amount: text});
     this.setState({amount: shareAmount });
   }
 
   render() {
-
+    let sellCheck = this.sellCheck();
+    let buyCheck = this.buyCheck();
     return (
       <View style={styles.form}>
       {renderIf(this.state.status)(
         <View style={styles.buySell}>
           <Button title="buy" color="#74B530" onPress={()=>this.toggleStatus('buy')}></Button>
           <Text style={styles.line}>|</Text>
-          <Button title="sell" color="#e05a57" onPress={()=>this.toggleStatus('sell')}></Button>
+          <Button title={sellCheck} color="#e05a57" onPress={()=>this.toggleStatus('sell')}></Button>
         </View>
       )}
       {renderIf(!this.state.status)(

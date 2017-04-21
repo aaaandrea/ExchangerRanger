@@ -46,6 +46,7 @@ export default class UserShow extends Component {
 
   render() {
     const {currentUser} = this.props;
+    console.log(currentUser);
     let money = currentUser.net_worth.toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits:2});
     let percentage = `${this.userStats(parseInt(currentUser.net_worth))}`;
     let banner = `${this.banner(parseInt(currentUser.net_worth))}`;
@@ -78,10 +79,14 @@ export default class UserShow extends Component {
             </View>
           </TouchableHighlight>
         </View>
+        <View>
+
+        </View>
       </View>
     );
   }
 }
+
 
 const styles = StyleSheet.create({
   container: {

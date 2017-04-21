@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { fetchUsers } from './../../actions/user_actions';
+import { fetchCompany } from './../../actions/stock_actions';
 import UserShow from './user_show';
 import React, {Component} from 'react-native';
 
@@ -10,7 +10,7 @@ const mapStateToProps = (state) =>   {
 };
 
 const mapDispatchToProps = (dispatch, {location}) => ({
-  fetchUsers: () => dispatch(fetchUsers())
+  fetchCompany: () => dispatch(fetchCompany())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserShow);

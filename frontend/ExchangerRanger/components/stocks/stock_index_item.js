@@ -18,11 +18,13 @@ export default class StockIndexItem extends Component {
     this.props.fetchCompany(this.props.stock);
   }
 
-  dollarPrice(priceStr){
-    if (priceStr[priceStr.length-2]==='.'){
-      return priceStr+0;
-    }
-    return priceStr;
+  dollarPrice(price) {
+    return Math.floor(price).toString();
+  }
+
+  centPrice(price) {
+    let cents = (price % 1).toFixed(2).toString();
+    return cents.slice(cents.length - 3);
   }
 
   render() {
@@ -35,7 +37,9 @@ export default class StockIndexItem extends Component {
             </Text>
             <TradeFormContainer navigator={this.props.navigator} stock={this.props.stock} />
             <Text style={styles.priceText}>
-              ${this.dollarPrice(this.props.stock.share_price.toString())}
+              <Text style={styles.dollarSign}>$</Text>
+              {this.dollarPrice(this.props.stock.share_price)}
+              <Text style={styles.centSign}>{this.centPrice(this.props.stock.share_price)}</Text>
             </Text>
           </View>
           <View style={styles.name}>
@@ -88,9 +92,18 @@ const styles = StyleSheet.create({
     marginLeft: 8,
     marginBottom: 4,
   },
+  dollarSign: {
+    color: '#a3a3a3',
+    fontSize: 12,
+    paddingRight: 3,
+  },
+  centSign: {
+    color: '#6d6d6d',
+    fontSize: 16,
+  },
   priceText: {
-    color: '#8c8c8c',
-    fontSize: 24,
+    color: '#6d6d6d',
+    fontSize: 22,
     marginTop: 18,
     marginRight: 10,
   },

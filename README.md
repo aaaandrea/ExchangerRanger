@@ -36,31 +36,6 @@ The app is built with a React Native frontend utilizing the Redux cycle. This en
     * [Jbuilder](https://github.com/rails/jbuilder)
     * [BCrypt](https://github.com/codahale/bcrypt-ruby)
 
-## Responsibility breakdown
-  * Aaron:
-    * Proposal Readme
-    * HTTP requests
-    * Fetch Requests
-    * Leaderboard Component
-    * Video
-    * Demo Page
-
-  * Andrea:
-    * package.json
-    * User Authentication
-    * Fetch Requests
-    * Splash/Login/Sign up React Native Components
-    * Global ranking
-    * Styling
-    * Production Readme
-
-  * Ryan:
-    * Database structure
-    * ActiveRecord implementation
-    * StockIndex/Home React Native Component
-    * Searchbar implementation
-    * User net-worth
-
 ## Technologies & Technical Challenges
 ### Ensure mobile user security
 #### User Auth

@@ -22,25 +22,29 @@ This mobile application will run month-long simulations with actual stock market
   - Building stock trade logic and ensuring valid orders.
 
 ## Responsibility breakdown
-  - Aaron:
-    - Readme
-    - HTTP requests
-    - React Native modeling
-    - Video
+  * Aaron:
+    * Proposal Readme
+    * HTTP requests
+    * Fetch Requests
+    * Leaderboard Component
+    * Video
+    * Demo Page
 
-  - Andrea:
-    - Webpack
-    - Readme
-    - Authentication
-    - API use
-    - ReactNative modeling
-    - Styling
+  * Andrea:
+    * package.json
+    * User Authentication
+    * Fetch Requests
+    * Splash/Login/Sign up React Native Components
+    * Global ranking
+    * Styling
+    * Production Readme
 
-  - Ryan:
-    - Models
-    - ActiveRecord implementation
-    - ReactNative modeling
-    - Demo Page
+  * Ryan:
+    * Database structure
+    * ActiveRecord implementation
+    * StockIndex/Home React Native Component
+    * Searchbar implementation
+    * User net-worth
 
 ## Implementation Timeline
 

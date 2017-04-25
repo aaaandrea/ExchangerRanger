@@ -16,6 +16,9 @@ This mobile application runs month-long competitions using actual stock market q
   * Global leaderboard based on players’ net worth
   * Download in the app store
 
+  ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "exchanger gif")
+
+
 ## Structure
 ### Backend
 The app was built using Ruby on Rails on the back end with a postgreSQL database. Backend structure is RESTful and all the data requests use Fetch and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.

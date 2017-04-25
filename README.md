@@ -16,6 +16,9 @@ This mobile application runs month-long competitions using actual stock market q
   * Global leaderboard based on players’ net worth
   * Download in the app store
 
+  ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "exchanger gif")
+
+
 ## Structure
 ### Backend
 The app was built using Ruby on Rails on the back end with a postgreSQL database. Backend structure is RESTful and all the data requests use Fetch and are fulfilled with a JSON API. Associations are used to prefetch data in order to minimize SQL queries to the database.
@@ -36,66 +39,20 @@ The app is built with a React Native frontend utilizing the Redux cycle. This en
     * [Jbuilder](https://github.com/rails/jbuilder)
     * [BCrypt](https://github.com/codahale/bcrypt-ruby)
 
-## Responsibility breakdown
-  * Aaron:
-    * Proposal Readme
-    * HTTP requests
-    * Fetch Requests
-    * Leaderboard Component
-    * Video
-    * Demo Page
-
-  * Andrea:
-    * package.json
-    * User Authentication
-    * Fetch Requests
-    * Splash/Login/Sign up React Native Components
-    * Styling
-    * Production Readme
-
-  * Ryan:
-    * Database structure
-    * ActiveRecord implementation
-    * StockIndex/Home React Native Component
-    * Searchbar implementation
-    * User net-worth
-
 ## Technologies & Technical Challenges
 ### Ensure mobile user security
-#### User Auth
 User authentication is handled in Rails using BCrypt for password hashing. Passwords are not saved to the database, only salted password hashes to ensure user security. When users log in, the password they provide is rehashed and checked against the original encrypted password hash to verify credentials. Additionally they are assigned a session token which is reset at login to ensure the user is the same as the user logged in the database.
 
-  <img src='https://raw.githubusercontent.com/adelrio1/stockSectorVisualizer/master/docs/images/auth.jpg'></img>
-
-##### Ensure user password matches password input
-
+#### Ensure user password matches password input
+We use BCrypt::Password in order to ensure user security by salting a small chunk of random data to the password before it is hashed. This way we can check if the user is using the correct password, by comparing the two. (seen below)
   ```ruby
   def password_is?(password)
     BCrypt::Password.new(self.password_digest).is_password?(password)
   end
   ```
 
-##### Encrypting a user password
 
-  ```ruby
-  def password=(password)
-    self.password_digest = BCrypt::Password.create(password)
-    @password = password
-  end
-  ```
-
-##### Ensure unique session token
-
-  ```ruby
-  def reset_session_token!
-    self.session_token = new_session_token
-    ensure_session_token_uniqueness
-    self.save
-    self.session_token
-  end
-  ```
-
-### Ensuring reliable and up to date stock data
+### Ensure reliable and up to date stock data
 Retrieving publicly available and reliable finance data was among the initial challenges of ExchangerRanger. After heavily researching a variety of APIs, most of which were out of date and no longer used, we discovered we could user the Nokogiri gem which parses HTML via CSS3 selectors. Using Google Finance we parsed known company symbols seeded to our database in order to retrieve the current stock price.
 
   ```ruby
@@ -108,24 +65,10 @@ Retrieving publicly available and reliable finance data was among the initial ch
   end
   ```
 
-### Using React Native Fetch functionality to enable up to date stock prices
-#### Holdings and net-worth demonstrates the React Native Fetch functionality
+### Use React Native Fetch functionality to enable up to date stock prices
 Holdings are the heart of ExchangerRanger, and are designed to be up to date. Holdings are demonstrated as a simple join table which includes associations between companies and users, along with the quantity of stock a user currently owns. Users can buy, sell, sort, and filter companies on the fly to increase their holdings and net-worth. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
 
-##### Holding database schema
-
-  ```ruby
-  create_table "holdings", force: :cascade do |t|
-    t.integer  "company_id",             null: false
-    t.integer  "user_id",                null: false
-    t.integer  "amount",     default: 0, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["user_id"], name: "index_holdings_on_user_id"
-  end
-  ```
-
-##### When a user purchases stock they create a new holding with the quantity of stock they would like to own
+When a user purchases stock they create a new holding with the quantity of stock they would like to own. This is done through a fetch request (as seen below), which bypasses some of the limitations in XMLHttpRequests (eg. AJAX) by making the information available to the window.
 
   ```javascript
   export const createHolding = (data) => {
@@ -142,21 +85,8 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
   };
   ```
 
-##### The Rails user model calculates an individual player's net worth
-
-  ```ruby
-  def net_worth
-    result = self.cash_on_hand
-    self.holdings.each do |holding|
-      share_price = holding.company.share_price
-      result += share_price * holding.amount
-    end
-    @net_worth = result
-  end
-  ```
-
 ### React Native Navigator
-#### In order to switch between React Native components, the navigator is used to render each new route. Initially this is for used to render the splash page.
+In order to switch between React Native components, the navigator is used to render each new route. Initially this is for used to render the splash page.
 
   ```
     <Navigator
@@ -170,25 +100,9 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
         }}
     />
   ```
+  When a user wants to move to a different view, they are guided to a button which renders the desired component.
+  Adding the desired component to the navigator allows the routes to trigger the new component to render
 
-#### When a user wants to move to a different view, they are guided to a button which renders the desired component.
-
-  ```
-  onSubmission() {
-    this.props.navigator.push({id: 'StockIndex'});
-  }
-  ```
-
-#### Adding the desired component to the navigator allows the routes to trigger the new component to render
-
-  ```
-  if (routeId === 'StockIndex') {
-    return (
-      <StockIndexContainer
-        navigator={navigator} />
-    );
-  }
-  ```
 
 ## Future Features
   * Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.

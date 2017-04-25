@@ -16,7 +16,7 @@ This mobile application runs month-long competitions using actual stock market q
   * Global leaderboard based on players’ net worth
   * Download in the app store
 
-  ![alt text](https://github.com/adam-p/markdown-here/raw/master/src/common/images/icon48.png "exchanger gif")
+  ![alt text](https://raw.githubusercontent.com/adelrio1/stockSectorVisualizer/master/docs/images/exchanger.gif "exchanger gif")
 
 
 ## Structure

@@ -50,6 +50,7 @@ The app is built with a React Native frontend utilizing the Redux cycle. This en
     * User Authentication
     * Fetch Requests
     * Splash/Login/Sign up React Native Components
+    * Global ranking
     * Styling
     * Production Readme
 
@@ -75,26 +76,6 @@ User authentication is handled in Rails using BCrypt for password hashing. Passw
   end
   ```
 
-##### Encrypting a user password
-
-  ```ruby
-  def password=(password)
-    self.password_digest = BCrypt::Password.create(password)
-    @password = password
-  end
-  ```
-
-##### Ensure unique session token
-
-  ```ruby
-  def reset_session_token!
-    self.session_token = new_session_token
-    ensure_session_token_uniqueness
-    self.save
-    self.session_token
-  end
-  ```
-
 ### Ensuring reliable and up to date stock data
 Retrieving publicly available and reliable finance data was among the initial challenges of ExchangerRanger. After heavily researching a variety of APIs, most of which were out of date and no longer used, we discovered we could user the Nokogiri gem which parses HTML via CSS3 selectors. Using Google Finance we parsed known company symbols seeded to our database in order to retrieve the current stock price.
 
@@ -112,18 +93,6 @@ Retrieving publicly available and reliable finance data was among the initial ch
 #### Holdings and net-worth demonstrates the React Native Fetch functionality
 Holdings are the heart of ExchangerRanger, and are designed to be up to date. Holdings are demonstrated as a simple join table which includes associations between companies and users, along with the quantity of stock a user currently owns. Users can buy, sell, sort, and filter companies on the fly to increase their holdings and net-worth. Just by typing in the company they are searching for, users can find the most marketable stock details quickly and easily.
 
-##### Holding database schema
-
-  ```ruby
-  create_table "holdings", force: :cascade do |t|
-    t.integer  "company_id",             null: false
-    t.integer  "user_id",                null: false
-    t.integer  "amount",     default: 0, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.index ["user_id"], name: "index_holdings_on_user_id"
-  end
-  ```
 
 ##### When a user purchases stock they create a new holding with the quantity of stock they would like to own
 
@@ -170,25 +139,9 @@ Holdings are the heart of ExchangerRanger, and are designed to be up to date. Ho
         }}
     />
   ```
+  When a user wants to move to a different view, they are guided to a button which renders the desired component.
+  Adding the desired component to the navigator allows the routes to trigger the new component to render
 
-#### When a user wants to move to a different view, they are guided to a button which renders the desired component.
-
-  ```
-  onSubmission() {
-    this.props.navigator.push({id: 'StockIndex'});
-  }
-  ```
-
-#### Adding the desired component to the navigator allows the routes to trigger the new component to render
-
-  ```
-  if (routeId === 'StockIndex') {
-    return (
-      <StockIndexContainer
-        navigator={navigator} />
-    );
-  }
-  ```
 
 ## Future Features
   * Develop ability to make visualizations manipulatable such as adjusting date range, and potentially adding ability to compare multiple stocks or data points in same chart.
